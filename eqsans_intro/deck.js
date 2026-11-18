@@ -105,13 +105,19 @@
   }
   function transition(from, to, type, dir) {
     finishAnims();
+    // the cover photograph drifts slowly while the cover is up (kenburns); remember where it is before the class that drives it goes
+    const drift = type === 'dissolve' ? getComputedStyle(from.querySelector('.bgimg')).transform : 'none';
     from.classList.add('leaving'); from.classList.remove('active'); to.classList.add('active');
     const mine = [], push = (a) => (mine.push(a), a);
     to.style.zIndex = '';
     switch (type) {
       case 'dissolve':                                               // the cover photograph melts into the live site model
         push(A(from.querySelector('.cover-card'), [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateX(-90px)' }], { duration: 800, easing: SMOOTH }));
-        push(A(from.querySelector('.cover-bg'), [{ opacity: 1, transform: 'scale(1)' }, { opacity: 1, transform: 'scale(1.03)', offset: .18 }, { opacity: 0, transform: 'scale(1.16)' }], { duration: 3000, easing: 'ease-in-out' }));
+        // The model underneath is held on the photograph's own viewpoint (siteIntro in the model), so this is a matched
+        // dissolve: the photograph settles onto its undrifted position and goes without zooming, and it is gone while the
+        // model's glide (7 s, slow to start) has covered only its first few per cent.
+        if (drift && drift !== 'none') push(A(from.querySelector('.bgimg'), [{ transform: drift }, { transform: 'none' }], { duration: 500, easing: 'ease-out' }));
+        push(A(from.querySelector('.cover-bg'), [{ opacity: 1 }, { opacity: 0 }], { duration: 1500, easing: 'ease-in-out' }));
         break;
       case 'push':
         to.style.zIndex = 4;

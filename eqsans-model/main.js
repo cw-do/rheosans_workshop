@@ -1310,11 +1310,19 @@ canvas.addEventListener('pointerup', (e) => {
   }
 });
 
+// The lens. fovMul scales the field of view (1 = the model's own); `lens` is a running change of it. Only the
+// presentation's opening shot uses another lens (siteIntro), and it survives a resize, e.g. going full screen on the cover.
+let fovMul = 1, lens = null;
+function applyFov() {
+  const w = window.innerWidth, h = window.innerHeight;
+  camera.fov = (w < h ? 55 : 38) * fovMul; camera.updateProjectionMatrix();
+  pMat.uniforms.uScale.value = h * renderer.getPixelRatio() / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2));
+}
+function resetLens() { lens = null; if (fovMul !== 1) { fovMul = 1; applyFov(); } }
 function resize() {
   const w = window.innerWidth, h = window.innerHeight;
   renderer.setSize(w, h, false); composer.setSize(w, h);
-  camera.aspect = w / h; camera.fov = w < h ? 55 : 38; camera.updateProjectionMatrix();
-  pMat.uniforms.uScale.value = h * renderer.getPixelRatio() / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2));
+  camera.aspect = w / h; applyFov();
   pMat.uniforms.uMin.value = 5 * renderer.getPixelRatio();
 }
 window.addEventListener('resize', resize); resize();
@@ -1390,6 +1398,11 @@ function step(realDt) {
     const e = ease(fly.t);
     camera.position.lerpVectors(fly.p0, fly.p1, e); controls.target.lerpVectors(fly.t0, fly.t1, e);
     if (fly.t >= 1) fly = null;
+  }
+  if (lens) {
+    lens.t = Math.min(1, lens.t + realDt / lens.dur);
+    fovMul = lens.k0 + (lens.k1 - lens.k0) * ease(lens.t); applyFov();
+    if (lens.t >= 1) lens = null;
   }
   controls.update();
 
@@ -1495,20 +1508,21 @@ function setUi(siteOn) {
 }
 function showSite() {
   stopTour(); if (rheo.on) setRheo(false, false); if (beamOn) setBeam(false); if (exploded) { exploded = false; exAmt = 0; applyExplode(); $('btn-explode').classList.remove('on'); $('btn-explode').textContent = 'Explode'; }
-  fly = null; dive = null; mode = 'site';
+  fly = null; dive = null; mode = 'site'; resetLens();
   site.group.visible = true; site.setReveal(0); site.setFade(1); applyEnv(1); setUi(true);
   camera.position.copy(SITE_POS); controls.target.copy(SITE_TGT);
   controls.enabled = true; controls.autoRotate = true; controls.autoRotateSpeed = 0.35;
   $('landing').classList.remove('gone');
 }
 function showInstrument() {
-  dive = null; mode = 'inst'; site.group.visible = false; applyEnv(0); setUi(false);
+  dive = null; mode = 'inst'; resetLens(); site.group.visible = false; applyEnv(0); setUi(false);
   camera.position.copy(HOME_POS); controls.target.copy(HOME_TGT);
   controls.enabled = true; controls.autoRotate = false;
 }
 function startDive() {
   if (mode !== 'site') return;
   mode = 'dive'; controls.enabled = false; controls.autoRotate = false;
+  fly = null;                                                      // a glide still under way (the intro's) would keep overwriting the dive's camera
   dive = { t: 0, p0: camera.position.clone(), t0: controls.target.clone() };
   controls.minDistance = 0.12; controls.maxDistance = 5000;        // OrbitControls clamps the distance even while disabled
   $('landing').classList.add('gone');
@@ -1526,13 +1540,28 @@ function updateDive(dt) {
   if (u >= 1) { site.group.visible = false; applyEnv(0); dive = null; mode = 'inst'; controls.enabled = true; controls.maxDistance = 90;
     setBeam(true, false); setTof(true); }                         // arrive with the beam running, shells in X-ray, time–distance plot open
 }
-// Opening shot for a presentation: hold the camera on the side of the site that the usual aerial photograph of SNS is
-// taken from (looking across the office building to the target building), then glide to the landing view.
-const INTRO_POS = new THREE.Vector3(-700, 195, -470), INTRO_TGT = new THREE.Vector3(110, 0, -110);
+// Opening shot for a presentation: hold the camera where the aerial photograph on the deck's cover was taken from
+// (looking across the office building to the target building, the linac running off to the upper right), then glide
+// to the landing view. The photograph dissolves into this view, so the two have to coincide.
+// Position, aim and lens are a least-squares fit to that photograph (eqsans_intro/assets/cover.jpg at 16:9) through twelve
+// landmarks: the water tower, two corners of the target building's roof, the front-end building, both ends of the
+// bridge, both ends of the CLO arc, the end of CNMS and two corners of the car park. On a 1920 px wide picture the
+// buildings land within about 20 px; the car park is off by up to 45 px and the water tower stands 80 px short, because
+// the model draws it lower than it is. The fit wants a longer lens than the model's (28° against 38°, from 750 m);
+// with the model's own lens the foreground comes out stretched.
+const INTRO_POS = new THREE.Vector3(-800, 179, -404), INTRO_TGT = new THREE.Vector3(-86, 0, -244), INTRO_LENS = 28.1 / 38;
 function siteIntro(hold = false) {
   if (mode !== 'site') showSite();
-  if (hold) { fly = null; camera.position.copy(INTRO_POS); controls.target.copy(INTRO_TGT); controls.autoRotate = false; $('landing').classList.add('gone'); }
-  else { flyTo(SITE_POS, SITE_TGT, 7); controls.autoRotate = true; setTimeout(() => { if (mode === 'site') $('landing').classList.remove('gone'); }, 2600); }
+  if (hold) {
+    fly = null; lens = null; controls.autoRotate = false;
+    const damp = controls.enableDamping;                           // spend what is left of the auto-rotation now, or it carries the camera a few metres past the mark
+    controls.enableDamping = false; controls.update(); controls.enableDamping = damp;
+    camera.position.copy(INTRO_POS); controls.target.copy(INTRO_TGT); fovMul = INTRO_LENS; applyFov();
+    $('landing').classList.add('gone');
+  } else {
+    flyTo(SITE_POS, SITE_TGT, 7); lens = { k0: fovMul, k1: 1, t: 0, dur: 7 };   // the lens opens back to the model's own on the way
+    controls.autoRotate = true; setTimeout(() => { if (mode === 'site') $('landing').classList.remove('gone'); }, 2600);
+  }
 }
 $('btn-dive').onclick = startDive;
 $('btn-site').onclick = showSite;
