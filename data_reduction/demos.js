@@ -43,7 +43,7 @@
         ed.line(`<span class="k-var">${m[1]}</span> = [${spans}]`, `a${cfg}-${m[1]}`);
         return;
       }
-      ed.line(colour(line), /^output_directory/.test(line) ? 'outdir' : null);
+      ed.line(colour(line), /^output_directory/.test(line) ? 'outdir' : /^# Stitching:/.test(line) ? 'stitch' : /^overlap = /.test(line) ? 'overlap' : null);
     });
   }
   /* ONCat as it really looks (v3.16, seen 2026-11-17 in a 682 px wide window). The landing, sign-in, instrument and
@@ -194,6 +194,12 @@
           w.ed.scrollTo('a1-samscatt', 190); w.toRun(188950); await c.sleep(700);
           for (let i = 0; i < 14; i++) { await w.fill(c, 1, i, false); await c.sleep(170); }
         } },
+      { head: 'The end of the script stitches',
+        say: 'Nothing to fill in here. Once both configurations are reduced, the script takes each sample’s <b>8m10a</b> curve (low q), scales it onto its <b>4m2.5a</b> curve (high q) where the two overlap, and writes them as one curve: <code>merged_&lt;sample&gt;_Iq.txt</code>.',
+        note: '<code>overlap</code> is the q range, in Å⁻¹, in which the two curves are matched.',
+        async run(c, w) {
+          w.cfgOnly(null); w.ed.scrollTo('stitch', 330); await c.sleep(700); w.ed.hl('overlap'); await c.sleep(600);
+        } },
       { head: 'Check with the answer key', keys: ['grep "^samscatt" reduce_template.py ../reduce_R1.py'],
         say: 'Now it can be told: <code>reduce_R1.py</code> in the shared folder is the <b>answer key</b>, this same script with every list filled in. Save your file and compare before you run anything.',
         note: 'The same numbers in the same order? Then try the other lists the same way.',
@@ -217,15 +223,22 @@
           w.term.out(first('EmptyCupBob_2,3_0shear_4m2.5a_4m2.5a'), 'dim'); await c.sleep(600);
           w.term.out('  …', 'dim'); await c.sleep(400);
           w.term.out(first('CTAB_2,3_0shear-return_8m10a_8m10a'), 'dim'); await c.sleep(600);
-          w.term.out('  …', 'dim'); w.term.out('Python-[Warning] ...plotting completed.', 'dim'); w.term.prompt();
+          w.term.out('  …', 'dim'); w.term.out('Python-[Warning] ...plotting completed.', 'dim'); await c.sleep(500);
+          // then the stitching part: one notice and one line per sample (the factors are the ones drtsans printed for these curves)
+          w.term.out('Python-[Notice] Stitching profile 0 to profile 1. Scale factor is 2.739e+00', 'dim');
+          w.term.out('.... stitched: merged_EmptyCupBob_1,3_0shear_Iq.txt', 'dim'); await c.sleep(500);
+          w.term.out('  …', 'dim'); await c.sleep(400);
+          w.term.out('Python-[Notice] Stitching profile 0 to profile 1. Scale factor is 4.458e+00', 'dim');
+          w.term.out('.... stitched: merged_CTAB_2,3_0shear-return_Iq.txt', 'dim'); w.term.prompt();
         } },
-      { head: 'Look at what came out', keys: ['ls output | head -14', 'ls output/*_Iq.dat | wc -l'],
-        say: 'For every sample and configuration: <code>_Iq.dat</code> is I(q), <code>_Iqxqy.dat</code> the 2D pattern, with a picture of each and the full record of the reduction.',
+      { head: 'Look at what came out', keys: ['ls output | head -14', 'ls output/*_Iq.dat | wc -l', 'ls output/merged_* | wc -l'],
+        say: 'For every sample and configuration: <code>_Iq.dat</code> is I(q), <code>_Iqxqy.dat</code> the 2D pattern, with a picture of each and the full record of the reduction. And for every sample one <code>merged_…_Iq.txt</code>: the two configurations stitched.',
         async run(c, w) {
           const s = 'CTAB_1,3_0.1shear_4m2.5a_4m2.5a';
           const kinds = ['.err', '.json', '.out', '_bkgd_188904_raw_trans.txt', '_bkgd_188904_trans.txt', '_Iq.dat', '_Iq.png', '_Iqxqy.dat', '_Iqxqy.h5', '_Iqxqy.png', '_processed.nxs', '_raw_trans.txt', '_reduction_log.hdf', '_trans.txt'];
           await w.term.run(c, 'ls output | head -14', kinds.map((k) => ({ text: s + k, cls: /_Iq\.dat|_Iqxqy\.dat/.test(k) ? 'ok' : 'out' })));
           await w.term.run(c, 'ls output/*_Iq.dat | wc -l', '28');
+          await w.term.run(c, 'ls output/merged_* | wc -l', '14');
         } },
     ],
   };
@@ -350,7 +363,7 @@
     return rows;
   };
   const filtered = (pat, tag) => [{ name: '..', size: '<DIR>' }].concat(DATA.files.filter((f) => f.name.includes(pat)).map((f) => ({ name: f.name, size: f.size, tag })));
-  const HOME_ROWS = [{ name: '..', size: '<DIR>', mod: '2026-11-19 09:13' }, { name: 'output/', size: '<DIR>', mod: '2026-11-19 09:31' }, { name: 'sansbook/', size: '<DIR>', mod: '2026-11-19 09:44' }, { name: 'reduce_template.py', size: '7.1 KB', mod: '2026-11-19 09:16' }];
+  const HOME_ROWS = [{ name: '..', size: '<DIR>', mod: '2026-11-19 09:13' }, { name: 'output/', size: '<DIR>', mod: '2026-11-19 09:31' }, { name: 'sansbook/', size: '<DIR>', mod: '2026-11-19 09:44' }, { name: 'reduce_template.py', size: '8.6 KB', mod: '2026-11-19 09:16' }];
   const sansdir = {
     part: 'Part 3 of 3', title: 'Browse and plot: sansdir',
     build(screen) {
