@@ -1,0 +1,143 @@
+:root {
+  --ink: #1d2329; --muted: #5f6b76; --line: #d8dee4; --bg: #ffffff; --panel: #f6f8fa; --accent: #1f5fa8;
+  --live: #2e7d32; --dead: #8a8a8a; --waiting: #b7791f; --open: #2f6fdb;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 15px/1.5 "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code, pre { font-family: "Cascadia Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 12.5px; }
+pre { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px;
+  overflow-x: auto; white-space: pre; }
+
+header.top { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px;
+  padding: 14px 24px 12px; border-bottom: 1px solid var(--line); }
+.brand { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+h1 { font-size: 22px; margin: 2px 0 2px; }
+.meta { color: var(--muted); font-size: 13px; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+button { font: inherit; font-size: 13px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 6px;
+  background: var(--panel); color: var(--ink); cursor: pointer; }
+button:hover { border-color: var(--accent); color: var(--accent); }
+
+.layout { display: grid; grid-template-columns: minmax(260px, 340px) 1fr; min-height: calc(100vh - 80px); }
+nav.side { border-right: 1px solid var(--line); padding: 14px 12px; background: var(--panel);
+  position: sticky; top: 0; align-self: start; max-height: 100vh; overflow: auto; }
+.treebox { overflow-x: auto; margin-bottom: 12px; }
+svg.tree { display: block; font-size: 12px; }
+svg.tree .edge { fill: none; stroke: #9aa5b1; stroke-width: 1.3; }
+svg.tree .edge.second { stroke-dasharray: 4 3; }
+svg.tree text { fill: var(--ink); font-family: inherit; }
+svg.tree .nid { font-weight: 700; }
+svg.tree a.dead text { fill: var(--dead); }
+svg.tree a.active rect { stroke: var(--accent); stroke-width: 3; }
+ul.tabs { list-style: none; padding: 0; margin: 0; }
+ul.tabs a { display: block; padding: 4px 8px; border-radius: 5px; color: var(--ink); }
+ul.tabs a.active { background: #e3ecf7; color: var(--accent); font-weight: 600; }
+ul.tabs .slug { color: var(--muted); font-size: 13px; }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; background: currentColor; }
+.st-live .dot, .st-live { color: var(--live); }
+.st-dead .dot, .st-dead { color: var(--dead); }
+.st-waiting .dot, .st-waiting { color: var(--waiting); }
+.st-open .dot, .st-open { color: var(--open); }
+ul.tabs a.st-live, ul.tabs a.st-dead, ul.tabs a.st-waiting, ul.tabs a.st-open { color: var(--ink); }
+.legend { font-size: 12px; margin-top: 12px; }
+
+main { padding: 18px 28px 40px; max-width: 1150px; }
+section.tab { display: none; }
+section.tab.active { display: block; }
+h2 { font-size: 20px; margin: 0; }
+h3 { font-size: 16px; margin: 24px 0 8px; }
+.pagehead { display: flex; align-items: center; gap: 10px; }
+.path { color: var(--muted); font-size: 13px; margin: 4px 0 12px; }
+.badge { font-size: 12px; padding: 2px 8px; border-radius: 10px; border: 1px solid; text-transform: uppercase;
+  letter-spacing: .04em; }
+.badge.live { color: var(--live); background: #e7f4ea; }
+.badge.dead { color: var(--dead); background: #f0f0f0; }
+.badge.waiting { color: var(--waiting); background: #fff4d6; }
+.badge.open { color: var(--open); background: #e6efff; }
+dl.record { display: grid; grid-template-columns: 110px 1fr; gap: 4px 14px; margin: 0 0 16px; }
+dl.record dt { color: var(--muted); font-weight: 600; }
+dl.record dd { margin: 0; }
+figure { margin: 0; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; background: #fff; }
+figcaption { font-size: 12px; color: var(--muted); }
+figure.overview img { max-width: 720px; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; margin: 14px 0; }
+table { border-collapse: collapse; width: 100%; margin: 6px 0 10px; font-size: 13.5px; }
+th, td { border-bottom: 1px solid var(--line); padding: 5px 8px; text-align: left; vertical-align: top;
+  overflow-wrap: break-word; }
+/* Short columns (id, from, verdict, by, date) keep their width; the long one takes the rest. */
+th.nw, td.nw { white-space: nowrap; width: 1%; }
+.files { overflow-wrap: anywhere; }
+td.differs { min-width: 12em; }
+.badge { white-space: nowrap; display: inline-block; }
+.tablewrap { overflow-x: auto; }
+th { background: var(--panel); font-weight: 600; }
+table.num td:not(:first-child) { font-variant-numeric: tabular-nums; }
+tr.fixed td { color: var(--muted); }
+td.id, .id { font-weight: 700; white-space: nowrap; }
+.tag { font-size: 11px; background: #eef2f6; border-radius: 4px; padding: 0 5px; color: var(--muted); }
+.muted { color: var(--muted); }
+.small { font-size: 12px; }
+.warn { color: #a4461a; }
+details { margin: 8px 0; }
+summary { cursor: pointer; color: var(--accent); }
+details.reduction { border-left: 3px solid var(--accent); padding: 2px 0 2px 12px; margin: 14px 0; }
+details.reduction h4 { margin: 12px 0 4px; }
+ul.findings { padding-left: 18px; }
+ul.findings li { margin: 3px 0; }
+ul.findings li.prominent { background: #fff4d6; border-radius: 3px; padding: 3px 6px; list-style: none; margin-left: -18px; }
+.badge.blocking { background: #b3261e; color: #fff; }
+.badge.warning { background: #e09f3e; color: #fff; }
+.badge.info { background: #888; color: #fff; }
+table.params tr.differ td { background: #fff4d6; }
+table.rows tr.notrans td { color: #b3261e; }
+ul.paths li { margin: 2px 0; }
+.print-only { display: none; }
+.pgallery { margin: 14px 0 20px; }
+.pgallery h4 { font-size: 14px; margin: 16px 0 6px; padding-bottom: 3px; border-bottom: 1px solid var(--line); }
+.ggrid { display: grid; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); gap: 10px; }
+.ggrid figcaption { text-align: center; overflow-wrap: anywhere; font-size: 11.5px; }
+@media (max-width: 1000px) { .ggrid { grid-template-columns: repeat(min(var(--cols, 4), 2), minmax(0, 1fr)); } }
+.foot { color: var(--muted); font-size: 12px; padding: 12px 24px; border-top: 1px solid var(--line); }
+
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+  nav.side { position: static; max-height: none; border-right: 0; border-bottom: 1px solid var(--line); }
+}
+
+@media print {
+  @page { size: letter; margin: 14mm 12mm; }
+  html, body { font-size: 11pt; }
+  header.top .actions, nav.side, .foot { display: none; }
+  header.top { padding: 0 0 8px; }
+  .layout { display: block; }
+  main { padding: 0; max-width: none; }
+  section.tab { display: none; }
+  body:not(.print-all) section.tab.active { display: block; }
+  body.print-all section.tab { display: block; break-before: page; }
+  body.print-all section.tab#tab-overview { break-before: auto; }
+  .print-only { display: block; }
+  figure, table tr, .pagehead { break-inside: avoid; }
+  figure.overview img { max-width: 75%; }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+  table { font-size: 8.5pt; }
+  th, td { padding: 3px 5px; }
+  details { display: none; }
+  details.keep { display: block; border: 0; padding-left: 0; }
+  details.keep > summary { list-style: none; color: inherit; }
+  ul.findings li.prominent, table.params tr.differ td { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .pgallery h4 { break-after: avoid; }
+  .ggrid { grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)) !important; gap: 6px; }
+  .ggrid figcaption { font-size: 6.5pt; }
+  a { color: var(--ink); }
+}
+
+/* reduction tabs (2026-10-19): what a person checks a reduction by */
+table.redtable tr.notdone td { color: var(--muted); }
+table.redtable td.miss { background: rgba(255, 176, 0, .22); }
+table.params tr.group th { text-align: left; background: var(--panel); padding-top: .5em; }
+table.params tr.differ td { background: rgba(255, 176, 0, .16); }
+nav .st-reduction .dot { background: #4a90d9; }

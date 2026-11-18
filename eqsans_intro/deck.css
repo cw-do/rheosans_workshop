@@ -1,0 +1,159 @@
+/* =====================================================================
+   THEME — ORNL SNS 16:9 template (Aptos; ORNL Green, Hale Navy, Dark
+   Matter; secondary Energy/Mist/Biome/Aqua/Infinity/Hydro; accents
+   Forge/Spark/Plasma/Pulsar). Geometry measured from the .pptx layouts
+   at 1920×1080 (1 in = 144 px, 1 pt = 2 px). Same system as the CNMS
+   seminar deck (Topic_2026_career/interview_seminar_claude/src/deck.css).
+   ===================================================================== */
+
+/* Aptos is used where it is installed (it comes with Office); its files are not part of this site. */
+:root {
+  --green: #00662C; --navy: #00454D; --ink: #373A36; --graphite: #DBDCDB; --polar: #FFFFFF;
+  --energy: #7DBA00; --mist: #8BFEBF; --biome: #00B38F; --aqua: #00BDB5; --infinity: #006BA6; --hydro: #005776;
+  --forge: #FF9E1B; --spark: #FE5000; --plasma: #B50094; --pulsar: #4E008E;
+  --muted: #6E716C; --ease: cubic-bezier(.16, 1, .3, 1);
+  --stage-bg: #05090b;
+}
+* { box-sizing: border-box; }
+
+/* === FIXED 16:9 STAGE ===
+   The live 3D model is an iframe that sits exactly behind the stage, at the stage's on-screen size but unscaled, so
+   the model's own interface keeps its designed size. Slides are opaque and cover it; a "live" slide is empty and
+   lets pointer events through to the model. */
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: var(--stage-bg); }
+#model { position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; border: 0; z-index: 0; visibility: hidden; background: #080b11; }
+#model.on { visibility: visible; }
+.deck-viewport { position: fixed; inset: 0; overflow: hidden; z-index: 1; pointer-events: none; }
+.deck-stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; transform-origin: 0 0; }
+.slide { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; display: block; visibility: hidden; opacity: 0; pointer-events: none; background: #fff;
+  font-family: 'Aptos', 'Segoe UI', sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; contain: layout paint; }
+.slide.active, .slide.leaving { visibility: visible; opacity: 1; }
+.slide.active { z-index: 2; pointer-events: auto; }
+.slide.leaving { z-index: 3; pointer-events: none; }
+.slide.s-live { background: transparent; pointer-events: none !important; }
+.slide img, .slide svg { max-width: none; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .2s !important; } }
+
+/* === CHROME === */
+.chrome-logo { position: absolute; left: 50px; top: 1007px; width: 278px; height: auto; z-index: 20; pointer-events: none; }
+.chrome-page { position: absolute; right: 70px; top: 1036px; font-size: 18px; color: #B9BBB8; z-index: 20; font-variant-numeric: tabular-nums; }
+
+/* Title placeholder: 0.344 in, 0.399 in; 12.57 in wide; 32 pt Aptos Bold */
+.title { position: absolute; left: 50px; top: 57px; width: 1810px; margin: 0; font-size: 64px; line-height: 1.09; font-weight: 700; letter-spacing: -.003em; color: var(--ink); z-index: 10; }
+.kicker { position: absolute; left: 52px; top: 30px; font-size: 22px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--green); z-index: 10; }
+.slide.active .title, .slide.active .kicker { animation: rise .9s var(--ease) both; }
+.slide.active .title { animation-delay: .12s; }
+
+/* === ENTRANCE AND STEP REVEALS === */
+@keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+.slide.active .rise { animation: rise 1s var(--ease) both; animation-delay: calc(var(--i, 0) * 110ms + 260ms); }
+[data-step], [data-only] { transition: opacity .7s var(--ease), transform .9s var(--ease); }
+[data-step]:not(.on), [data-only]:not(.on) { opacity: 0; transform: translateY(22px); pointer-events: none; }
+.fx-fade:not(.on) { transform: none !important; }
+.instant, .instant * { transition: none !important; }
+
+/* === COMMON CONTENT === */
+.abs { position: absolute; }
+.label { font-size: 22px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--green); }
+.small { font-size: 24px; line-height: 1.35; color: var(--muted); }
+.message { font-size: 38px; font-weight: 700; color: var(--green); line-height: 1.2; }
+figure { margin: 0; position: absolute; }
+figure img { display: block; width: 100%; height: 100%; object-fit: cover; }
+figcaption { position: absolute; left: 0; top: 100%; width: 100%; font-size: 24px; color: var(--ink); margin-top: 12px; line-height: 1.25; }
+figcaption small { display: block; font-size: 20px; color: var(--muted); margin-top: 2px; }
+.card { background: #fff; border-radius: 6px; box-shadow: 0 18px 50px rgba(0,40,45,.16), 0 2px 6px rgba(0,0,0,.06); }
+.card img { border-radius: 6px; }
+.zoom { cursor: zoom-in; }
+
+/* === COVER (SNS | Standard layout) ===
+   The cover has no background of its own: its photograph covers the live site model, and the first advance
+   dissolves the photograph into it. */
+.s-cover { background: transparent; }
+.s-cover .bgimg, .s-closing .bgimg { position: absolute; inset: 0; width: 1920px; height: 1080px; object-fit: cover; }
+.s-cover.active .bgimg { animation: kenburns 40s ease-out both; }
+@keyframes kenburns { from { transform: scale(1.1) translate(1.2%, .8%); } to { transform: scale(1) translate(0, 0); } }
+.cover-card { position: absolute; inset: 0; }
+.cover-panel { position: absolute; left: 141px; top: 133px; width: 819px; height: 819px; background: rgba(255,255,255,.88); backdrop-filter: blur(2px); }
+.cover-logo { position: absolute; left: 189px; top: 174px; width: 428px; }
+.cover-kicker { position: absolute; left: 191px; top: 318px; width: 711px; font-size: 22px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green); }
+.cover-title { position: absolute; left: 189px; top: 362px; width: 740px; margin: 0; font-size: 88px; font-weight: 700; line-height: 1.04; letter-spacing: -.01em; color: var(--ink); }
+.cover-bar { position: absolute; left: 191px; top: 590px; width: 135px; height: 11px; background: var(--green); transform-origin: left; }
+.cover-by { position: absolute; left: 191px; top: 632px; font-size: 22px; font-weight: 700; letter-spacing: .14em; color: var(--muted); }
+.cover-name { position: absolute; left: 191px; top: 672px; font-size: 48px; font-weight: 400; color: var(--ink); }
+.cover-role { position: absolute; left: 191px; top: 746px; width: 711px; font-size: 26px; line-height: 1.35; color: var(--ink); }
+.cover-doe { position: absolute; left: 185px; top: 838px; width: 240px; }
+.cover-managed { position: absolute; left: 440px; top: 851px; width: 470px; font-size: 18px; line-height: 1.3; color: var(--ink); letter-spacing: .02em; text-transform: uppercase; }
+.s-cover.active .cover-panel { animation: panelIn 1.4s var(--ease) both; }
+.s-cover.active .cover-bar { animation: barIn 1.2s .9s var(--ease) both; }
+.s-cover.active .cover-fade { animation: rise 1.1s var(--ease) both; }
+@keyframes panelIn { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: none; } }
+@keyframes barIn { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.cover-hint { position: absolute; right: 60px; bottom: 44px; padding: 14px 20px; max-width: 760px; font-size: 22px; line-height: 1.35; color: #fff; background: rgba(120,20,10,.9); border-radius: 6px; display: none; }
+body.no-model .cover-hint { display: block; }
+
+/* === Q RANGE === */
+.q-fig { left: 50px; top: 186px; width: 1130px; height: 780px; overflow: hidden; }
+.q-fig img { position: absolute; inset: 0; object-fit: contain; background: #fff; }
+.q-side { position: absolute; left: 1250px; top: 196px; width: 610px; }
+.q-rows { position: relative; margin-top: 22px; padding-left: 34px; }
+.q-rows::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 5px; border-radius: 3px; background: linear-gradient(var(--infinity), var(--spark)); }
+.q-row { display: grid; grid-template-columns: 62px 150px 1fr; align-items: center; height: 68px; font-size: 36px; border-bottom: 1px solid #E7E8E7; transition: opacity .7s var(--ease); }
+.q-row i { width: 44px; height: 14px; border-radius: 2px; }
+.q-row b { font-weight: 700; }
+.q-row span { color: var(--ink); font-variant-numeric: tabular-nums; }
+.q-ends { display: flex; justify-content: space-between; padding-left: 34px; margin-top: 12px; font-size: 21px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.slide[data-cur="1"] .q-row:not(.in-stitch) { opacity: .25; }
+.q-note { position: absolute; left: 1250px; top: 760px; width: 610px; }
+.q-note .small { margin-top: 10px; }
+
+/* === SAMPLE CELLS === */
+.facts { position: absolute; left: 52px; top: 215px; width: 760px; }
+.fact { padding: 26px 0 28px; border-bottom: 1px solid #E1E3E1; }
+.fact:first-child { border-top: 4px solid var(--green); }
+.fact-h { font-size: 22px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--green); }
+.fact-v { font-size: 66px; font-weight: 700; line-height: 1.1; margin-top: 6px; letter-spacing: -.01em; white-space: nowrap; }
+.fact-v em { font-style: normal; font-size: 38px; font-weight: 400; color: var(--muted); margin-left: 8px; }
+.fact-s { font-size: 26px; color: var(--muted); margin-top: 2px; }
+
+/* === SAMPLE ENVIRONMENT === */
+.around { position: absolute; left: 900px; top: 612px; width: 500px; border-top: 4px solid var(--green); padding-top: 20px; }
+.around p { margin: 0; padding: 15px 0; font-size: 29px; line-height: 1.25; border-bottom: 1px solid #E1E3E1; }
+.around .label { margin-bottom: 6px; }
+
+/* === RHEOMETER PHOTO CALLOUTS === */
+.pin { position: absolute; transform: translate(-50%, -50%); z-index: 3; }
+.pin::before { content: ''; position: absolute; left: 50%; top: 50%; width: 18px; height: 18px; margin: -9px; border-radius: 50%; background: var(--forge); box-shadow: 0 0 0 6px rgba(255,158,27,.3); }
+.pin span { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); white-space: nowrap; padding: 8px 16px; font-size: 24px; font-weight: 700; color: #fff; background: rgba(0,69,77,.94); border-radius: 4px; }
+.pin.below span { bottom: auto; top: 26px; }
+.next-up { position: absolute; right: 60px; top: 78px; padding: 12px 22px; font-size: 26px; font-weight: 700; color: #fff; background: var(--green); border-radius: 4px; z-index: 12; }
+
+/* === CLOSING (Conclusion | Aerial) === */
+.s-closing { color: var(--ink); }
+.cl-title { position: absolute; left: 0; width: 1920px; top: 236px; text-align: center; font-size: 132px; font-weight: 700; line-height: 1.05; letter-spacing: -.015em; color: var(--ink); text-shadow: 0 2px 30px rgba(255,255,255,.6); }
+.cl-bar { position: absolute; left: 893px; top: 418px; width: 134px; height: 12px; background: var(--green); transform-origin: center; }
+.cl-sub { position: absolute; left: 0; width: 1920px; top: 462px; text-align: center; font-size: 34px; font-weight: 700; color: var(--green); }
+.cl-name { position: absolute; left: 0; width: 1920px; top: 514px; text-align: center; font-size: 28px; color: var(--ink); }
+.s-closing.active .cl-title { animation: rise 1.2s .2s var(--ease) both; }
+.s-closing.active .cl-bar { animation: barGrow 1.4s .7s var(--ease) both; }
+.s-closing.active .cl-sub { animation: rise 1.1s 1s var(--ease) both; }
+.s-closing.active .cl-name { animation: rise 1.1s 1.2s var(--ease) both; }
+@keyframes barGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.s-closing.active .bgimg { animation: kenburns 40s ease-out both; }
+
+/* === CHROME OUTSIDE THE STAGE === */
+/* deck navigation shown over the live model, styled like the model's own controls */
+#pill { position: fixed; z-index: 30; display: none; align-items: center; gap: 2px; padding: 4px; transform: translateX(-50%); font: 600 13px/1 'Aptos', 'Segoe UI', sans-serif; color: rgba(214,232,242,.75);
+  background: rgba(12,16,24,.82); border: 1px solid rgba(255,255,255,.12); border-radius: 999px; backdrop-filter: blur(8px); opacity: .6; transition: opacity .25s; }
+#pill:hover { opacity: 1; }
+body.live #pill { display: flex; }
+#pill button { border: 0; background: none; color: inherit; font: inherit; font-size: 17px; width: 34px; height: 30px; border-radius: 999px; cursor: pointer; }
+#pill button:hover { background: rgba(255,255,255,.1); color: #fff; }
+#pill span { padding: 0 8px; white-space: nowrap; }
+#pill b { color: #eef6fa; }
+#progress { position: fixed; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--energy); transform-origin: left; transform: scaleX(0); z-index: 100; opacity: 0; transition: transform .6s var(--ease), opacity .3s; pointer-events: none; }
+body.show-progress #progress { opacity: .9; }
+#blackout { position: fixed; inset: 0; background: #000; z-index: 300; opacity: 0; pointer-events: none; transition: opacity .4s; }
+body.black #blackout { opacity: 1; pointer-events: auto; }
+#lightbox { position: fixed; inset: 0; z-index: 280; background: rgba(0,0,0,.88); display: none; align-items: center; justify-content: center; cursor: zoom-out; }
+#lightbox.open { display: flex; }
+#lightbox img { max-width: 94vw; max-height: 92vh; background: #fff; box-shadow: 0 30px 80px rgba(0,0,0,.6); }

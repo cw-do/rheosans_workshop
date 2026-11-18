@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From Runs to I(Q) — Changwoo Do</title>
+<!--
+  From Runs to I(Q): data reduction for Rheo-SANS — RheoSANS workshop, SNS, 19 November 2026
+  (Session 3B, Rheo-SANS Analysis).
+
+  Open with "Start Rheo-SANS reduction.cmd" one folder up (it also works by double-clicking this file,
+  except that the report in the sansbook demo then cannot be scrolled by the deck).
+
+  Files:  index.html (slides)   demo.css + ../eqsans_intro/deck.css (looks)   deck.js (navigation)
+          demo.js (the demo player and the replica windows)   demos.js (the three demos, step by step)
+          assets/ (written by prepare_assets.py and make_report.py)   ref/ (what was downloaded from the cluster)
+  Slides: 1 cover → 2 three ways → 3 what a reduction needs → 4 demo: script → 5 demo: sansbook
+          → 6 demo: sansdir → 7 thank you
+  Keys:   → / PgDn / Space   next (on a demo: next step)     ← / PgUp   previous
+          R replay the demo step    F fullscreen    B black    4 Enter   go to slide 4
+          O (or the ▦ button, top right) shows all slides; ‹ › next to it move one slide
+          Address "#5.3" opens slide 5 at step 3.
+-->
+<link rel="stylesheet" href="../eqsans_intro/deck.css?v=2">
+<link rel="stylesheet" href="demo.css?v=6">
+<link rel="stylesheet" href="../shared/nav.css?v=3">
+<style>.s-cover { background: #0b1416; }</style>
+</head>
+<body>
+<div class="deck-viewport">
+<main class="deck-stage" id="stage">
+
+<!-- === 1 · COVER === -->
+<section class="slide s-cover no-chrome" id="s-cover" data-title="From Runs to I(Q)">
+  <div class="cover-bg"><img class="bgimg" src="../eqsans_intro/assets/cover.jpg" alt="The Spallation Neutron Source from the air"></div>
+  <div class="cover-card">
+    <div class="cover-panel"></div>
+    <img class="cover-logo cover-fade" src="../eqsans_intro/assets/logo_color.png" alt="Oak Ridge National Laboratory — Spallation Neutron Source">
+    <div class="cover-kicker cover-fade" style="animation-delay:.4s">RheoSANS Workshop · Day 2 · Data reduction</div>
+    <h1 class="cover-title cover-fade" style="animation-delay:.55s; font-size:84px">From Runs<br>to I(Q)</h1>
+    <div class="cover-bar"></div>
+    <div class="cover-by cover-fade" style="animation-delay:1.1s">HANDS-ON DATA REDUCTION FOR RHEO-SANS</div>
+    <div class="cover-name cover-fade" style="animation-delay:1.25s">Changwoo Do</div>
+    <div class="cover-role cover-fade" style="animation-delay:1.4s">EQ-SANS Point of Contact<br>Neutron Scattering Division, Spallation Neutron Source</div>
+    <img class="cover-doe cover-fade" style="animation-delay:1.6s" src="../eqsans_intro/assets/logo_doe.png" alt="U.S. Department of Energy">
+    <div class="cover-managed cover-fade" style="animation-delay:1.7s">ORNL is managed by UT-Battelle LLC for the US Department of Energy</div>
+  </div>
+</section>
+
+<!-- === 2 · THREE WAYS === -->
+<section class="slide s-white" id="s-ways" data-title="Three ways">
+  <div class="kicker">Today, on the analysis cluster</div>
+  <h2 class="title">Three ways from runs to I(Q)</h2>
+  <div class="way rise" style="--i:1; left:52px">
+    <div class="num">1 · SCRIPT</div><h3>Write the table</h3><div class="tool">drtsans reduce_template.py</div>
+    <p>You find every run number in the catalog and put it in a Python script.</p>
+    <div class="you"><span>You get</span>Full control, and every mistake is yours</div>
+  </div>
+  <div class="way rise" style="--i:2; left:680px">
+    <div class="num">2 · CONVERSATION</div><h3>Ask for it</h3><div class="tool">sansbook</div>
+    <p>You say what you want. It reduces, plots, and keeps a record of what was done.</p>
+    <div class="you"><span>You get</span>Reduced data and a report page</div>
+  </div>
+  <div class="way rise" style="--i:3; left:1308px">
+    <div class="num">3 · BROWSER</div><h3>Look at it</h3><div class="tool">sansdir</div>
+    <p>You walk through the files, filter them, and plot what you pick with one key.</p>
+    <div class="you"><span>You get</span>A quick look at any file</div>
+  </div>
+  <div class="dataset rise" style="--i:4"><b>The data:</b> IPTS-37681, CTAB in the cup-and-bob cell · 1,3 and 2,3 planes · shear 0, 0.1, 1, 10, 100, 1000 · configurations 4m2.5a and 8m10a</div>
+</section>
+
+<!-- === 3 · WHAT A REDUCTION NEEDS === -->
+<section class="slide s-white" id="s-needs" data-title="What a reduction needs">
+  <div class="kicker">Before the script</div>
+  <h2 class="title">One sample, five runs</h2>
+  <div class="roles">
+    <div class="role ss rise" style="--i:1"><div class="var">samscatt</div><h4>Sample scattering</h4><p>The measurement itself.</p><div class="eg">S-CTAB 1,3_0shear 4m2.5a</div></div>
+    <div class="role st rise" style="--i:2"><div class="var">samtrans</div><h4>Sample transmission</h4><p>How much of the beam the sample lets through.</p><div class="eg">T-CTAB 1,3_0shear 4m2.5a</div></div>
+    <div class="role bs rise" style="--i:3"><div class="var">bkgscatt</div><h4>Background scattering</h4><p>The empty cup and bob, to subtract.</p><div class="eg">S-EmptyCupBob 1,3_0shear 4m2.5a</div></div>
+    <div class="role bt rise" style="--i:4"><div class="var">bkgtrans</div><h4>Background transmission</h4><p>The transmission of that empty cell.</p><div class="eg">T-EmptyCupBob 1,3_0shear 4m2.5a</div></div>
+    <div class="role eb rise" style="--i:5"><div class="var">emptybeam</div><h4>Empty beam</h4><p>The direct beam: its centre and its intensity.</p><div class="eg">T-empty beam 4m2.5a</div></div>
+  </div>
+  <div class="plus rise" style="--i:6">
+    <div><span class="var">sample_thick</span>Path length through the sample, in cm.</div>
+    <div><span class="var">sample_names</span>The name the output files will carry.</div>
+    <div><span class="var">output_directory</span>Where the reduced files are written.</div>
+  </div>
+  <div class="dataset rise" style="--i:7; top:820px">Once for each sample, in each configuration: <b>28 rows</b> for this experiment. The run titles in the catalog tell you which run is which.</div>
+</section>
+
+<!-- === 4–6 · DEMOS (built by demo.js from demos.js) === -->
+<section class="slide s-demo no-chrome" id="s-script" data-demo="script" data-title="Reduction with a script"></section>
+<section class="slide s-demo no-chrome" id="s-sansbook" data-demo="sansbook" data-title="Reduction by asking: sansbook"></section>
+<section class="slide s-demo no-chrome" id="s-sansdir" data-demo="sansdir" data-title="Browse and plot: sansdir"></section>
+
+<!-- === 7 · THANK YOU === -->
+<section class="slide s-closing no-chrome" id="s-thanks" data-title="Thank you">
+  <img class="bgimg" src="../eqsans_intro/assets/closing.jpg" alt="Oak Ridge National Laboratory from the air">
+  <div class="cl-title">Thank you</div>
+  <div class="cl-bar"></div>
+  <div class="cl-sub">Changwoo Do · EQ-SANS</div>
+  <div class="cl-name">Spallation Neutron Source, Oak Ridge National Laboratory</div>
+  <div class="recap"><div><b>drtsans</b> reduce_template.py, filled in</div><div><b>sansbook</b> ask, get a report</div><div><b>sansdir</b> / filter · + tag · p plot</div></div>
+</section>
+
+</main>
+</div>
+<div id="progress"></div>
+<div id="blackout"></div>
+<script src="assets/demo_data.js?v=3"></script>
+<script src="demo.js?v=4"></script>
+<script src="demos.js?v=3"></script>
+<script src="deck.js?v=4"></script>
+<script src="../shared/nav.js?v=3"></script>
+</body>
+</html>

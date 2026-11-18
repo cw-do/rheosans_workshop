@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RheoSANS Workshop — Changwoo Do</title>
+<!--
+  RheoSANS Workshop, SNS, 18–19 November 2026 — the front page of Changwoo Do's three decks.
+
+  Open with "Start RheoSANS workshop.cmd" (a local web server: the 3D model in the first deck needs one).
+
+  One page, three cards. A card opens its deck inside this page (an iframe that fills the window), so the
+  browser stays in full screen from one deck to the next. In a deck, the ⌂ button at the top right — or
+  0 then Enter — comes back here. Each deck still opens on its own from its folder.
+
+  Keys here:  1 2 3  open a deck     ← →  choose a card, Enter opens it     F  full screen (also the button, top right)
+  Address:    #intro, #reduction, #analysis open a deck directly; #analysis/6 opens it at slide 6
+              (the address follows along, so a refresh comes back to the same slide).
+
+  The decks talk to this page through window.parent.RheoHub (shared/nav.js): home(), at(n), fullscreen().
+-->
+<link rel="stylesheet" href="eqsans_intro/deck.css?v=2">
+<link rel="stylesheet" href="shared/nav.css?v=3">
+<style>
+/* === STAGE: 1920x1080, scaled as a whole (same as the decks) === */
+#hub { position: fixed; inset: 0; overflow: hidden; background: #0b1416; }
+#hub-stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; transform-origin: 0 0; font-family: 'Aptos', 'Segoe UI', sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+#hub-stage .bg { position: absolute; inset: 0; width: 1920px; height: 1080px; object-fit: cover; animation: drift 26s ease-in-out infinite alternate; }
+#hub-stage .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(4,20,14,.10) 0%, rgba(4,20,14,.34) 45%, rgba(4,20,14,.66) 100%); }
+@keyframes drift { from { transform: scale(1.02); } to { transform: scale(1.08) translate(-12px, -8px); } }
+
+/* === HEADER PANEL === */
+.head { position: absolute; left: 96px; top: 64px; width: 1728px; height: 258px; background: rgba(255,255,255,.94); animation: rise .9s var(--ease) both; }
+.head .logo { position: absolute; left: 44px; top: 40px; width: 392px; }
+.head .rule { position: absolute; left: 480px; top: 40px; width: 3px; height: 178px; background: var(--green); }
+.head .kick { position: absolute; left: 522px; top: 44px; font-size: 23px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--green); }
+.head h1 { position: absolute; left: 518px; top: 72px; margin: 0; font-size: 104px; line-height: 1.05; font-weight: 700; letter-spacing: -.01em; }
+.head .who { position: absolute; left: 522px; top: 196px; font-size: 27px; color: var(--muted); }
+.head .who b { color: var(--ink); margin-right: 10px; }
+.head .doe { position: absolute; left: 60px; top: 150px; width: 250px; opacity: .9; }
+
+/* === THE THREE CARDS === */
+.card { position: absolute; top: 366px; width: 552px; height: 616px; padding: 0; border: 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: stretch; font: inherit; color: inherit; background: #fff; cursor: pointer; overflow: hidden;
+  border-top: 10px solid var(--green); box-shadow: 0 24px 60px rgba(0,0,0,.42); animation: rise 1s var(--ease) both; animation-delay: calc(var(--i) * 130ms + 250ms);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease), outline-color .2s; outline: 6px solid transparent; outline-offset: 0; }
+.card:hover, .card.sel { transform: translateY(-12px); box-shadow: 0 40px 80px rgba(0,0,0,.55); outline-color: var(--energy); }
+.card .pic { position: relative; flex: 0 0 310px; width: 552px; height: 310px; overflow: hidden; background: #12262a; }
+.card .pic img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.card:hover .pic img, .card.sel .pic img { transform: scale(1.05); }
+.card .key { position: absolute; left: 0; top: 0; width: 58px; height: 58px; background: var(--green); color: #fff; font-size: 34px; font-weight: 700; display: grid; place-items: center; }
+.card .body { padding: 22px 30px 0; }
+.card .day { font-size: 20px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--green); }
+.card h2 { margin: 6px 0 0; font-size: 44px; line-height: 1.1; font-weight: 700; letter-spacing: -.005em; }
+.card p { margin: 12px 0 0; font-size: 24px; line-height: 1.32; color: var(--ink); }
+.card .foot { position: absolute; left: 30px; right: 30px; bottom: 22px; display: flex; align-items: center; justify-content: space-between; font-size: 21px; color: var(--muted); }
+.card .go { font-weight: 700; color: var(--green); letter-spacing: .04em; transition: transform .3s var(--ease); }
+.card:hover .go, .card.sel .go { transform: translateX(8px); }
+.hint { position: absolute; left: 96px; right: 96px; top: 1010px; display: flex; justify-content: space-between; font-size: 21px; color: rgba(255,255,255,.86); text-shadow: 0 1px 6px rgba(0,0,0,.7); animation: rise 1s 1s var(--ease) both; }
+.hint kbd { font-family: var(--mono, Consolas, monospace); font-weight: 700; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.4); border-radius: 4px; padding: 0 8px; margin: 0 2px; }
+@keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+
+/* the full-screen button, in the same pill as in the decks */
+#hub-stage .dnav { position: absolute; right: 12px; top: 10px; opacity: .8; }
+#hub-stage .dnav button { height: 34px; min-width: 40px; }
+
+/* === THE DECK, filling the window === */
+#deck { position: fixed; inset: 0; width: 100vw; height: 100vh; border: 0; background: #05090b; opacity: 0; visibility: hidden; transition: opacity .45s ease, visibility 0s .45s; z-index: 5; }
+#deck.on { opacity: 1; visibility: visible; transition: opacity .45s ease; }
+#veil { position: fixed; inset: 0; background: #05090b; opacity: 0; pointer-events: none; transition: opacity .3s ease; z-index: 4; }
+#veil.on { opacity: 1; }
+</style>
+</head>
+<body>
+<div id="hub">
+  <main id="hub-stage">
+    <img class="bg" src="eqsans_intro/assets/cover.jpg" alt="The Spallation Neutron Source from the air">
+    <div class="shade"></div>
+
+    <header class="head">
+      <img class="logo" src="eqsans_intro/assets/logo_color.png" alt="Oak Ridge National Laboratory — Spallation Neutron Source">
+      <img class="doe" src="eqsans_intro/assets/logo_doe.png" alt="U.S. Department of Energy">
+      <div class="rule"></div>
+      <div class="kick">Spallation Neutron Source · November 18–19, 2026</div>
+      <h1>RheoSANS Workshop</h1>
+      <div class="who"><b>Changwoo Do</b>EQ-SANS Point of Contact · Neutron Scattering Division</div>
+    </header>
+
+    <button type="button" class="card" style="--i:0; left:96px" data-deck="intro">
+      <div class="pic"><img src="shared/cards/eqsans_intro.jpg" alt=""><span class="key">1</span></div>
+      <div class="body"><div class="day">Day 1 · Introduction</div><h2>Introduction to EQ-SANS</h2>
+        <p>The instrument in 3D, its Q range, the sample environments, and the rheometer in the beam.</p></div>
+      <div class="foot"><span>8 slides · live 3D model</span><span class="go">Open ▸</span></div>
+    </button>
+    <button type="button" class="card" style="--i:1; left:684px" data-deck="reduction">
+      <div class="pic"><img src="shared/cards/data_reduction.jpg" alt=""><span class="key">2</span></div>
+      <div class="body"><div class="day">Day 2 · Data reduction</div><h2>From Runs to I(Q)</h2>
+        <p>Three ways to reduce: a drtsans script, asking sansbook, and browsing with sansdir.</p></div>
+      <div class="foot"><span>7 slides · 3 step-by-step demos</span><span class="go">Open ▸</span></div>
+    </button>
+    <button type="button" class="card" style="--i:2; left:1272px" data-deck="analysis">
+      <div class="pic"><img src="shared/cards/data_analysis.jpg" alt=""><span class="key">3</span></div>
+      <div class="body"><div class="day">Day 2 · Data analysis</div><h2>From I(Q) to Structure</h2>
+        <p>A flexible-cylinder fit in SasView, the same fit by asking sansbook, and the order parameter.</p></div>
+      <div class="foot"><span>9 slides · 3 step-by-step demos</span><span class="go">Open ▸</span></div>
+    </button>
+
+    <nav class="dnav" aria-label="Screen"><button type="button" class="full" id="full" title="Full screen (F)"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path class="exp" d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/><path class="cmp" d="M6 2v4H2M14 6h-4V2M10 14v-4h4M2 10h4v4"/></svg></button></nav>
+    <div class="hint"><span>Choose a talk: click a card, or press <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></span><span><kbd>F</kbd> full screen · in a talk, <kbd>⌂</kbd> comes back here</span></div>
+  </main>
+</div>
+<div id="veil"></div>
+<iframe id="deck" title="Deck" allow="fullscreen" allowfullscreen></iframe>
+
+<script>
+(function () {
+  'use strict';
+  const DECKS = {
+    intro: { dir: 'eqsans_intro', title: 'Introduction to EQ-SANS' },
+    reduction: { dir: 'data_reduction', title: 'From Runs to I(Q)' },
+    analysis: { dir: 'data_analysis', title: 'From I(Q) to Structure' },
+  };
+  const stage = document.getElementById('hub-stage'), frame = document.getElementById('deck'), veil = document.getElementById('veil');
+  const cards = Array.from(document.querySelectorAll('.card'));
+  let open = null, sel = -1, closing = 0;
+
+  function fit() {
+    const f = Math.min(innerWidth / 1920, innerHeight / 1080), w = 1920 * f, h = 1080 * f;
+    stage.style.transform = `translate(${(innerWidth - w) / 2}px,${(innerHeight - h) / 2}px) scale(${f})`;
+  }
+  window.addEventListener('resize', fit); fit();
+
+  const mark = () => cards.forEach((c, i) => c.classList.toggle('sel', i === sel));
+  const fullscreen = () => { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(() => { }); };
+
+  function show(key, slide) {
+    const d = DECKS[key]; if (!d) return;
+    clearTimeout(closing);
+    open = key; sel = Object.keys(DECKS).indexOf(key); mark();
+    veil.classList.add('on');
+    frame.onload = () => { if (open !== key) return; frame.classList.add('on'); try { frame.contentWindow.focus(); } catch (e) { } };
+    frame.src = `${d.dir}/index.html#${slide || 1}`;
+    document.title = `${d.title} — RheoSANS Workshop`;
+    history.replaceState(null, '', '#' + key + (slide && slide > 1 ? '/' + slide : ''));
+  }
+  function home() {
+    if (!open) return;
+    open = null;
+    frame.classList.remove('on'); veil.classList.remove('on');
+    closing = setTimeout(() => { frame.onload = null; frame.src = 'about:blank'; }, 500);   // also stops the 3D model
+    document.title = 'RheoSANS Workshop — Changwoo Do';
+    history.replaceState(null, '', location.pathname);
+    window.focus();
+  }
+  // what the decks call (shared/nav.js)
+  window.RheoHub = {
+    home, fullscreen,
+    at(n) { if (open) history.replaceState(null, '', '#' + open + (n > 1 ? '/' + n : '')); },
+  };
+
+  const fullBtn = document.getElementById('full');
+  fullBtn.onclick = () => { fullscreen(); fullBtn.blur(); };
+  document.addEventListener('fullscreenchange', () => { const on = !!document.fullscreenElement; fullBtn.classList.toggle('on', on); fullBtn.title = on ? 'Leave full screen (F)' : 'Full screen (F)'; });
+  cards.forEach((c, i) => { c.onclick = () => show(c.dataset.deck); c.onmouseenter = () => { sel = i; mark(); }; });
+  window.addEventListener('keydown', (e) => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    const k = e.key;
+    if (open) {
+      // the deck has the keyboard; a key that still lands here is handed on
+      let d = null; try { frame.contentWindow.focus(); d = frame.contentWindow.deck; } catch (err) { }
+      if (d && (k === 'ArrowRight' || k === 'PageDown' || k === ' ')) d.next();
+      else if (d && (k === 'ArrowLeft' || k === 'PageUp')) d.prev();
+      else if (k === 'f' || k === 'F') fullscreen();
+      else return;
+      e.preventDefault(); return;
+    }
+    if (k === '1' || k === '2' || k === '3') show(Object.keys(DECKS)[+k - 1]);
+    else if (k === 'ArrowRight' || k === 'ArrowDown') { sel = Math.min(cards.length - 1, sel + 1); mark(); }
+    else if (k === 'ArrowLeft' || k === 'ArrowUp') { sel = Math.max(0, sel < 0 ? 0 : sel - 1); mark(); }
+    else if ((k === 'Enter' || k === ' ') && sel >= 0) show(cards[sel].dataset.deck);
+    else if (k === 'f' || k === 'F') fullscreen();
+    else return;
+    e.preventDefault();
+  });
+
+  const [key, n] = location.hash.slice(1).split('/');
+  if (DECKS[key]) show(key, parseInt(n, 10) || 1);
+})();
+</script>
+</body>
+</html>

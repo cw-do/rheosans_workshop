@@ -1,0 +1,36 @@
+/* =====================================================================
+   SLIDE NAVIGATION, shared by both decks (nav.js): a small pill with
+   previous / next slide and a button that opens all slides to pick from.
+   It sits outside the scaled stage, at the top right of the slide (top
+   centre while the live 3D model is on screen, where the model keeps its
+   own panels on the right).
+   ===================================================================== */
+.dnav { position: fixed; z-index: 120; display: flex; align-items: center; gap: 2px; padding: 3px; font: 600 14px/1 'Aptos', 'Segoe UI', sans-serif; color: rgba(226,238,244,.9);
+  background: rgba(12,16,24,.84); border: 1px solid rgba(255,255,255,.16); border-radius: 999px; backdrop-filter: blur(8px); opacity: .62; transition: opacity .2s; user-select: none; }
+.dnav:hover { opacity: 1; }
+.dnav button { border: 0; background: none; color: inherit; font: inherit; height: 28px; min-width: 30px; padding: 0 8px; border-radius: 999px; cursor: pointer; }
+.dnav button:hover { background: rgba(255,255,255,.14); color: #fff; }
+.dnav button:disabled { opacity: .3; cursor: default; background: none; }
+.dnav .arrow { font-size: 19px; line-height: 1; padding-bottom: 2px; }
+.dnav .home { font-size: 17px; line-height: 1; padding-bottom: 1px; margin-right: 2px; border-right: 1px solid rgba(255,255,255,.18); border-radius: 999px 0 0 999px; }
+.dnav .count { font-variant-numeric: tabular-nums; white-space: nowrap; } .dnav .count b { color: #fff; }
+.dnav .grid { display: grid; grid-template-columns: repeat(3, 4px); gap: 2px; align-content: center; justify-content: center; }
+.dnav .grid i { width: 4px; height: 4px; background: currentColor; border-radius: 1px; }
+.dnav .full { display: grid; place-items: center; }
+.dnav .full .cmp, .dnav .full.on .exp { display: none; }
+.dnav .full.on .cmp { display: inline; }
+
+.dov { position: fixed; inset: 0; z-index: 260; display: none; background: rgba(6,12,14,.95); overflow: auto; padding: 4vh 5vw 5vh; font-family: 'Aptos', 'Segoe UI', sans-serif; color: #fff; }
+.dov.open { display: block; }
+.dov-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 2.4vh; }
+.dov-head b { font-size: 26px; } .dov-head span { font-size: 15px; color: rgba(255,255,255,.55); }
+.dov-head button { margin-left: auto; border: 1px solid rgba(255,255,255,.3); background: none; color: #fff; font: 600 15px 'Aptos', 'Segoe UI', sans-serif; padding: 7px 16px; border-radius: 999px; cursor: pointer; }
+.dov-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+@media (max-width: 1100px) { .dov-grid { grid-template-columns: repeat(3, 1fr); } }
+.dov-card { text-align: left; padding: 0; border: 2px solid rgba(255,255,255,.14); border-radius: 6px; background: #12262a; color: #fff; font: inherit; cursor: pointer; overflow: hidden; display: flex; flex-direction: column; }
+.dov-card:hover, .dov-card.is-sel { border-color: #7DBA00; }
+.dov-card.is-cur { border-color: #8BFEBF; box-shadow: 0 0 0 3px rgba(139,254,191,.35); }
+.dov-thumb { aspect-ratio: 16 / 9; background: #1b3438; display: grid; place-items: center; font-size: 34px; font-weight: 700; color: rgba(255,255,255,.25); }
+.dov-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.dov-label { display: flex; gap: 10px; align-items: baseline; padding: 9px 12px 11px; font-size: 16px; line-height: 1.25; }
+.dov-label b { color: #7DBA00; font-size: 18px; min-width: 18px; }

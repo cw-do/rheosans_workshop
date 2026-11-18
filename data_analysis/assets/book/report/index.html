@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IPTS-37681 sansbook — sansbook</title>
+<link rel="stylesheet" href="report.css">
+<style>.layout { grid-template-columns: minmax(260px, 340px) minmax(0, 1fr); }</style>
+</head>
+<body>
+<header class="top">
+  <div class="titles">
+    <div class="brand">sansbook</div>
+    <h1>IPTS-37681 sansbook</h1>
+    <div class="meta">IPTS-37681 · generated 2026-11-03 15:28 · sansbook 0.3.10 · model openai/gpt-6-luna</div>
+  </div>
+  <div class="actions">
+    <button id="print-one" type="button">Save this tab as PDF</button>
+    <button id="print-all" type="button">Save all pages as PDF</button>
+  </div>
+</header>
+<div class="layout">
+<nav class="side" aria-label="pages">
+  <div class="treebox"><svg class="tree" viewBox="0 0 242 126" width="242" height="126" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="page tree"><path d="M12,27 V45.0 H22" class="edge"/><path d="M12,27 V75.0 H22" class="edge"/><path d="M176,105.0 C216,105.0 234,45.0 194,45.0" class="edge second"/><a href="#S0a" class="node source"><title>S0a: IPTS-37681 merged CTAB curves</title><rect x="4" y="3" width="172" height="24" rx="5" fill="#ffffff" stroke="#333333" stroke-width="1.1" stroke-dasharray="4 2"/><text x="11" y="19"><tspan class="nid">S0a</tspan> IPTS-37681 merged…</text></a><a href="#S1" class="node live"><title>S1: Applied the requested trim to all 14 merged I(q) files: each went from 124 to 117 data points after removing the first 2 and last 5. The S1 merged-I(q) overlay now plots the trimmed curves; the updated figure and one trimmed file were checked.</title><rect x="22" y="33" width="172" height="24" rx="5" fill="#e7f4ea" stroke="#2e7d32" stroke-width="1.8"/><text x="29" y="49"><tspan class="nid">S1</tspan> reduction_summary…</text></a><a href="#S1b" class="node dead"><title>S1b: S1b: Independently fit the full available q ranges (0.001997–0.4551 Å⁻¹ for CTAB_1,3_0shear; 0.002064–0.4558 Å⁻¹ for CTAB_2,3_0shear) with SasView flexible_cylinder, the worm-like-chain implementation. CTAB_1,3_0shear: χ²ᵣ = 40.38; scale 0.0180677 ± 0.0000126 (relative, not a volume fraction); background 0.097536 ± 0.000182 a.u.; contour length 10 Å (at lower bound; uncertainty 652.8 Å); Kuhn length 1913.1 ± 278.3 Å; radius 21.0587 ± 0.0094 Å. CTAB_2,3_0shear: χ²ᵣ = 58.21; scale 0.0065882 ± 0.0000064 (relative); background 0.041930 ± 0.000092 a.u.; contour length 10000 Å (at upper bound; uncertainty 1244.7 Å); Kuhn length 458.6 ± 7.1 Å; radius 21.7500 ± 0.0141 Å. Residuals are strongly systematic: CTAB_1,3_0shear shows low-q deviations, oscillatory mid/high-q residuals and a prominent mismatch around q ≈ 0.15–0.25 Å⁻¹; CTAB_2,3_0shear likewise has low-q bias and pronounced structured residuals around q ≈ 0.08–0.25 Å⁻¹. Both fits fail the data despite the high-q baseline being broadly tracked. Merged curves have no dQ, so resolution smearing was not applied; the first curve includes a negative-intensity low-q point, while the log plot cannot display it. S0a is relative intensity (a.u.); SLDs were fixed to SasView defaults solely as a computational convention. These fits do not support reliable structural parameter interpretation; the length estimates are especially unconstrained and at opposite bounds.</title><rect x="22" y="63" width="172" height="24" rx="5" fill="#eeeeee" stroke="#9e9e9e" stroke-width="1.1"/><text x="29" y="79"><tspan class="nid">S1b</tspan> zero_shear_fit</text></a><a href="#S0b" class="node source"><title>S0b: IPTS-37681 8m10a 2D profiles</title><rect x="4" y="93" width="172" height="24" rx="5" fill="#ffffff" stroke="#333333" stroke-width="1.1" stroke-dasharray="4 2"/><text x="11" y="109"><tspan class="nid">S0b</tspan> IPTS-37681 8m10a …</text></a></svg></div>
+  <ul class="tabs">
+    <li><a href="#overview" data-tab="overview">Overview</a></li>
+    <li><a href="#R1" data-tab="R1" class="st-reduction"><span class="dot"></span>R1 <span class="slug">ipts37681_ccd_output</span></a></li>
+    <li><a href="#S1" data-tab="S1" class="st-live"><span class="dot"></span>S1 <span class="slug">reduction_summary_merged_profiles</span></a></li>
+    <li><a href="#S1b" data-tab="S1b" class="st-dead"><span class="dot"></span>S1b <span class="slug">zero_shear_fit</span></a></li>
+  </ul>
+  <p class="legend"><span class="st-live">● live</span> <span class="st-dead">✕ dead</span> <span class="st-waiting">… waiting</span> <span class="st-open">○ open</span></p>
+</nav>
+<main>
+<section class="tab" id="tab-overview" data-id="overview">
+  <h2>Overview</h2>
+  <div class="treebox print-only"><svg class="tree" viewBox="0 0 242 96" width="242" height="96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="page tree"><path d="M12,27 V45.0 H22" class="edge"/><path d="M176,75.0 C206,75.0 224,45.0 194,45.0" class="edge second"/><a href="#S0a" class="node source"><title>S0a: IPTS-37681 merged CTAB curves</title><rect x="4" y="3" width="172" height="24" rx="5" fill="#ffffff" stroke="#333333" stroke-width="1.1" stroke-dasharray="4 2"/><text x="11" y="19"><tspan class="nid">S0a</tspan> IPTS-37681 merged…</text></a><a href="#S1" class="node live"><title>S1: Applied the requested trim to all 14 merged I(q) files: each went from 124 to 117 data points after removing the first 2 and last 5. The S1 merged-I(q) overlay now plots the trimmed curves; the updated figure and one trimmed file were checked.</title><rect x="22" y="33" width="172" height="24" rx="5" fill="#e7f4ea" stroke="#2e7d32" stroke-width="1.8"/><text x="29" y="49"><tspan class="nid">S1</tspan> reduction_summary…</text></a><a href="#S0b" class="node source"><title>S0b: IPTS-37681 8m10a 2D profiles</title><rect x="4" y="63" width="172" height="24" rx="5" fill="#ffffff" stroke="#333333" stroke-width="1.1" stroke-dasharray="4 2"/><text x="11" y="79"><tspan class="nid">S0b</tspan> IPTS-37681 8m10a …</text></a></svg></div>
+  <h3>Live path</h3>
+  <ul class="paths">
+    <li><a href="#S0a">S0a</a> → <a href="#S0b">S0b</a> → <a href="#S1">S1</a></li>
+  </ul>
+<p class="muted">Current page in the last session: <a href="#S1">S1</a></p>
+  <h3>Reductions</h3>
+  <table>
+    <thead><tr><th class="nw">id</th><th>what</th><th class="nw">rows</th><th class="nw">sources made from it</th><th class="nw">started</th></tr></thead>
+    <tbody>
+      <tr><td class="id nw">R1</td><td>ipts37681_ccd_output<div class="small muted">Re-reduce IPTS-37681 rows into the user-requested ccd/output folder, retaining the existing session settings as the starting point.</div></td>
+          <td class="nw">28 rows, 28 done</td><td class="nw">S0a, S0b</td><td class="nw">2026-11-03</td></tr>
+    </tbody>
+  </table>
+  <h3>Sources</h3>
+  <table>
+    <thead><tr><th class="nw">id</th><th>what</th><th class="nw">files</th><th>differs from</th><th class="nw">unit · audit</th><th class="nw">added</th></tr></thead>
+    <tbody>
+      <tr><td class="id nw"><a href="#red-S0a">S0a</a> <span class="small muted">← R1</span></td><td>IPTS-37681 merged CTAB curves<div class="small muted files">merged_CTAB_1,3_0.1shear_Iq.txt, merged_CTAB_1,3_0shear_Iq.txt, merged_CTAB_1,3_0shear-return_Iq.txt, merged_CTAB_1,3_1000shear_Iq.txt, merged_CTAB_1,3_100shear_Iq.txt, merged_CTAB_1,3_10shear_Iq.txt … +8 more</div></td>
+          <td class="nw">14 (1d, copy)</td><td class="differs">first source of this book</td>
+          <td class="nw">unknown<div class="small">1 info</div></td>
+          <td class="nw">2026-11-03</td></tr>
+      <tr><td class="id nw"><a href="#red-S0b">S0b</a> <span class="small muted">← R1</span></td><td>IPTS-37681 8m10a 2D profiles<div class="small muted files">EmptyCupBob_1,3_0shear_8m10a_8m10a_Iqxqy.dat, EmptyCupBob_2,3_0shear_8m10a_8m10a_Iqxqy.dat, CTAB_1,3_0shear_8m10a_8m10a_Iqxqy.dat, CTAB_2,3_0shear_8m10a_8m10a_Iqxqy.dat, CTAB_1,3_0.1shear_8m10a_8m10a_Iqxqy.dat, CTAB_2,3_0.1shear_8m10a_8m10a_Iqxqy.dat … +8 more</div></td>
+          <td class="nw">14 (2d, copy)</td><td class="differs">S0a (computed): configurations 8m10a (vs —) · samples: 14 added, 0 not included</td>
+          <td class="nw">a.u. (relative)<div class="small">1 warning, 2 info</div></td>
+          <td class="nw">2026-11-03</td></tr>
+    </tbody>
+  </table>
+  <details class="keep reduction" id="red-S0a" open>
+    <summary><b>S0a reduction record</b> — unknown · 1 info</summary>
+    <p>How these data were reduced is not recorded with them.</p>
+    <ul class="findings">
+<li class="sev-info"><b>SB-no-record</b> <span class="badge info">info</span> No eqsanscli/drtsans files were found next to these data; how they were reduced is not recorded.</li>    </ul>
+    <h4>Absolute scale</h4>
+    <table>
+      <thead><tr><th class="nw">config</th><th class="nw">scale</th><th class="nw">source</th><th class="nw">unit</th><th class="nw">porsil / NG3</th><th>detail</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <h4>Incoherent / inelastic correction</h4>
+    <table>
+      <thead><tr><th class="nw">config</th><th class="nw">fit</th><th class="nw">requested q</th><th class="nw">used q (drtsans log)</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <h4>Merged profiles</h4>
+    <p class="small muted">Factors recovered by comparing each merged file with its inputs (eqsanscli does not keep them); overlap as last set in eqsanscli's NOTE.md.</p>
+    <table>
+      <thead><tr><th>merged file</th><th class="nw">unscaled</th><th>factors</th><th class="nw">overlap</th></tr></thead>
+      <tbody><tr><td class="files">merged_CTAB_1,3_0.1shear_Iq.txt</td><td class="nw">4m2.5a</td><td></td><td class="nw">0.024 0.035</td></tr><tr><td class="files">merged_CTAB_1,3_0shear_Iq.txt</td><td class="nw">4m2.5a</td><td></td><td class="nw">0.024 0.035</td></tr><tr><td class="files">merged_CTAB_1,3_0shear-return_Iq.txt</td><td class="nw">4m2.5a</td><td></td><td class="nw">0.024 0.035</td></tr><tr><td class="files">merged_CTAB_1,3_1000shear_Iq.txt</td><td class="nw">4m2.5a</td><td></td><td class="nw">0.024 0.035</td></tr><tr><td class="files">merged_CTAB_1,3_100shear_Iq.txt</td><td class="nw">4m2.5a</td><td></td><td class="nw">0.024 0.035</td></tr><tr><td class="files">merged_CTAB_1,3_10shear_Iq.txt</td><td class="nw">4m2.5a</td><td></td><td class="nw">0.024 0.035</td></tr><tr><td class="files">merged_CTAB_1,3_1shear_Iq.txt</td><td class="nw">4m2.5a</td><td></td><td class="nw">0.024 0.035</td></tr><tr><td class="files">merged_CTAB_2,3_0.1shear_Iq.txt</td><td class="nw">4m2.5a</td><td></td><td class="nw">0.024 0.035</td></tr><tr><td class="files">merged_CTAB_2,3_0shear_Iq.txt</td><td class="nw">4m2.5a</td><td></td><td class="nw">0.024 0.035</td></tr><tr><td class="files">merged_CTAB_2,3_0shear-return_Iq.txt</td><td class="nw">4m2.5a</td><td></td><td class="nw">0.024 0.035</td></tr><tr><td class="files">merged_CTAB_2,3_1000shear_Iq.txt</td><td class="nw">4m2.5a</td><td></td><td class="nw">0.024 0.035</td></tr><tr><td class="files">merged_CTAB_2,3_10shear_Iq.txt</td><td class="nw">4m2.5a</td><td></td><td class="nw">0.024 0.035</td></tr><tr><td class="files">merged_EmptyCupBob_1,3_0shear_Iq.txt</td><td class="nw">4m2.5a</td><td></td><td class="nw">0.024 0.035</td></tr><tr><td class="files">merged_EmptyCupBob_2,3_0shear_Iq.txt</td><td class="nw">4m2.5a</td><td></td><td class="nw">0.024 0.035</td></tr></tbody>
+    </table>
+    <h4>Rows</h4>
+    <table class="rows">
+      <thead><tr><th>sample</th><th class="nw">config</th><th class="nw">scatt</th><th class="nw">trans</th><th class="nw">T(λ)</th><th class="nw">bkg</th><th class="nw">bkg trans</th><th class="nw">empty</th><th class="nw">beam centre (m)</th><th class="nw">thick (cm)</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <h4>Transmission runs not used by any row</h4>
+    <ul><li><span class="id">188923</span> T-CTAB 1,3_0shear 4m2.5a</li><li><span class="id">188924</span> T-CTAB 2,3_0shear 4m2.5a</li><li><span class="id">188925</span> T-CTAB 1,3_0shear 8m10a</li><li><span class="id">188926</span> T-CTAB 2,3_0shear 8m10a</li></ul>
+    <p class="small muted">drtsans  · Mantid  ·  · from /SNS/EQSANS/IPTS-37681/shared/ccd/output</p>
+  </details>
+  <details class="keep reduction" id="red-S0b" open>
+    <summary><b>S0b reduction record</b> — a.u. (relative) · 1 warning, 2 info</summary>
+    <p>Data were reduced with drtsans 1.36.0 (Mantid 6.16.1.2) through eqsanscli 0.54.4. 1 configuration (8m10a) and 14 reduced rows. 8m10a: sensitivity Sensitivity_patched_thinPMMA_4m_186200.nxs; mask EQSANS_186104_mask.nxs (built with eqsanscli /mask create); calibration cycle 2026B; no absolute calibration (relative intensity). Intensity unit: a.u. (relative).</p>
+    <ul class="findings">
+<li class="sev-warning"><b>TBL-03</b> <span class="badge warning">warning</span> eqsanscli /check: 4 row(s): no background</li><li class="sev-info"><b>TBL-05</b> <span class="badge info">info</span> Every row has thickness 0.1 cm, eqsanscli&#39;s default. Confirm the sample thicknesses.</li><li class="sev-info"><b>SCL-01</b> <span class="badge info">info</span> 8m10a: scale 1.0, intensities are relative (a.u.). no standard: relative intensity</li>    </ul>
+    <h4>Configurations</h4>
+    <table class="params">
+      <thead><tr><th>parameter</th><th>8m10a</th></tr></thead>
+      <tbody><tr><td class="nw">flood (sensitivity)</td><td>Sensitivity_patched_thinPMMA_4m_186200.nxs</td></tr><tr><td class="nw">mask</td><td>EQSANS_186104_mask.nxs</td></tr><tr><td class="nw">default mask</td><td>True</td></tr><tr><td class="nw">mask back tubes</td><td>False</td></tr><tr><td class="nw">dark current</td><td>EQSANS_186198.nxs.h5</td></tr><tr><td class="nw">beam flux</td><td>bl6_flux_2026B_aug_rebinned.txt</td></tr><tr><td class="nw">normalization</td><td>Total charge</td></tr><tr><td class="nw">absolute scale</td><td>1</td></tr><tr><td class="nw">sample offset</td><td>285</td></tr><tr><td class="nw">detector offset</td><td>66.7142</td></tr><tr><td class="nw">scale components</td><td>[1.004124160407921, 1.0579957381578187, 1.0]</td></tr><tr><td class="nw">TOF cut min</td><td>1000</td></tr><tr><td class="nw">TOF cut max</td><td>3000</td></tr><tr><td class="nw">λ step</td><td>0.1</td></tr><tr><td class="nw">Q binning</td><td>linear</td></tr><tr><td class="nw">Q bins</td><td>80</td></tr><tr><td class="nw">Qx,Qy bins</td><td>80</td></tr><tr><td class="nw">solid angle corr.</td><td>True</td></tr><tr><td class="nw">θ-dependent trans. corr.</td><td>True</td></tr><tr><td class="nw">trans. radius (mm)</td><td>25</td></tr><tr><td class="nw">error weighting</td><td>True</td></tr><tr><td class="nw">incoh./inelastic fit</td><td>False</td></tr><tr><td class="nw">select min incoh.</td><td>True</td></tr><tr><td class="nw">incoh. fit qmin</td><td>0.2</td></tr><tr><td class="nw">incoh. fit qmax</td><td>0.3</td></tr><tr><td class="nw">time slicing</td><td>False</td></tr><tr><td class="nw">slice interval (s)</td><td>300</td></tr><tr><td class="nw">log slicing</td><td>False</td></tr></tbody>
+    </table>
+    <h4>Absolute scale</h4>
+    <table>
+      <thead><tr><th class="nw">config</th><th class="nw">scale</th><th class="nw">source</th><th class="nw">unit</th><th class="nw">porsil / NG3</th><th>detail</th></tr></thead>
+      <tbody><tr><td class="nw">8m10a</td><td class="nw">1</td><td class="nw">default</td><td class="nw">a.u. (relative)</td><td class="nw"></td><td>no standard: relative intensity</td></tr></tbody>
+    </table>
+    <h4>Incoherent / inelastic correction</h4>
+    <table>
+      <thead><tr><th class="nw">config</th><th class="nw">fit</th><th class="nw">requested q</th><th class="nw">used q (drtsans log)</th></tr></thead>
+      <tbody><tr><td class="nw">8m10a</td><td class="nw">False</td><td class="nw">0.2–0.3</td><td class="nw"></td></tr></tbody>
+    </table>
+    <h4>Rows</h4>
+    <table class="rows">
+      <thead><tr><th>sample</th><th class="nw">config</th><th class="nw">scatt</th><th class="nw">trans</th><th class="nw">T(λ)</th><th class="nw">bkg</th><th class="nw">bkg trans</th><th class="nw">empty</th><th class="nw">beam centre (m)</th><th class="nw">thick (cm)</th></tr></thead>
+      <tbody><tr><td class="files">CTAB_1,3_0.1shear_8m10a</td><td class="nw">8m10a</td><td class="nw">188933</td><td class="nw">188925</td><td class="nw">0.511–0.563</td><td class="nw">188910</td><td class="nw">188906</td><td class="nw">188899</td><td class="nw">0.01657, 0.01184</td><td class="nw">0.1</td></tr><tr><td class="files">CTAB_1,3_0shear-return_8m10a</td><td class="nw">8m10a</td><td class="nw">188949</td><td class="nw">188925</td><td class="nw">0.511–0.563</td><td class="nw">188910</td><td class="nw">188906</td><td class="nw">188899</td><td class="nw">0.01657, 0.01184</td><td class="nw">0.1</td></tr><tr><td class="files">CTAB_1,3_0shear_8m10a</td><td class="nw">8m10a</td><td class="nw">188927</td><td class="nw">188925</td><td class="nw">0.511–0.563</td><td class="nw">188910</td><td class="nw">188906</td><td class="nw">188899</td><td class="nw">0.01657, 0.01184</td><td class="nw">0.1</td></tr><tr><td class="files">CTAB_1,3_1000shear_8m10a</td><td class="nw">8m10a</td><td class="nw">188943</td><td class="nw">188925</td><td class="nw">0.511–0.563</td><td class="nw">188910</td><td class="nw">188906</td><td class="nw">188899</td><td class="nw">0.01657, 0.01184</td><td class="nw">0.1</td></tr><tr><td class="files">CTAB_1,3_100shear_8m10a</td><td class="nw">8m10a</td><td class="nw">188942</td><td class="nw">188925</td><td class="nw">0.511–0.563</td><td class="nw">188910</td><td class="nw">188906</td><td class="nw">188899</td><td class="nw">0.01657, 0.01184</td><td class="nw">0.1</td></tr><tr><td class="files">CTAB_1,3_10shear_8m10a</td><td class="nw">8m10a</td><td class="nw">188937</td><td class="nw">188925</td><td class="nw">0.511–0.563</td><td class="nw">188910</td><td class="nw">188906</td><td class="nw">188899</td><td class="nw">0.01657, 0.01184</td><td class="nw">0.1</td></tr><tr><td class="files">CTAB_1,3_1shear_8m10a</td><td class="nw">8m10a</td><td class="nw">188935</td><td class="nw">188925</td><td class="nw">0.511–0.563</td><td class="nw">188910</td><td class="nw">188906</td><td class="nw">188899</td><td class="nw">0.01657, 0.01184</td><td class="nw">0.1</td></tr><tr><td class="files">CTAB_2,3_0.1shear_8m10a</td><td class="nw">8m10a</td><td class="nw">188934</td><td class="nw">188926</td><td class="nw">0.194–0.270</td><td class="nw">188911</td><td class="nw">188907</td><td class="nw">188919</td><td class="nw">0.01752, 0.01291</td><td class="nw">0.1</td></tr><tr><td class="files">CTAB_2,3_0shear-return_8m10a</td><td class="nw">8m10a</td><td class="nw">188950</td><td class="nw">188926</td><td class="nw">0.194–0.270</td><td class="nw">188911</td><td class="nw">188907</td><td class="nw">188919</td><td class="nw">0.01752, 0.01291</td><td class="nw">0.1</td></tr><tr><td class="files">CTAB_2,3_0shear_8m10a</td><td class="nw">8m10a</td><td class="nw">188928</td><td class="nw">188926</td><td class="nw">0.194–0.270</td><td class="nw">188911</td><td class="nw">188907</td><td class="nw">188919</td><td class="nw">0.01752, 0.01291</td><td class="nw">0.1</td></tr><tr><td class="files">CTAB_2,3_1000shear_8m10a</td><td class="nw">8m10a</td><td class="nw">188944</td><td class="nw">188926</td><td class="nw">0.194–0.270</td><td class="nw">188911</td><td class="nw">188907</td><td class="nw">188919</td><td class="nw">0.01752, 0.01291</td><td class="nw">0.1</td></tr><tr><td class="files">CTAB_2,3_10shear_8m10a</td><td class="nw">8m10a</td><td class="nw">188938</td><td class="nw">188926</td><td class="nw">0.194–0.270</td><td class="nw">188911</td><td class="nw">188907</td><td class="nw">188919</td><td class="nw">0.01752, 0.01291</td><td class="nw">0.1</td></tr><tr><td class="files">EmptyCupBob_1,3_0shear_8m10a</td><td class="nw">8m10a</td><td class="nw">188910</td><td class="nw">188906</td><td class="nw">0.596–0.647</td><td class="nw"></td><td class="nw"></td><td class="nw">188899</td><td class="nw">0.01657, 0.01184</td><td class="nw">0.1</td></tr><tr><td class="files">EmptyCupBob_2,3_0shear_8m10a</td><td class="nw">8m10a</td><td class="nw">188911</td><td class="nw">188907</td><td class="nw">0.429–0.462</td><td class="nw"></td><td class="nw"></td><td class="nw">188919</td><td class="nw">0.01752, 0.01291</td><td class="nw">0.1</td></tr></tbody>
+    </table>
+    <h4>Transmission runs not used by any row</h4>
+    <ul><li><span class="id">188923</span> T-CTAB 1,3_0shear 4m2.5a</li><li><span class="id">188924</span> T-CTAB 2,3_0shear 4m2.5a</li></ul>
+    <p class="small muted">drtsans 1.36.0 · Mantid 6.16.1.2 · analysis-node18.sns.gov · from /SNS/EQSANS/IPTS-37681/shared/ccd/output</p>
+  </details>
+
+  <h3>Decisions</h3>
+  <table>
+    <thead><tr><th class="nw">id</th><th>decision</th><th class="nw">by</th><th class="nw">date</th></tr></thead>
+    <tbody>
+      <tr><td class="id nw">D1</td><td>Reduce IPTS-37681 data with eqsanscli output directed to /SNS/EQSANS/IPTS-37681/shared/ccd/output. <span class="tag">reduction</span></td><td class="nw">user</td><td class="nw">2026-11-03</td></tr>
+      <tr><td class="id nw">D2</td><td>For the 8m 2D order parameter, use all CTAB maps and exclude EmptyCupBob; set φ₀=0° along +qx; include the 0-shear return as a separate point; sum over all q pixels.</td><td class="nw">user</td><td class="nw">2026-11-03</td></tr>
+      <tr><td class="id nw">D3</td><td>Plot order parameter versus shear rate with logarithmic x (shear rate) and linear y (S₂); omit zero-shear points from the plot but retain them in the results table.</td><td class="nw">user</td><td class="nw">2026-11-03</td></tr>
+      <tr><td class="id nw">D4</td><td>For the merged I(q) files, remove the first 2 data points and the last 5 data points, then update the merged I(q) plot using the trimmed data.</td><td class="nw">user</td><td class="nw">2026-11-03</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Pages</h3>
+  <table>
+    <thead><tr><th class="nw">id</th><th class="nw">from</th><th class="nw">verdict</th><th>result</th></tr></thead>
+    <tbody>
+      <tr><td class="id nw"><a href="#S1">S1</a></td><td class="nw">S0a, S0b</td>
+          <td class="nw"><span class="badge live">live</span></td><td>Applied the requested trim to all 14 merged I(q) files: each went from 124 to 117 data points after removing the first 2 and last 5. The S1 merged-I(q) overlay now plots the trimmed curves; the updated figure and one trimmed file were checked.</td></tr>
+    </tbody>
+  </table>
+
+</section>
+
+<section class="tab" id="tab-R1" data-id="R1">
+  <h2>R1 — ipts37681_ccd_output</h2>
+  <p class="muted">reduction · 28 rows, 28 done · in its own eqsanscli session · sources made from it: S0a, S0b</p>
+<p>Re-reduce IPTS-37681 rows into the user-requested ccd/output folder, retaining the existing session settings as the starting point.</p>
+  <h3>Reduction table <span class="muted small">eqsanscli /show table · 28 rows</span></h3>
+  <div class="tablewrap"><table class="num redtable">
+    <thead><tr><th>Idx</th><th>Sample</th><th>Config</th><th>Scatt</th><th>Trans</th><th>Thick</th><th>Bkg</th><th>BkgTr</th><th>Empty</th><th>Status</th><th>Start</th></tr></thead>
+    <tbody><tr class=""><td>1</td><td>EmptyCupBob_1,3_0shear_4m2.5a</td><td>4m2.5a</td><td>188908<br>S-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188904<br>T-EmptyCupBob 1,3_0shear 4m2.5a</td><td>0.1</td><td>—</td><td>—</td><td>188898<br>T-empty beam 1,3 4m2.5a</td><td>done</td><td>2026-09-21T12:00:34.472283667-04:00</td></tr><tr class=""><td>2</td><td>EmptyCupBob_2,3_0shear_4m2.5a</td><td>4m2.5a</td><td>188909<br>S-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188905<br>T-EmptyCupBob 2,3_0shear 4m2.5a</td><td>0.1</td><td>—</td><td>—</td><td>188918<br>T-empty beam 2,3 4m2.5a</td><td>done</td><td>2026-09-21T12:36:26.308290667-04:00</td></tr><tr class=""><td>3</td><td>CTAB_1,3_0shear_4m2.5a</td><td>4m2.5a</td><td>188929<br>S-CTAB 1,3_0shear 4m2.5a</td><td>188923<br>T-CTAB 1,3_0shear 4m2.5a</td><td>0.1</td><td>188908<br>S-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188904<br>T-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188898<br>T-empty beam 1,3 4m2.5a</td><td>done</td><td>2026-09-21T18:42:32.000096667-04:00</td></tr><tr class=""><td>4</td><td>CTAB_2,3_0shear_4m2.5a</td><td>4m2.5a</td><td>188930<br>S-CTAB 2,3_0shear 4m2.5a</td><td>188924<br>T-CTAB 2,3_0shear 4m2.5a</td><td>0.1</td><td>188909<br>S-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188905<br>T-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188918<br>T-empty beam 2,3 4m2.5a</td><td>done</td><td>2026-09-21T18:48:34.025783667-04:00</td></tr><tr class=""><td>5</td><td>CTAB_1,3_0.1shear_4m2.5a</td><td>4m2.5a</td><td>188931<br>S-CTAB 1,3_0.1shear 4m2.5a</td><td>188923<br>T-CTAB 1,3_0shear 4m2.5a</td><td>0.1</td><td>188908<br>S-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188904<br>T-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188898<br>T-empty beam 1,3 4m2.5a</td><td>done</td><td>2026-09-21T19:00:31.976722667-04:00</td></tr><tr class=""><td>6</td><td>CTAB_2,3_0.1shear_4m2.5a</td><td>4m2.5a</td><td>188932<br>S-CTAB 2,3_0.1shear 4m2.5a</td><td>188924<br>T-CTAB 2,3_0shear 4m2.5a</td><td>0.1</td><td>188909<br>S-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188905<br>T-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188918<br>T-empty beam 2,3 4m2.5a</td><td>done</td><td>2026-09-21T19:06:33.885732667-04:00</td></tr><tr class=""><td>7</td><td>CTAB_1,3_1shear_4m2.5a</td><td>4m2.5a</td><td>188936<br>S-CTAB 1,3_1shear 4m2.5a</td><td>188923<br>T-CTAB 1,3_0shear 4m2.5a</td><td>0.1</td><td>188908<br>S-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188904<br>T-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188898<br>T-empty beam 1,3 4m2.5a</td><td>done</td><td>2026-09-21T21:29:16.109892667-04:00</td></tr><tr class=""><td>8</td><td>CTAB_1,3_10shear_4m2.5a</td><td>4m2.5a</td><td>188939<br>S-CTAB 1,3_10shear 4m2.5a</td><td>188923<br>T-CTAB 1,3_0shear 4m2.5a</td><td>0.1</td><td>188908<br>S-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188904<br>T-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188898<br>T-empty beam 1,3 4m2.5a</td><td>done</td><td>2026-09-21T23:20:56.601961667-04:00</td></tr><tr class=""><td>9</td><td>CTAB_2,3_10shear_4m2.5a</td><td>4m2.5a</td><td>188940<br>S-CTAB 2,3_10shear 4m2.5a</td><td>188924<br>T-CTAB 2,3_0shear 4m2.5a</td><td>0.1</td><td>188909<br>S-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188905<br>T-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188918<br>T-empty beam 2,3 4m2.5a</td><td>done</td><td>2026-09-21T23:26:58.494304667-04:00</td></tr><tr class=""><td>10</td><td>CTAB_1,3_100shear_4m2.5a</td><td>4m2.5a</td><td>188941<br>S-CTAB 1,3_100shear 4m2.5a</td><td>188923<br>T-CTAB 1,3_0shear 4m2.5a</td><td>0.1</td><td>188908<br>S-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188904<br>T-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188898<br>T-empty beam 1,3 4m2.5a</td><td>done</td><td>2026-09-21T23:38:55.461839667-04:00</td></tr><tr class=""><td>11</td><td>CTAB_1,3_1000shear_4m2.5a</td><td>4m2.5a</td><td>188945<br>S-CTAB 1,3_1000shear 4m2.5a</td><td>188923<br>T-CTAB 1,3_0shear 4m2.5a</td><td>0.1</td><td>188908<br>S-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188904<br>T-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188898<br>T-empty beam 1,3 4m2.5a</td><td>done</td><td>2026-09-22T01:55:00.541154667-04:00</td></tr><tr class=""><td>12</td><td>CTAB_2,3_1000shear_4m2.5a</td><td>4m2.5a</td><td>188946<br>S-CTAB 2,3_1000shear 4m2.5a</td><td>188924<br>T-CTAB 2,3_0shear 4m2.5a</td><td>0.1</td><td>188909<br>S-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188905<br>T-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188918<br>T-empty beam 2,3 4m2.5a</td><td>done</td><td>2026-09-22T02:01:02.466833667-04:00</td></tr><tr class=""><td>13</td><td>CTAB_1,3_0shear-return_4m2.5a</td><td>4m2.5a</td><td>188947<br>S-CTAB 1,3_0shear-return 4m2.5a</td><td>188923<br>T-CTAB 1,3_0shear 4m2.5a</td><td>0.1</td><td>188908<br>S-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188904<br>T-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188898<br>T-empty beam 1,3 4m2.5a</td><td>done</td><td>2026-09-22T02:12:59.384366667-04:00</td></tr><tr class=""><td>14</td><td>CTAB_2,3_0shear-return_4m2.5a</td><td>4m2.5a</td><td>188948<br>S-CTAB 2,3_0shear-return 4m2.5a</td><td>188924<br>T-CTAB 2,3_0shear 4m2.5a</td><td>0.1</td><td>188909<br>S-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188905<br>T-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188918<br>T-empty beam 2,3 4m2.5a</td><td>done</td><td>2026-09-22T02:19:01.260041667-04:00</td></tr><tr class=""><td>15</td><td>EmptyCupBob_1,3_0shear_8m10a</td><td>8m10a</td><td>188910<br>S-EmptyCupBob 1,3_0shear 8m10a</td><td>188906<br>T-EmptyCupBob 1,3_0shear 8m10a</td><td>0.1</td><td>—</td><td>—</td><td>188899<br>T-empty beam 1,3 8m8a</td><td>done</td><td>2026-09-21T13:06:48.387567667-04:00</td></tr><tr class=""><td>16</td><td>EmptyCupBob_2,3_0shear_8m10a</td><td>8m10a</td><td>188911<br>S-EmptyCupBob 2,3_0shear 8m10a</td><td>188907<br>T-EmptyCupBob 2,3_0shear 8m10a</td><td>0.1</td><td>—</td><td>—</td><td>188919<br>T-empty beam 2,3 8m8a</td><td>done</td><td>2026-09-21T13:55:48.496169667-04:00</td></tr><tr class=""><td>17</td><td>CTAB_1,3_0shear_8m10a</td><td>8m10a</td><td>188927<br>S-CTAB 1,3_0shear 8m10a</td><td>188925<br>T-CTAB 1,3_0shear 8m10a</td><td>0.1</td><td>188910<br>S-EmptyCupBob 1,3_0shear 8m10a</td><td>188906<br>T-EmptyCupBob 1,3_0shear 8m10a</td><td>188899<br>T-empty beam 1,3 8m8a</td><td>done</td><td>2026-09-21T17:01:41.354135667-04:00</td></tr><tr class=""><td>18</td><td>CTAB_2,3_0shear_8m10a</td><td>8m10a</td><td>188928<br>S-CTAB 2,3_0shear 8m10a</td><td>188926<br>T-CTAB 2,3_0shear 8m10a</td><td>0.1</td><td>188911<br>S-EmptyCupBob 2,3_0shear 8m10a</td><td>188907<br>T-EmptyCupBob 2,3_0shear 8m10a</td><td>188919<br>T-empty beam 2,3 8m8a</td><td>done</td><td>2026-09-21T17:26:29.793073667-04:00</td></tr><tr class=""><td>19</td><td>CTAB_1,3_0.1shear_8m10a</td><td>8m10a</td><td>188933<br>S-CTAB 1,3_0.1shear 8m10a</td><td>188925<br>T-CTAB 1,3_0shear 8m10a</td><td>0.1</td><td>188910<br>S-EmptyCupBob 1,3_0shear 8m10a</td><td>188906<br>T-EmptyCupBob 1,3_0shear 8m10a</td><td>188899<br>T-empty beam 1,3 8m8a</td><td>done</td><td>2026-09-21T19:24:29.878741667-04:00</td></tr><tr class=""><td>20</td><td>CTAB_2,3_0.1shear_8m10a</td><td>8m10a</td><td>188934<br>S-CTAB 2,3_0.1shear 8m10a</td><td>188926<br>T-CTAB 2,3_0shear 8m10a</td><td>0.1</td><td>188911<br>S-EmptyCupBob 2,3_0shear 8m10a</td><td>188907<br>T-EmptyCupBob 2,3_0shear 8m10a</td><td>188919<br>T-empty beam 2,3 8m8a</td><td>done</td><td>2026-09-21T19:49:17.750973667-04:00</td></tr><tr class=""><td>21</td><td>CTAB_1,3_1shear_8m10a</td><td>8m10a</td><td>188935<br>S-CTAB 1,3_1shear 8m10a</td><td>188925<br>T-CTAB 1,3_0shear 8m10a</td><td>0.1</td><td>188910<br>S-EmptyCupBob 1,3_0shear 8m10a</td><td>188906<br>T-EmptyCupBob 1,3_0shear 8m10a</td><td>188899<br>T-empty beam 1,3 8m8a</td><td>done</td><td>2026-09-21T20:59:28.899755667-04:00</td></tr><tr class=""><td>22</td><td>CTAB_1,3_10shear_8m10a</td><td>8m10a</td><td>188937<br>S-CTAB 1,3_10shear 8m10a</td><td>188925<br>T-CTAB 1,3_0shear 8m10a</td><td>0.1</td><td>188910<br>S-EmptyCupBob 1,3_0shear 8m10a</td><td>188906<br>T-EmptyCupBob 1,3_0shear 8m10a</td><td>188899<br>T-empty beam 1,3 8m8a</td><td>done</td><td>2026-09-21T21:40:43.558667667-04:00</td></tr><tr class=""><td>23</td><td>CTAB_2,3_10shear_8m10a</td><td>8m10a</td><td>188938<br>S-CTAB 2,3_10shear 8m10a</td><td>188926<br>T-CTAB 2,3_0shear 8m10a</td><td>0.1</td><td>188911<br>S-EmptyCupBob 2,3_0shear 8m10a</td><td>188907<br>T-EmptyCupBob 2,3_0shear 8m10a</td><td>188919<br>T-empty beam 2,3 8m8a</td><td>done</td><td>2026-09-21T22:05:29.930792667-04:00</td></tr><tr class=""><td>24</td><td>CTAB_1,3_100shear_8m10a</td><td>8m10a</td><td>188942<br>S-CTAB 1,3_100shear 8m10a</td><td>188925<br>T-CTAB 1,3_0shear 8m10a</td><td>0.1</td><td>188910<br>S-EmptyCupBob 1,3_0shear 8m10a</td><td>188906<br>T-EmptyCupBob 1,3_0shear 8m10a</td><td>188899<br>T-empty beam 1,3 8m8a</td><td>done</td><td>2026-09-21T23:50:16.393485667-04:00</td></tr><tr class=""><td>25</td><td>CTAB_1,3_1000shear_8m10a</td><td>8m10a</td><td>188943<br>S-CTAB 1,3_1000shear 8m10a</td><td>188925<br>T-CTAB 1,3_0shear 8m10a</td><td>0.1</td><td>188910<br>S-EmptyCupBob 1,3_0shear 8m10a</td><td>188906<br>T-EmptyCupBob 1,3_0shear 8m10a</td><td>188899<br>T-empty beam 1,3 8m8a</td><td>done</td><td>2026-09-22T00:14:57.948602667-04:00</td></tr><tr class=""><td>26</td><td>CTAB_2,3_1000shear_8m10a</td><td>8m10a</td><td>188944<br>S-CTAB 2,3_1000shear 8m10a</td><td>188926<br>T-CTAB 2,3_0shear 8m10a</td><td>0.1</td><td>188911<br>S-EmptyCupBob 2,3_0shear 8m10a</td><td>188907<br>T-EmptyCupBob 2,3_0shear 8m10a</td><td>188919<br>T-empty beam 2,3 8m8a</td><td>done</td><td>2026-09-22T00:39:44.270724667-04:00</td></tr><tr class=""><td>27</td><td>CTAB_1,3_0shear-return_8m10a</td><td>8m10a</td><td>188949<br>S-CTAB 1,3_0shear-return 8m10a</td><td>188925<br>T-CTAB 1,3_0shear 8m10a</td><td>0.1</td><td>188910<br>S-EmptyCupBob 1,3_0shear 8m10a</td><td>188906<br>T-EmptyCupBob 1,3_0shear 8m10a</td><td>188899<br>T-empty beam 1,3 8m8a</td><td>done</td><td>2026-09-22T02:36:10.216379667-04:00</td></tr><tr class=""><td>28</td><td>CTAB_2,3_0shear-return_8m10a</td><td>8m10a</td><td>188950<br>S-CTAB 2,3_0shear-return 8m10a</td><td>188926<br>T-CTAB 2,3_0shear 8m10a</td><td>0.1</td><td>188911<br>S-EmptyCupBob 2,3_0shear 8m10a</td><td>188907<br>T-EmptyCupBob 2,3_0shear 8m10a</td><td>188919<br>T-empty beam 2,3 8m8a</td><td>done</td><td>2026-09-22T03:00:55.305079667-04:00</td></tr></tbody>
+  </table></div>
+  <p class="small muted">Grey rows are not reduced. A highlighted Trans is a reduced sample without a transmission.</p>
+
+  <h3>Configuration parameters</h3>
+  <div class="tablewrap"><table class="params">
+    <thead><tr><th>parameter</th><th>4m2.5a</th><th>8m10a</th></tr></thead>
+    <tbody><tr class="group"><th colspan="3">Geometry</th></tr><tr><td>sample offset</td><td>285</td><td>285</td></tr><tr><td>detector offset</td><td>66.7142</td><td>66.7142</td></tr><tr class="group"><th colspan="3">Corrections and calibration files</th></tr><tr><td>flood (sensitivity)</td><td>Sensitivity_patched_thinPMMA_4m_186200.nxs</td><td>Sensitivity_patched_thinPMMA_4m_186200.nxs</td></tr><tr><td>mask</td><td>EQSANS_186104_mask.nxs</td><td>EQSANS_186104_mask.nxs</td></tr><tr><td>default mask</td><td>True</td><td>True</td></tr><tr><td>mask back tubes</td><td>False</td><td>False</td></tr><tr><td>dark current</td><td>EQSANS_186198.nxs.h5</td><td>EQSANS_186198.nxs.h5</td></tr><tr><td>beam flux</td><td>bl6_flux_2026B_aug_rebinned.txt</td><td>bl6_flux_2026B_aug_rebinned.txt</td></tr><tr><td>normalization</td><td>Total charge</td><td>Total charge</td></tr><tr><td>solid angle corr.</td><td>True</td><td>True</td></tr><tr><td>θ-dependent trans. corr.</td><td>True</td><td>True</td></tr><tr><td>trans. radius (mm)</td><td>25</td><td>25</td></tr><tr class="group"><th colspan="3">Absolute scale</th></tr><tr><td>absolute scale</td><td>1</td><td>1</td></tr><tr><td>scale components</td><td>[1.004124160407921, 1.0579957381578187, 1.0]</td><td>[1.004124160407921, 1.0579957381578187, 1.0]</td></tr><tr class="group"><th colspan="3">Wavelength, TOF and binning</th></tr><tr><td>λ step</td><td>0.1</td><td>0.1</td></tr><tr><td>TOF cut min</td><td>1000</td><td>1000</td></tr><tr><td>TOF cut max</td><td>3000</td><td>3000</td></tr><tr><td>Q binning</td><td>linear</td><td>linear</td></tr><tr><td>Q bins</td><td>80</td><td>80</td></tr><tr><td>Qx,Qy bins</td><td>80</td><td>80</td></tr><tr><td>error weighting</td><td>True</td><td>True</td></tr><tr class="group"><th colspan="3">Incoherent / inelastic correction</th></tr><tr><td>incoh./inelastic fit</td><td>False</td><td>False</td></tr><tr><td>select min incoh.</td><td>True</td><td>True</td></tr><tr><td>incoh. fit qmin</td><td>0.2</td><td>0.2</td></tr><tr><td>incoh. fit qmax</td><td>0.3</td><td>0.3</td></tr><tr class="group"><th colspan="3">Time slicing</th></tr><tr><td>time slicing</td><td>False</td><td>False</td></tr><tr><td>slice interval (s)</td><td>300</td><td>300</td></tr><tr><td>log slicing</td><td>False</td><td>False</td></tr></tbody>
+  </table></div>
+<p class="small muted">Highlighted rows: the configurations differ.</p>
+  <h3>Absolute scale</h3>
+  <table><thead><tr><th>configuration</th><th>scale</th><th>from</th><th>unit</th><th>porsil / NG3</th><th>how</th></tr></thead>
+    <tbody><tr><td>4m2.5a</td><td class="nw">1</td><td>default</td><td>a.u. (relative)</td><td class="nw"></td><td class="small">no standard: relative intensity</td></tr><tr><td>8m10a</td><td class="nw">1</td><td>default</td><td>a.u. (relative)</td><td class="nw"></td><td class="small">no standard: relative intensity</td></tr></tbody></table>
+  <h3>Incoherent / inelastic correction</h3>
+  <table><thead><tr><th>configuration</th><th>fit</th><th>requested q</th><th>used q (drtsans)</th></tr></thead>
+    <tbody><tr><td>4m2.5a</td><td>False</td><td>0.2–0.3</td><td></td></tr><tr><td>8m10a</td><td>False</td><td>0.2–0.3</td><td></td></tr></tbody></table>
+  <h3>Merging</h3>
+  <p>Last merge (2026-11-03 18:53, 1 in all): overlap <b>0.024 0.035</b>, target eqsanscli&#39;s default, settings —, samples all → 0 merged files.</p>
+  <div class="tablewrap"><table><thead><tr><th>merged file</th><th>target</th><th>factors</th><th>overlap</th></tr></thead>
+    <tbody><tr><td>merged_CTAB_1,3_0.1shear_Iq.txt</td><td>4m2.5a</td><td class="small"></td><td class="nw">0.024 0.035</td></tr><tr><td>merged_CTAB_1,3_0shear_Iq.txt</td><td>4m2.5a</td><td class="small"></td><td class="nw">0.024 0.035</td></tr><tr><td>merged_CTAB_1,3_0shear-return_Iq.txt</td><td>4m2.5a</td><td class="small"></td><td class="nw">0.024 0.035</td></tr><tr><td>merged_CTAB_1,3_1000shear_Iq.txt</td><td>4m2.5a</td><td class="small"></td><td class="nw">0.024 0.035</td></tr><tr><td>merged_CTAB_1,3_100shear_Iq.txt</td><td>4m2.5a</td><td class="small"></td><td class="nw">0.024 0.035</td></tr><tr><td>merged_CTAB_1,3_10shear_Iq.txt</td><td>4m2.5a</td><td class="small"></td><td class="nw">0.024 0.035</td></tr><tr><td>merged_CTAB_1,3_1shear_Iq.txt</td><td>4m2.5a</td><td class="small"></td><td class="nw">0.024 0.035</td></tr><tr><td>merged_CTAB_2,3_0.1shear_Iq.txt</td><td>4m2.5a</td><td class="small"></td><td class="nw">0.024 0.035</td></tr><tr><td>merged_CTAB_2,3_0shear_Iq.txt</td><td>4m2.5a</td><td class="small"></td><td class="nw">0.024 0.035</td></tr><tr><td>merged_CTAB_2,3_0shear-return_Iq.txt</td><td>4m2.5a</td><td class="small"></td><td class="nw">0.024 0.035</td></tr><tr><td>merged_CTAB_2,3_1000shear_Iq.txt</td><td>4m2.5a</td><td class="small"></td><td class="nw">0.024 0.035</td></tr><tr><td>merged_CTAB_2,3_10shear_Iq.txt</td><td>4m2.5a</td><td class="small"></td><td class="nw">0.024 0.035</td></tr><tr><td>merged_EmptyCupBob_1,3_0shear_Iq.txt</td><td>4m2.5a</td><td class="small"></td><td class="nw">0.024 0.035</td></tr><tr><td>merged_EmptyCupBob_2,3_0shear_Iq.txt</td><td>4m2.5a</td><td class="small"></td><td class="nw">0.024 0.035</td></tr></tbody></table></div>
+</section>
+
+<section class="tab" id="tab-S1" data-id="S1">
+  <div class="pagehead"><span class="badge live">live</span><h2>S1 — reduction_summary_merged_profiles</h2></div>
+  <p class="path"><a href="#R1">R1</a> → S0a + <a href="#R1">R1</a> → S0b → <a href="#S1">S1</a></p>
+  <dl class="record">
+    <dt>Question</dt><dd>Show the eqsanscli reduction table and one overlay plot of all merged profiles.</dd>
+    <dt>Method</dt><dd>Added S0b as a parent and rendered each 8m10a Iqxqy profile as a log-intensity 2D map; grouped all maps in an HTML gallery with four columns and corrected the colorbar label to a.u.</dd>
+    <dt>Result</dt><dd>Applied the requested trim to all 14 merged I(q) files: each went from 124 to 117 data points after removing the first 2 and last 5. The S1 merged-I(q) overlay now plots the trimmed curves; the updated figure and one trimmed file were checked.</dd>
+<dt>Next</dt><dd>Review the updated merged I(q) overlay in the first section of S1&#39;s gallery.</dd><dt>Decisions</dt><dd>D1, D2, D3, D4</dd>    <dt>From</dt><dd><a href="#S0a">S0a</a>, <a href="#S0b">S0b</a></dd>
+    <dt>Folder</dt><dd><code>pages/S1_reduction_summary_merged_profiles/</code> · 11 runs · created 2026-11-03 · closed 2026-11-03 · revised 6×</dd>
+  </dl>
+
+  <div class="pgallery">
+    <h3>Merged I(q) and 8m10a 2D profiles <span class="muted small">15 figures, 4 per row</span></h3>
+<p>For each CTAB 8m10a map, the second-order orientational parameter was calculated as S₂ = Σᵢ Iᵢ cos[2(φᵢ − φ₀)] / Σᵢ Iᵢ, where φᵢ = atan2(qyᵢ, qxᵢ) and φ₀ = 0° along +qx. The sums include all finite q pixels; EmptyCupBob maps are excluded. This intensity-weighted measure describes the net twofold orientation relative to +qx. Intensities are relative (a.u.).</p>    <h4>Merged I(q) profiles</h4>
+    <div class="ggrid" style="--cols: 4">
+      <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_merged_profiles_overlay.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_merged_profiles_overlay.png" alt="Overlay of all merged I(q) curves" loading="lazy"></a><figcaption>Overlay of all merged I(q) curves</figcaption></figure>
+    </div>
+    <h4>8m10a · I(qx,qy) profiles</h4>
+    <div class="ggrid" style="--cols: 4">
+      <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_EmptyCupBob_1,3_0shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_EmptyCupBob_1,3_0shear_8m10a_8m10a_Iqxqy.png" alt="EmptyCupBob_1,3_0shear_8m10a_8m10a_Iqxqy" loading="lazy"></a><figcaption>EmptyCupBob_1,3_0shear_8m10a_8m10a_Iqxqy</figcaption></figure>
+      <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_EmptyCupBob_2,3_0shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_EmptyCupBob_2,3_0shear_8m10a_8m10a_Iqxqy.png" alt="EmptyCupBob_2,3_0shear_8m10a_8m10a_Iqxqy" loading="lazy"></a><figcaption>EmptyCupBob_2,3_0shear_8m10a_8m10a_Iqxqy</figcaption></figure>
+      <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_0shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_0shear_8m10a_8m10a_Iqxqy.png" alt="CTAB_1,3_0shear_8m10a_8m10a_Iqxqy" loading="lazy"></a><figcaption>CTAB_1,3_0shear_8m10a_8m10a_Iqxqy</figcaption></figure>
+      <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_0shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_0shear_8m10a_8m10a_Iqxqy.png" alt="CTAB_2,3_0shear_8m10a_8m10a_Iqxqy" loading="lazy"></a><figcaption>CTAB_2,3_0shear_8m10a_8m10a_Iqxqy</figcaption></figure>
+      <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_0.1shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_0.1shear_8m10a_8m10a_Iqxqy.png" alt="CTAB_1,3_0.1shear_8m10a_8m10a_Iqxqy" loading="lazy"></a><figcaption>CTAB_1,3_0.1shear_8m10a_8m10a_Iqxqy</figcaption></figure>
+      <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_0.1shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_0.1shear_8m10a_8m10a_Iqxqy.png" alt="CTAB_2,3_0.1shear_8m10a_8m10a_Iqxqy" loading="lazy"></a><figcaption>CTAB_2,3_0.1shear_8m10a_8m10a_Iqxqy</figcaption></figure>
+      <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_1shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_1shear_8m10a_8m10a_Iqxqy.png" alt="CTAB_1,3_1shear_8m10a_8m10a_Iqxqy" loading="lazy"></a><figcaption>CTAB_1,3_1shear_8m10a_8m10a_Iqxqy</figcaption></figure>
+      <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_10shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_10shear_8m10a_8m10a_Iqxqy.png" alt="CTAB_1,3_10shear_8m10a_8m10a_Iqxqy" loading="lazy"></a><figcaption>CTAB_1,3_10shear_8m10a_8m10a_Iqxqy</figcaption></figure>
+      <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_10shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_10shear_8m10a_8m10a_Iqxqy.png" alt="CTAB_2,3_10shear_8m10a_8m10a_Iqxqy" loading="lazy"></a><figcaption>CTAB_2,3_10shear_8m10a_8m10a_Iqxqy</figcaption></figure>
+      <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_100shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_100shear_8m10a_8m10a_Iqxqy.png" alt="CTAB_1,3_100shear_8m10a_8m10a_Iqxqy" loading="lazy"></a><figcaption>CTAB_1,3_100shear_8m10a_8m10a_Iqxqy</figcaption></figure>
+      <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_1000shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_1000shear_8m10a_8m10a_Iqxqy.png" alt="CTAB_1,3_1000shear_8m10a_8m10a_Iqxqy" loading="lazy"></a><figcaption>CTAB_1,3_1000shear_8m10a_8m10a_Iqxqy</figcaption></figure>
+      <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_1000shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_1000shear_8m10a_8m10a_Iqxqy.png" alt="CTAB_2,3_1000shear_8m10a_8m10a_Iqxqy" loading="lazy"></a><figcaption>CTAB_2,3_1000shear_8m10a_8m10a_Iqxqy</figcaption></figure>
+      <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_0shear-return_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_0shear-return_8m10a_8m10a_Iqxqy.png" alt="CTAB_1,3_0shear-return_8m10a_8m10a_Iqxqy" loading="lazy"></a><figcaption>CTAB_1,3_0shear-return_8m10a_8m10a_Iqxqy</figcaption></figure>
+      <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_0shear-return_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_0shear-return_8m10a_8m10a_Iqxqy.png" alt="CTAB_2,3_0shear-return_8m10a_8m10a_Iqxqy" loading="lazy"></a><figcaption>CTAB_2,3_0shear-return_8m10a_8m10a_Iqxqy</figcaption></figure>
+    </div>
+  </div>
+
+  <figure class="overview"><a href="../pages/S1_reduction_summary_merged_profiles/overview.png"><img src="../pages/S1_reduction_summary_merged_profiles/overview.png" alt="overview of S1"></a><figcaption>overview.png</figcaption></figure>
+<details><summary>All 16 figures in figures/</summary>  <div class="gallery">
+    <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_0.1shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_0.1shear_8m10a_8m10a_Iqxqy.png" alt="s1_2d_CTAB_1,3_0.1shear_8m10a_8m10a_Iqxqy.png" loading="lazy"></a><figcaption>s1_2d_CTAB_1,3_0.1shear_8m10a_8m10a_Iqxqy.png</figcaption></figure>
+    <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_0shear-return_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_0shear-return_8m10a_8m10a_Iqxqy.png" alt="s1_2d_CTAB_1,3_0shear-return_8m10a_8m10a_Iqxqy.png" loading="lazy"></a><figcaption>s1_2d_CTAB_1,3_0shear-return_8m10a_8m10a_Iqxqy.png</figcaption></figure>
+    <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_0shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_0shear_8m10a_8m10a_Iqxqy.png" alt="s1_2d_CTAB_1,3_0shear_8m10a_8m10a_Iqxqy.png" loading="lazy"></a><figcaption>s1_2d_CTAB_1,3_0shear_8m10a_8m10a_Iqxqy.png</figcaption></figure>
+    <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_1000shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_1000shear_8m10a_8m10a_Iqxqy.png" alt="s1_2d_CTAB_1,3_1000shear_8m10a_8m10a_Iqxqy.png" loading="lazy"></a><figcaption>s1_2d_CTAB_1,3_1000shear_8m10a_8m10a_Iqxqy.png</figcaption></figure>
+    <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_100shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_100shear_8m10a_8m10a_Iqxqy.png" alt="s1_2d_CTAB_1,3_100shear_8m10a_8m10a_Iqxqy.png" loading="lazy"></a><figcaption>s1_2d_CTAB_1,3_100shear_8m10a_8m10a_Iqxqy.png</figcaption></figure>
+    <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_10shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_10shear_8m10a_8m10a_Iqxqy.png" alt="s1_2d_CTAB_1,3_10shear_8m10a_8m10a_Iqxqy.png" loading="lazy"></a><figcaption>s1_2d_CTAB_1,3_10shear_8m10a_8m10a_Iqxqy.png</figcaption></figure>
+    <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_1shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_1,3_1shear_8m10a_8m10a_Iqxqy.png" alt="s1_2d_CTAB_1,3_1shear_8m10a_8m10a_Iqxqy.png" loading="lazy"></a><figcaption>s1_2d_CTAB_1,3_1shear_8m10a_8m10a_Iqxqy.png</figcaption></figure>
+    <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_0.1shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_0.1shear_8m10a_8m10a_Iqxqy.png" alt="s1_2d_CTAB_2,3_0.1shear_8m10a_8m10a_Iqxqy.png" loading="lazy"></a><figcaption>s1_2d_CTAB_2,3_0.1shear_8m10a_8m10a_Iqxqy.png</figcaption></figure>
+    <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_0shear-return_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_0shear-return_8m10a_8m10a_Iqxqy.png" alt="s1_2d_CTAB_2,3_0shear-return_8m10a_8m10a_Iqxqy.png" loading="lazy"></a><figcaption>s1_2d_CTAB_2,3_0shear-return_8m10a_8m10a_Iqxqy.png</figcaption></figure>
+    <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_0shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_0shear_8m10a_8m10a_Iqxqy.png" alt="s1_2d_CTAB_2,3_0shear_8m10a_8m10a_Iqxqy.png" loading="lazy"></a><figcaption>s1_2d_CTAB_2,3_0shear_8m10a_8m10a_Iqxqy.png</figcaption></figure>
+    <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_1000shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_1000shear_8m10a_8m10a_Iqxqy.png" alt="s1_2d_CTAB_2,3_1000shear_8m10a_8m10a_Iqxqy.png" loading="lazy"></a><figcaption>s1_2d_CTAB_2,3_1000shear_8m10a_8m10a_Iqxqy.png</figcaption></figure>
+    <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_10shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_CTAB_2,3_10shear_8m10a_8m10a_Iqxqy.png" alt="s1_2d_CTAB_2,3_10shear_8m10a_8m10a_Iqxqy.png" loading="lazy"></a><figcaption>s1_2d_CTAB_2,3_10shear_8m10a_8m10a_Iqxqy.png</figcaption></figure>
+    <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_EmptyCupBob_1,3_0shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_EmptyCupBob_1,3_0shear_8m10a_8m10a_Iqxqy.png" alt="s1_2d_EmptyCupBob_1,3_0shear_8m10a_8m10a_Iqxqy.png" loading="lazy"></a><figcaption>s1_2d_EmptyCupBob_1,3_0shear_8m10a_8m10a_Iqxqy.png</figcaption></figure>
+    <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_EmptyCupBob_2,3_0shear_8m10a_8m10a_Iqxqy.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_2d_EmptyCupBob_2,3_0shear_8m10a_8m10a_Iqxqy.png" alt="s1_2d_EmptyCupBob_2,3_0shear_8m10a_8m10a_Iqxqy.png" loading="lazy"></a><figcaption>s1_2d_EmptyCupBob_2,3_0shear_8m10a_8m10a_Iqxqy.png</figcaption></figure>
+    <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_merged_profiles_overlay.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_merged_profiles_overlay.png" alt="s1_merged_profiles_overlay.png" loading="lazy"></a><figcaption>s1_merged_profiles_overlay.png</figcaption></figure>
+    <figure><a href="../pages/S1_reduction_summary_merged_profiles/figures/s1_order_parameter_equation.png"><img src="../pages/S1_reduction_summary_merged_profiles/figures/s1_order_parameter_equation.png" alt="s1_order_parameter_equation.png" loading="lazy"></a><figcaption>s1_order_parameter_equation.png</figcaption></figure>
+  </div>
+</details>
+
+  <h3><a href="../pages/S1_reduction_summary_merged_profiles/order_parameter_table.csv">order_parameter_table.csv</a> <span class="muted small">12 rows</span></h3>
+  <div class="tablewrap"><table class="num">
+    <thead><tr><th>file</th><th>concentration</th><th>shear_rate</th><th>condition</th><th>S2</th><th>pixels</th></tr></thead>
+    <tbody><tr><td>CTAB_1,3_0shear_8m10a_8m10a_Iqxqy.dat</td><td>1,3</td><td>0</td><td>steady</td><td>0.0149726</td><td>6389</td></tr><tr><td>CTAB_2,3_0shear_8m10a_8m10a_Iqxqy.dat</td><td>2,3</td><td>0</td><td>steady</td><td>0.367822</td><td>6389</td></tr><tr><td>CTAB_1,3_0.1shear_8m10a_8m10a_Iqxqy.dat</td><td>1,3</td><td>0.1</td><td>steady</td><td>0.0149656</td><td>6389</td></tr><tr><td>CTAB_2,3_0.1shear_8m10a_8m10a_Iqxqy.dat</td><td>2,3</td><td>0.1</td><td>steady</td><td>0.367916</td><td>6389</td></tr><tr><td>CTAB_1,3_1shear_8m10a_8m10a_Iqxqy.dat</td><td>1,3</td><td>1</td><td>steady</td><td>0.0182965</td><td>6389</td></tr><tr><td>CTAB_1,3_10shear_8m10a_8m10a_Iqxqy.dat</td><td>1,3</td><td>10</td><td>steady</td><td>-0.174875</td><td>6389</td></tr><tr><td>CTAB_2,3_10shear_8m10a_8m10a_Iqxqy.dat</td><td>2,3</td><td>10</td><td>steady</td><td>0.344552</td><td>6389</td></tr><tr><td>CTAB_1,3_100shear_8m10a_8m10a_Iqxqy.dat</td><td>1,3</td><td>100</td><td>steady</td><td>-0.437532</td><td>6389</td></tr><tr><td>CTAB_1,3_1000shear_8m10a_8m10a_Iqxqy.dat</td><td>1,3</td><td>1000</td><td>steady</td><td>-0.528154</td><td>6389</td></tr><tr><td>CTAB_2,3_1000shear_8m10a_8m10a_Iqxqy.dat</td><td>2,3</td><td>1000</td><td>steady</td><td>0.192534</td><td>6389</td></tr><tr><td>CTAB_1,3_0shear-return_8m10a_8m10a_Iqxqy.dat</td><td>1,3</td><td>0</td><td>0-shear return</td><td>0.00830604</td><td>6389</td></tr><tr><td>CTAB_2,3_0shear-return_8m10a_8m10a_Iqxqy.dat</td><td>2,3</td><td>0</td><td>0-shear return</td><td>0.370689</td><td>6389</td></tr></tbody>
+  </table></div>
+  <h3><a href="../pages/S1_reduction_summary_merged_profiles/reduction_table.csv">reduction_table.csv</a> <span class="muted small">28 rows</span></h3>
+  <div class="tablewrap"><table class="num">
+    <thead><tr><th>Idx</th><th>Sample</th><th>Config</th><th>Scatt</th><th>Trans</th><th>Thick</th><th>Bkg</th><th>BkgTr</th><th>Empty</th><th>Status</th><th>Start</th></tr></thead>
+    <tbody><tr><td>1</td><td>EmptyCupBob_1,3_0shear_4m2.5a</td><td>4m2.5a</td><td>188908<br>S-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188904<br>T-EmptyCupBob 1,3_0shear 4m2.5a</td><td>0.1</td><td>—</td><td>—</td><td>188898<br>T-empty beam 1,3 4m2.5a</td><td>done</td><td></td></tr><tr><td>2</td><td>EmptyCupBob_2,3_0shear_4m2.5a</td><td>4m2.5a</td><td>188909<br>S-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188905<br>T-EmptyCupBob 2,3_0shear 4m2.5a</td><td>0.1</td><td>—</td><td>—</td><td>188918<br>T-empty beam 2,3 4m2.5a</td><td>done</td><td></td></tr><tr><td>3</td><td>CTAB_1,3_0shear_4m2.5a</td><td>4m2.5a</td><td>188929<br>S-CTAB 1,3_0shear 4m2.5a</td><td>188923<br>T-CTAB 1,3_0shear 4m2.5a</td><td>0.1</td><td>188908<br>S-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188904<br>T-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188898<br>T-empty beam 1,3 4m2.5a</td><td>done</td><td></td></tr><tr><td>4</td><td>CTAB_2,3_0shear_4m2.5a</td><td>4m2.5a</td><td>188930<br>S-CTAB 2,3_0shear 4m2.5a</td><td>188924<br>T-CTAB 2,3_0shear 4m2.5a</td><td>0.1</td><td>188909<br>S-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188905<br>T-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188918<br>T-empty beam 2,3 4m2.5a</td><td>done</td><td></td></tr><tr><td>5</td><td>CTAB_1,3_0.1shear_4m2.5a</td><td>4m2.5a</td><td>188931<br>S-CTAB 1,3_0.1shear 4m2.5a</td><td>188923<br>T-CTAB 1,3_0shear 4m2.5a</td><td>0.1</td><td>188908<br>S-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188904<br>T-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188898<br>T-empty beam 1,3 4m2.5a</td><td>done</td><td></td></tr><tr><td>6</td><td>CTAB_2,3_0.1shear_4m2.5a</td><td>4m2.5a</td><td>188932<br>S-CTAB 2,3_0.1shear 4m2.5a</td><td>188924<br>T-CTAB 2,3_0shear 4m2.5a</td><td>0.1</td><td>188909<br>S-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188905<br>T-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188918<br>T-empty beam 2,3 4m2.5a</td><td>done</td><td></td></tr><tr><td>7</td><td>CTAB_1,3_1shear_4m2.5a</td><td>4m2.5a</td><td>188936<br>S-CTAB 1,3_1shear 4m2.5a</td><td>188923<br>T-CTAB 1,3_0shear 4m2.5a</td><td>0.1</td><td>188908<br>S-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188904<br>T-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188898<br>T-empty beam 1,3 4m2.5a</td><td>done</td><td></td></tr><tr><td>8</td><td>CTAB_1,3_10shear_4m2.5a</td><td>4m2.5a</td><td>188939<br>S-CTAB 1,3_10shear 4m2.5a</td><td>188923<br>T-CTAB 1,3_0shear 4m2.5a</td><td>0.1</td><td>188908<br>S-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188904<br>T-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188898<br>T-empty beam 1,3 4m2.5a</td><td>done</td><td></td></tr><tr><td>9</td><td>CTAB_2,3_10shear_4m2.5a</td><td>4m2.5a</td><td>188940<br>S-CTAB 2,3_10shear 4m2.5a</td><td>188924<br>T-CTAB 2,3_0shear 4m2.5a</td><td>0.1</td><td>188909<br>S-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188905<br>T-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188918<br>T-empty beam 2,3 4m2.5a</td><td>done</td><td></td></tr><tr><td>10</td><td>CTAB_1,3_100shear_4m2.5a</td><td>4m2.5a</td><td>188941<br>S-CTAB 1,3_100shear 4m2.5a</td><td>188923<br>T-CTAB 1,3_0shear 4m2.5a</td><td>0.1</td><td>188908<br>S-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188904<br>T-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188898<br>T-empty beam 1,3 4m2.5a</td><td>done</td><td></td></tr><tr><td>11</td><td>CTAB_1,3_1000shear_4m2.5a</td><td>4m2.5a</td><td>188945<br>S-CTAB 1,3_1000shear 4m2.5a</td><td>188923<br>T-CTAB 1,3_0shear 4m2.5a</td><td>0.1</td><td>188908<br>S-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188904<br>T-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188898<br>T-empty beam 1,3 4m2.5a</td><td>done</td><td></td></tr><tr><td>12</td><td>CTAB_2,3_1000shear_4m2.5a</td><td>4m2.5a</td><td>188946<br>S-CTAB 2,3_1000shear 4m2.5a</td><td>188924<br>T-CTAB 2,3_0shear 4m2.5a</td><td>0.1</td><td>188909<br>S-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188905<br>T-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188918<br>T-empty beam 2,3 4m2.5a</td><td>done</td><td></td></tr><tr><td>13</td><td>CTAB_1,3_0shear-return_4m2.5a</td><td>4m2.5a</td><td>188947<br>S-CTAB 1,3_0shear-return 4m2.5a</td><td>188923<br>T-CTAB 1,3_0shear 4m2.5a</td><td>0.1</td><td>188908<br>S-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188904<br>T-EmptyCupBob 1,3_0shear 4m2.5a</td><td>188898<br>T-empty beam 1,3 4m2.5a</td><td>done</td><td></td></tr><tr><td>14</td><td>CTAB_2,3_0shear-return_4m2.5a</td><td>4m2.5a</td><td>188948<br>S-CTAB 2,3_0shear-return 4m2.5a</td><td>188924<br>T-CTAB 2,3_0shear 4m2.5a</td><td>0.1</td><td>188909<br>S-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188905<br>T-EmptyCupBob 2,3_0shear 4m2.5a</td><td>188918<br>T-empty beam 2,3 4m2.5a</td><td>done</td><td></td></tr><tr><td>15</td><td>EmptyCupBob_1,3_0shear_8m10a</td><td>8m10a</td><td>188910<br>S-EmptyCupBob 1,3_0shear 8m10a</td><td>188906<br>T-EmptyCupBob 1,3_0shear 8m10a</td><td>0.1</td><td>—</td><td>—</td><td>188899<br>T-empty beam 1,3 8m8a</td><td>done</td><td></td></tr><tr><td>16</td><td>EmptyCupBob_2,3_0shear_8m10a</td><td>8m10a</td><td>188911<br>S-EmptyCupBob 2,3_0shear 8m10a</td><td>188907<br>T-EmptyCupBob 2,3_0shear 8m10a</td><td>0.1</td><td>—</td><td>—</td><td>188919<br>T-empty beam 2,3 8m8a</td><td>done</td><td></td></tr><tr><td>17</td><td>CTAB_1,3_0shear_8m10a</td><td>8m10a</td><td>188927<br>S-CTAB 1,3_0shear 8m10a</td><td>188925<br>T-CTAB 1,3_0shear 8m10a</td><td>0.1</td><td>188910<br>S-EmptyCupBob 1,3_0shear 8m10a</td><td>188906<br>T-EmptyCupBob 1,3_0shear 8m10a</td><td>188899<br>T-empty beam 1,3 8m8a</td><td>done</td><td></td></tr><tr><td>18</td><td>CTAB_2,3_0shear_8m10a</td><td>8m10a</td><td>188928<br>S-CTAB 2,3_0shear 8m10a</td><td>188926<br>T-CTAB 2,3_0shear 8m10a</td><td>0.1</td><td>188911<br>S-EmptyCupBob 2,3_0shear 8m10a</td><td>188907<br>T-EmptyCupBob 2,3_0shear 8m10a</td><td>188919<br>T-empty beam 2,3 8m8a</td><td>done</td><td></td></tr><tr><td>19</td><td>CTAB_1,3_0.1shear_8m10a</td><td>8m10a</td><td>188933<br>S-CTAB 1,3_0.1shear 8m10a</td><td>188925<br>T-CTAB 1,3_0shear 8m10a</td><td>0.1</td><td>188910<br>S-EmptyCupBob 1,3_0shear 8m10a</td><td>188906<br>T-EmptyCupBob 1,3_0shear 8m10a</td><td>188899<br>T-empty beam 1,3 8m8a</td><td>done</td><td></td></tr><tr><td>20</td><td>CTAB_2,3_0.1shear_8m10a</td><td>8m10a</td><td>188934<br>S-CTAB 2,3_0.1shear 8m10a</td><td>188926<br>T-CTAB 2,3_0shear 8m10a</td><td>0.1</td><td>188911<br>S-EmptyCupBob 2,3_0shear 8m10a</td><td>188907<br>T-EmptyCupBob 2,3_0shear 8m10a</td><td>188919<br>T-empty beam 2,3 8m8a</td><td>done</td><td></td></tr><tr><td>21</td><td>CTAB_1,3_1shear_8m10a</td><td>8m10a</td><td>188935<br>S-CTAB 1,3_1shear 8m10a</td><td>188925<br>T-CTAB 1,3_0shear 8m10a</td><td>0.1</td><td>188910<br>S-EmptyCupBob 1,3_0shear 8m10a</td><td>188906<br>T-EmptyCupBob 1,3_0shear 8m10a</td><td>188899<br>T-empty beam 1,3 8m8a</td><td>done</td><td></td></tr><tr><td>22</td><td>CTAB_1,3_10shear_8m10a</td><td>8m10a</td><td>188937<br>S-CTAB 1,3_10shear 8m10a</td><td>188925<br>T-CTAB 1,3_0shear 8m10a</td><td>0.1</td><td>188910<br>S-EmptyCupBob 1,3_0shear 8m10a</td><td>188906<br>T-EmptyCupBob 1,3_0shear 8m10a</td><td>188899<br>T-empty beam 1,3 8m8a</td><td>done</td><td></td></tr><tr><td>23</td><td>CTAB_2,3_10shear_8m10a</td><td>8m10a</td><td>188938<br>S-CTAB 2,3_10shear 8m10a</td><td>188926<br>T-CTAB 2,3_0shear 8m10a</td><td>0.1</td><td>188911<br>S-EmptyCupBob 2,3_0shear 8m10a</td><td>188907<br>T-EmptyCupBob 2,3_0shear 8m10a</td><td>188919<br>T-empty beam 2,3 8m8a</td><td>done</td><td></td></tr><tr><td>24</td><td>CTAB_1,3_100shear_8m10a</td><td>8m10a</td><td>188942<br>S-CTAB 1,3_100shear 8m10a</td><td>188925<br>T-CTAB 1,3_0shear 8m10a</td><td>0.1</td><td>188910<br>S-EmptyCupBob 1,3_0shear 8m10a</td><td>188906<br>T-EmptyCupBob 1,3_0shear 8m10a</td><td>188899<br>T-empty beam 1,3 8m8a</td><td>done</td><td></td></tr><tr><td>25</td><td>CTAB_1,3_1000shear_8m10a</td><td>8m10a</td><td>188943<br>S-CTAB 1,3_1000shear 8m10a</td><td>188925<br>T-CTAB 1,3_0shear 8m10a</td><td>0.1</td><td>188910<br>S-EmptyCupBob 1,3_0shear 8m10a</td><td>188906<br>T-EmptyCupBob 1,3_0shear 8m10a</td><td>188899<br>T-empty beam 1,3 8m8a</td><td>done</td><td></td></tr><tr><td>26</td><td>CTAB_2,3_1000shear_8m10a</td><td>8m10a</td><td>188944<br>S-CTAB 2,3_1000shear 8m10a</td><td>188926<br>T-CTAB 2,3_0shear 8m10a</td><td>0.1</td><td>188911<br>S-EmptyCupBob 2,3_0shear 8m10a</td><td>188907<br>T-EmptyCupBob 2,3_0shear 8m10a</td><td>188919<br>T-empty beam 2,3 8m8a</td><td>done</td><td></td></tr><tr><td>27</td><td>CTAB_1,3_0shear-return_8m10a</td><td>8m10a</td><td>188949<br>S-CTAB 1,3_0shear-return 8m10a</td><td>188925<br>T-CTAB 1,3_0shear 8m10a</td><td>0.1</td><td>188910<br>S-EmptyCupBob 1,3_0shear 8m10a</td><td>188906<br>T-EmptyCupBob 1,3_0shear 8m10a</td><td>188899<br>T-empty beam 1,3 8m8a</td><td>done</td><td></td></tr><tr><td>28</td><td>CTAB_2,3_0shear-return_8m10a</td><td>8m10a</td><td>188950<br>S-CTAB 2,3_0shear-return 8m10a</td><td>188926<br>T-CTAB 2,3_0shear 8m10a</td><td>0.1</td><td>188911<br>S-EmptyCupBob 2,3_0shear 8m10a</td><td>188907<br>T-EmptyCupBob 2,3_0shear 8m10a</td><td>188919<br>T-empty beam 2,3 8m8a</td><td>done</td><td></td></tr></tbody>
+  </table></div>
+  <h3><a href="../pages/S1_reduction_summary_merged_profiles/summary.csv">summary.csv</a> <span class="muted small">1 row</span></h3>
+  <div class="tablewrap"><table class="num">
+    <thead><tr><th>merged_curve_count</th><th>reduction_table_rows</th><th>source</th><th>intensity_unit_from_reduction_record</th></tr></thead>
+    <tbody><tr><td>14</td><td>28</td><td>S0a</td><td>a.u. (relative)</td></tr></tbody>
+  </table></div>
+
+  <details><summary>Script output (last lines of the last good run)</summary><pre>trimmed merged_CTAB_1,3_0.1shear_Iq.txt: 124 → 117 points (first 2, last 5 removed) → merged_CTAB_1,3_0.1shear_Iq_trimmed.txt
+trimmed merged_CTAB_1,3_0shear_Iq.txt: 124 → 117 points (first 2, last 5 removed) → merged_CTAB_1,3_0shear_Iq_trimmed.txt
+trimmed merged_CTAB_1,3_0shear-return_Iq.txt: 124 → 117 points (first 2, last 5 removed) → merged_CTAB_1,3_0shear-return_Iq_trimmed.txt
+trimmed merged_CTAB_1,3_1000shear_Iq.txt: 124 → 117 points (first 2, last 5 removed) → merged_CTAB_1,3_1000shear_Iq_trimmed.txt
+trimmed merged_CTAB_1,3_100shear_Iq.txt: 124 → 117 points (first 2, last 5 removed) → merged_CTAB_1,3_100shear_Iq_trimmed.txt
+trimmed merged_CTAB_1,3_10shear_Iq.txt: 124 → 117 points (first 2, last 5 removed) → merged_CTAB_1,3_10shear_Iq_trimmed.txt
+trimmed merged_CTAB_1,3_1shear_Iq.txt: 124 → 117 points (first 2, last 5 removed) → merged_CTAB_1,3_1shear_Iq_trimmed.txt
+trimmed merged_CTAB_2,3_0.1shear_Iq.txt: 124 → 117 points (first 2, last 5 removed) → merged_CTAB_2,3_0.1shear_Iq_trimmed.txt
+trimmed merged_CTAB_2,3_0shear_Iq.txt: 124 → 117 points (first 2, last 5 removed) → merged_CTAB_2,3_0shear_Iq_trimmed.txt
+trimmed merged_CTAB_2,3_0shear-return_Iq.txt: 124 → 117 points (first 2, last 5 removed) → merged_CTAB_2,3_0shear-return_Iq_trimmed.txt
+trimmed merged_CTAB_2,3_1000shear_Iq.txt: 124 → 117 points (first 2, last 5 removed) → merged_CTAB_2,3_1000shear_Iq_trimmed.txt
+trimmed merged_CTAB_2,3_10shear_Iq.txt: 124 → 117 points (first 2, last 5 removed) → merged_CTAB_2,3_10shear_Iq_trimmed.txt
+trimmed merged_EmptyCupBob_1,3_0shear_Iq.txt: 124 → 117 points (first 2, last 5 removed) → merged_EmptyCupBob_1,3_0shear_Iq_trimmed.txt
+trimmed merged_EmptyCupBob_2,3_0shear_Iq.txt: 124 → 117 points (first 2, last 5 removed) → merged_EmptyCupBob_2,3_0shear_Iq_trimmed.txt
+[sansbook.html] gallery.html: 15 figures in 2 section(s), 4 per row</pre></details>
+  <details><summary>Script: reduction_summary.py</summary><pre><code>import re
+import numpy as np
+import matplotlib.pyplot as plt
+from sansbook.lib import io, plot, plot2d, out, html
+from sansbook.lib.paths import source_files, page_file
+from sansbook.lib import reduction
+
+files = source_files(&#34;S0a&#34;, &#34;merged*_Iq.txt&#34;)
+trimmed_files = []
+for path in files:
+    trimmed_path = page_file(f&#34;{path.stem}_trimmed.txt&#34;)
+    io.trim_points(path, first=2, last=5, out=trimmed_path.name)
+    trimmed_files.append(trimmed_path)
+curves = io.load_many(trimmed_files)
+
+# Preserve the complete eqsanscli working table frozen with the source.
+table = reduction.show_table(&#34;S0a&#34;)
+out.summary(table, &#34;reduction_table.csv&#34;)
+
+ax = plot.iq(curves, scale=&#34;loglog&#34;)
+ax.set_ylabel(r&#34;$I(q)$ (a.u.)&#34;)
+merged_plot_path = plot.save(ax.figure, &#34;merged_profiles_overlay&#34;, overview=True)
+
+# 2D profiles from the 8m10a configuration; save individual maps and include them in a gallery.
+map_files = source_files(&#34;S0b&#34;, &#34;*Iqxqy.dat&#34;)
+gallery_items = []
+for path in map_files:
+    image = io.load(path)
+    map_ax = plot2d.image(image, log=True)
+    map_ax.collections[0].colorbar.set_label(r&#34;$I$ (a.u.)&#34;)
+    map_path = plot.save(map_ax.figure, f&#34;2d_{path.stem}&#34;)
+    gallery_items.append((map_path, path.stem))
+
+html.gallery(
+    {
+        &#34;Merged I(q) profiles&#34;: [(merged_plot_path, &#34;Overlay of all merged I(q) curves&#34;)],
+        &#34;8m10a · I(qx,qy) profiles&#34;: gallery_items,
+    },
+    title=&#34;Merged I(q) and 8m10a 2D profiles&#34;,
+    columns=4,
+    intro=(&#34;For each CTAB 8m10a map, the second-order orientational parameter was calculated as &#34;
+           &#34;S₂ = Σᵢ Iᵢ cos[2(φᵢ − φ₀)] / Σᵢ Iᵢ, where φᵢ = atan2(qyᵢ, qxᵢ) and φ₀ = 0° along +qx. &#34;
+           &#34;The sums include all finite q pixels; EmptyCupBob maps are excluded. This intensity-weighted &#34;
+           &#34;measure describes the net twofold orientation relative to +qx. Intensities are relative (a.u.).&#34;),
+)
+
+# Second-order orientational order parameter from all CTAB 8m10a maps.
+# phi is measured from +qx; the user selected all q pixels and phi_0 = 0 degrees.
+plot.equation(
+    [r&#34;S_2=\frac{\sum_i I_i\cos[2(\phi_i-\phi_0)]}{\sum_i I_i}&#34;],
+    &#34;order_parameter_equation&#34;,
+    notes=[&#34;phi_i = atan2(qy_i, qx_i); phi_0 = 0 degrees along +qx&#34;,
+           &#34;Sum over all q pixels; EmptyCupBob excluded.&#34;],
+)
+
+order_rows = []
+for path in map_files:
+    if not path.name.startswith(&#34;CTAB_&#34;):
+        continue
+    match = re.search(r&#34;_(\d+(?:\.\d+)?)shear(-return)?_&#34;, path.name)
+    if match is None:
+        raise ValueError(f&#34;Cannot parse shear rate from {path.name}&#34;)
+    shear_rate = float(match.group(1))
+    is_return = bool(match.group(2))
+    concentration = path.name.split(&#34;_&#34;)[1]
+    image = io.load(path)
+    qx, qy, intensity = np.asarray(image.qx), np.asarray(image.qy), np.asarray(image.i)
+    phi = np.arctan2(qy, qx)
+    valid = np.isfinite(intensity) &amp; np.isfinite(phi)
+    numerator = np.sum(intensity[valid] * np.cos(2 * phi[valid]))
+    denominator = np.sum(intensity[valid])
+    if denominator == 0:
+        raise ValueError(f&#34;Zero total intensity in {path.name}&#34;)
+    order_rows.append({
+        &#34;file&#34;: path.name,
+        &#34;concentration&#34;: concentration,
+        &#34;shear_rate&#34;: shear_rate,
+        &#34;condition&#34;: &#34;0-shear return&#34; if is_return else &#34;steady&#34;,
+        &#34;S2&#34;: numerator / denominator,
+        &#34;pixels&#34;: int(np.count_nonzero(valid)),
+    })
+
+out.summary(order_rows, &#34;order_parameter_table.csv&#34;)
+
+fig, ax = plt.subplots()
+markers = {&#34;1,3&#34;: &#34;o&#34;, &#34;2,3&#34;: &#34;s&#34;}
+for concentration in sorted({row[&#34;concentration&#34;] for row in order_rows}):
+    points = [row for row in order_rows
+              if row[&#34;concentration&#34;] == concentration and row[&#34;shear_rate&#34;] &gt; 0]
+    ax.scatter([row[&#34;shear_rate&#34;] for row in points], [row[&#34;S2&#34;] for row in points],
+               marker=markers.get(concentration, &#34;o&#34;), label=f&#34;CTAB {concentration}&#34;)
+ax.set_xscale(&#34;log&#34;)
+ax.set_xlabel(r&#34;Shear rate&#34;)
+ax.set_ylabel(r&#34;$S_2$ (dimensionless)&#34;)
+ax.set_title(r&#34;8m10a 2D order parameter vs shear rate&#34;)
+ax.legend()
+ax.grid(True, which=&#34;both&#34;, alpha=0.25)
+plot.save(fig, &#34;order_parameter_vs_shear_rate&#34;, overview=True)
+
+out.summary({
+    &#34;merged_curve_count&#34;: len(curves),
+    &#34;reduction_table_rows&#34;: len(table),
+    &#34;source&#34;: &#34;S0a&#34;,
+    &#34;intensity_unit_from_reduction_record&#34;: &#34;a.u. (relative)&#34;,
+}, &#34;summary.csv&#34;)
+</code></pre></details>
+  <details><summary>Provenance: commit 7d1e894b4a, python 3.11.17, 31 input file(s)</summary><pre>{
+ &#34;id&#34;: &#34;S1&#34;,
+ &#34;parents&#34;: [
+  &#34;S0a&#34;,
+  &#34;S0b&#34;
+ ],
+ &#34;name&#34;: &#34;reduction_summary_merged_profiles&#34;,
+ &#34;created_utc&#34;: &#34;2026-11-03T18:53:43Z&#34;,
+ &#34;run_utc&#34;: &#34;2026-11-03T20:28:34Z&#34;,
+ &#34;run_number&#34;: 11,
+ &#34;script&#34;: &#34;reduction_summary.py&#34;,
+ &#34;code&#34;: {
+  &#34;book_commit&#34;: &#34;7d1e894b4ab8722247aa4a5a29cfb7ad45ec014b&#34;,
+  &#34;dirty_files&#34;: [],
+  &#34;sansbook&#34;: &#34;0.3.10&#34;,
+  &#34;edited_outside_sansbook&#34;: false
+ },
+ &#34;env&#34;: {
+  &#34;python&#34;: &#34;3.11.17&#34;,
+  &#34;executable&#34;: &#34;/gpfs/neutronsfs/instruments/EQSANS/shared/script/sansbook/versions/v0.3.10/bin/python&#34;,
+  &#34;key_packages&#34;: {
+   &#34;numpy&#34;: &#34;2.4.6&#34;,
+   &#34;matplotlib&#34;: &#34;3.11.2&#34;
+  }
+ },
+ &#34;model&#34;: {
+  &#34;llm&#34;: &#34;openai/gpt-6-luna&#34;,
+  &#34;session&#34;: &#34;2026-11-03T151105&#34;
+ },
+ &#34;sources&#34;: [
+  &#34;S0a&#34;,
+  &#34;S0b&#34;
+ ],
+ &#34;inputs&#34;: [
+  {
+   &#34;source_id&#34;: &#34;S0a&#34;,
+   &#34;path&#34;: &#34;data/merged_CTAB_1,3_0.1shear_Iq.txt&#34;,
+   &#34;sha256&#34;: &#34;83f9d863167cf3b5f53ce28c818c4615d7c81c53550bdf19ed33023914f0a423&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0a&#34;,
+   &#34;path&#34;: &#34;data/merged_CTAB_1,3_0shear-return_Iq.txt&#34;,
+   &#34;sha256&#34;: &#34;89c02e3da774516821fcf859fa33c39797b1301745535d5dbf83b587532ecea6&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0a&#34;,
+   &#34;path&#34;: &#34;data/merged_CTAB_1,3_0shear_Iq.txt&#34;,
+   &#34;sha256&#34;: &#34;34cbe79b7a2ea49df64191a48333ce3797f2dc1c6c21f95e6a98715872788174&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0a&#34;,
+   &#34;path&#34;: &#34;data/merged_CTAB_1,3_1000shear_Iq.txt&#34;,
+   &#34;sha256&#34;: &#34;9661bb8561988b4111309ed9d672785457ed843c158f012c8452df1a432b6529&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0a&#34;,
+   &#34;path&#34;: &#34;data/merged_CTAB_1,3_100shear_Iq.txt&#34;,
+   &#34;sha256&#34;: &#34;039e94ca690bf343361147625478ae91297b4ca7c99118d8093d6cb13c0b3f06&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0a&#34;,
+   &#34;path&#34;: &#34;data/merged_CTAB_1,3_10shear_Iq.txt&#34;,
+   &#34;sha256&#34;: &#34;12fee8688187654f3bfc47b402f2b279288d4c26cbd16e8ac361d87732b63e58&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0a&#34;,
+   &#34;path&#34;: &#34;data/merged_CTAB_1,3_1shear_Iq.txt&#34;,
+   &#34;sha256&#34;: &#34;74113e28ae549e6df9142cc2c0594dd32d4d7477ce5ec05a10c7176e25ca929a&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0a&#34;,
+   &#34;path&#34;: &#34;data/merged_CTAB_2,3_0.1shear_Iq.txt&#34;,
+   &#34;sha256&#34;: &#34;7c3bfd8fbefdce550177d7ccd70115b9ad93faa66ece04634b52298c6d8a22a2&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0a&#34;,
+   &#34;path&#34;: &#34;data/merged_CTAB_2,3_0shear-return_Iq.txt&#34;,
+   &#34;sha256&#34;: &#34;a0bf6f508d6ff81037c9c844250051ccfd7a939b74a88c8b9a25200a4db1c12c&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0a&#34;,
+   &#34;path&#34;: &#34;data/merged_CTAB_2,3_0shear_Iq.txt&#34;,
+   &#34;sha256&#34;: &#34;8175a84a3cd8d1603507cbd0005e25b49d7a9072fc178a43397c820918dbc76e&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0a&#34;,
+   &#34;path&#34;: &#34;data/merged_CTAB_2,3_1000shear_Iq.txt&#34;,
+   &#34;sha256&#34;: &#34;b3ae0be439747ee9b78322e2d22e8ece276cc80535b47dbda557c45dfd66d1c5&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0a&#34;,
+   &#34;path&#34;: &#34;data/merged_CTAB_2,3_10shear_Iq.txt&#34;,
+   &#34;sha256&#34;: &#34;f7696b0a77bdb20a4b1038af8428d1b159b46172e25df93a6dce39a263a18432&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0a&#34;,
+   &#34;path&#34;: &#34;data/merged_EmptyCupBob_1,3_0shear_Iq.txt&#34;,
+   &#34;sha256&#34;: &#34;c26df6527081abb75515548b8cefa4acb01b76b3bb1a2a70447eeb709ce54d70&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0a&#34;,
+   &#34;path&#34;: &#34;data/merged_EmptyCupBob_2,3_0shear_Iq.txt&#34;,
+   &#34;sha256&#34;: &#34;544aa9f9d77a6532cdb0a593471da36d030256c710a8190d3bc7e64c0c427265&#34;
+  },
+  {
+   &#34;book_path&#34;: &#34;sources/S0a_ipts_37681_merged_ctab_curves/reduction/attached_session.json&#34;,
+   &#34;sha256&#34;: &#34;0bd3e199f28d5e45b8ed695818065838e3244b17ec74a4decf16ba715af158e7&#34;
+  },
+  {
+   &#34;book_path&#34;: &#34;sources/S0a_ipts_37681_merged_ctab_curves/reduction/record.json&#34;,
+   &#34;sha256&#34;: &#34;0ee805288fe3d821ee3c510c51f5be6e348dd8b7bf482c7fff66e5089ff45e76&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0b&#34;,
+   &#34;path&#34;: &#34;data/CTAB_1,3_0.1shear_8m10a_8m10a_Iqxqy.dat&#34;,
+   &#34;sha256&#34;: &#34;cff2d176e3478ade4f91113c3957b5bd621363cb64b0e59317f7c662331519e7&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0b&#34;,
+   &#34;path&#34;: &#34;data/CTAB_1,3_0shear-return_8m10a_8m10a_Iqxqy.dat&#34;,
+   &#34;sha256&#34;: &#34;9d71717aef178135a7a8e3961f3678d69d52fe3c27087a1dcc8250ada9588f20&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0b&#34;,
+   &#34;path&#34;: &#34;data/CTAB_1,3_0shear_8m10a_8m10a_Iqxqy.dat&#34;,
+   &#34;sha256&#34;: &#34;dd4fff04efeebaf6614fd8c0c4e89bcb30f59acdb9c0d9d8971a6a3f05c8296e&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0b&#34;,
+   &#34;path&#34;: &#34;data/CTAB_1,3_1000shear_8m10a_8m10a_Iqxqy.dat&#34;,
+   &#34;sha256&#34;: &#34;7566ffd04f003afb75be29a90c626eb5ce9fa40ca444ad8318010068159d3bac&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0b&#34;,
+   &#34;path&#34;: &#34;data/CTAB_1,3_100shear_8m10a_8m10a_Iqxqy.dat&#34;,
+   &#34;sha256&#34;: &#34;e650f1be0201c9e52d3a4f7184c52eaad8c6772119c28c21d389be40ef8d01b3&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0b&#34;,
+   &#34;path&#34;: &#34;data/CTAB_1,3_10shear_8m10a_8m10a_Iqxqy.dat&#34;,
+   &#34;sha256&#34;: &#34;2d3ac22bf2e0f6c233bd2341f7482d9535881143fd4c23b1e0262e7162b3ae46&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0b&#34;,
+   &#34;path&#34;: &#34;data/CTAB_1,3_1shear_8m10a_8m10a_Iqxqy.dat&#34;,
+   &#34;sha256&#34;: &#34;0c635363f444646cad61bb50e42fd5bd08385693d204d0da8ed6c5d3fffa7f3b&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0b&#34;,
+   &#34;path&#34;: &#34;data/CTAB_2,3_0.1shear_8m10a_8m10a_Iqxqy.dat&#34;,
+   &#34;sha256&#34;: &#34;60982d41639e58023697263956f6650ab0edca2d1e537d2a064570bae8286510&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0b&#34;,
+   &#34;path&#34;: &#34;data/CTAB_2,3_0shear-return_8m10a_8m10a_Iqxqy.dat&#34;,
+   &#34;sha256&#34;: &#34;d1627fbdbfecaf6ee9ba3ad50acd94c4578fb10075ae2a53b7059b0c241bf13e&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0b&#34;,
+   &#34;path&#34;: &#34;data/CTAB_2,3_0shear_8m10a_8m10a_Iqxqy.dat&#34;,
+   &#34;sha256&#34;: &#34;d98f0932032216b2343d378ce0f1be1f4bf76cd70ac4c540233fe63b1e06dbd6&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0b&#34;,
+   &#34;path&#34;: &#34;data/CTAB_2,3_1000shear_8m10a_8m10a_Iqxqy.dat&#34;,
+   &#34;sha256&#34;: &#34;64d28250b707b8d0183751b161aa5a79825399d099771bd9d68fa40b2e0d8582&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0b&#34;,
+   &#34;path&#34;: &#34;data/CTAB_2,3_10shear_8m10a_8m10a_Iqxqy.dat&#34;,
+   &#34;sha256&#34;: &#34;378025bef9735daa6ca36bf8a8bb923c97f5d42cfbbacb5db4cd1777bdb1281f&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0b&#34;,
+   &#34;path&#34;: &#34;data/EmptyCupBob_1,3_0shear_8m10a_8m10a_Iqxqy.dat&#34;,
+   &#34;sha256&#34;: &#34;9535c4cb68692944b857e51eb0a69125668949c6330e596c6736a0b4f3b9b519&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0b&#34;,
+   &#34;path&#34;: &#34;data/EmptyCupBob_2,3_0shear_8m10a_8m10a_Iqxqy.dat&#34;,
+   &#34;sha256&#34;: &#34;284bbd375c4de87da6028e9cede2fa66f416129012ac9f81117f9a653af9552e&#34;
+  },
+  {
+   &#34;book_path&#34;: &#34;sources/S0b_ipts_37681_8m10a_2d_profiles/reduction/record.json&#34;,
+   &#34;sha256&#34;: &#34;c1007946add63e4462708830a0d944d816a09d41dd801428d38fc0f6da7dd212&#34;
+  }
+ ],
+ &#34;params&#34;: {
+  &#34;trim:merged_CTAB_1,3_0.1shear_Iq.txt&#34;: {
+   &#34;first&#34;: 2,
+   &#34;last&#34;: 5,
+   &#34;points_in&#34;: 124,
+   &#34;points_out&#34;: 117,
+   &#34;out&#34;: &#34;merged_CTAB_1,3_0.1shear_Iq_trimmed.txt&#34;
+  },
+  &#34;trim:merged_CTAB_1,3_0shear_Iq.txt&#34;: {
+   &#34;first&#34;: 2,
+   &#34;last&#34;: 5,
+   &#34;points_in&#34;: 124,
+   &#34;points_out&#34;: 117,
+   &#34;out&#34;: &#34;merged_CTAB_1,3_0shear_Iq_trimmed.txt&#34;
+  },
+  &#34;trim:merged_CTAB_1,3_0shear-return_Iq.txt&#34;: {
+   &#34;first&#34;: 2,
+   &#34;last&#34;: 5,
+   &#34;points_in&#34;: 124,
+   &#34;points_out&#34;: 117,
+   &#34;out&#34;: &#34;merged_CTAB_1,3_0shear-return_Iq_trimmed.txt&#34;
+  },
+  &#34;trim:merged_CTAB_1,3_1000shear_Iq.txt&#34;: {
+   &#34;first&#34;: 2,
+   &#34;last&#34;: 5,
+   &#34;points_in&#34;: 124,
+   &#34;points_out&#34;: 117,
+   &#34;out&#34;: &#34;merged_CTAB_1,3_1000shear_Iq_trimmed.txt&#34;
+  },
+  &#34;trim:merged_CTAB_1,3_100shear_Iq.txt&#34;: {
+   &#34;first&#34;: 2,
+   &#34;last&#34;: 5,
+   &#34;points_in&#34;: 124,
+   &#34;points_out&#34;: 117,
+   &#34;out&#34;: &#34;merged_CTAB_1,3_100shear_Iq_trimmed.txt&#34;
+  },
+  &#34;trim:merged_CTAB_1,3_10shear_Iq.txt&#34;: {
+   &#34;first&#34;: 2,
+   &#34;last&#34;: 5,
+   &#34;points_in&#34;: 124,
+   &#34;points_out&#34;: 117,
+   &#34;out&#34;: &#34;merged_CTAB_1,3_10shear_Iq_trimmed.txt&#34;
+  },
+  &#34;trim:merged_CTAB_1,3_1shear_Iq.txt&#34;: {
+   &#34;first&#34;: 2,
+   &#34;last&#34;: 5,
+   &#34;points_in&#34;: 124,
+   &#34;points_out&#34;: 117,
+   &#34;out&#34;: &#34;merged_CTAB_1,3_1shear_Iq_trimmed.txt&#34;
+  },
+  &#34;trim:merged_CTAB_2,3_0.1shear_Iq.txt&#34;: {
+   &#34;first&#34;: 2,
+   &#34;last&#34;: 5,
+   &#34;points_in&#34;: 124,
+   &#34;points_out&#34;: 117,
+   &#34;out&#34;: &#34;merged_CTAB_2,3_0.1shear_Iq_trimmed.txt&#34;
+  },
+  &#34;trim:merged_CTAB_2,3_0shear_Iq.txt&#34;: {
+   &#34;first&#34;: 2,
+   &#34;last&#34;: 5,
+   &#34;points_in&#34;: 124,
+   &#34;points_out&#34;: 117,
+   &#34;out&#34;: &#34;merged_CTAB_2,3_0shear_Iq_trimmed.txt&#34;
+  },
+  &#34;trim:merged_CTAB_2,3_0shear-return_Iq.txt&#34;: {
+   &#34;first&#34;: 2,
+   &#34;last&#34;: 5,
+   &#34;points_in&#34;: 124,
+   &#34;points_out&#34;: 117,
+   &#34;out&#34;: &#34;merged_CTAB_2,3_0shear-return_Iq_trimmed.txt&#34;
+  },
+  &#34;trim:merged_CTAB_2,3_1000shear_Iq.txt&#34;: {
+   &#34;first&#34;: 2,
+   &#34;last&#34;: 5,
+   &#34;points_in&#34;: 124,
+   &#34;points_out&#34;: 117,
+   &#34;out&#34;: &#34;merged_CTAB_2,3_1000shear_Iq_trimmed.txt&#34;
+  },
+  &#34;trim:merged_CTAB_2,3_10shear_Iq.txt&#34;: {
+   &#34;first&#34;: 2,
+   &#34;last&#34;: 5,
+   &#34;points_in&#34;: 124,
+   &#34;points_out&#34;: 117,
+   &#34;out&#34;: &#34;merged_CTAB_2,3_10shear_Iq_trimmed.txt&#34;
+  },
+  &#34;trim:merged_EmptyCupBob_1,3_0shear_Iq.txt&#34;: {
+   &#34;first&#34;: 2,
+   &#34;last&#34;: 5,
+   &#34;points_in&#34;: 124,
+   &#34;points_out&#34;: 117,
+   &#34;out&#34;: &#34;merged_EmptyCupBob_1,3_0shear_Iq_trimmed.txt&#34;
+  },
+  &#34;trim:merged_EmptyCupBob_2,3_0shear_Iq.txt&#34;: {
+   &#34;first&#34;: 2,
+   &#34;last&#34;: 5,
+   &#34;points_in&#34;: 124,
+   &#34;points_out&#34;: 117,
+   &#34;out&#34;: &#34;merged_EmptyCupBob_2,3_0shear_Iq_trimmed.txt&#34;
+  }
+ },
+ &#34;decisions&#34;: [
+  &#34;D1&#34;,
+  &#34;D2&#34;,
+  &#34;D3&#34;
+ ],
+ &#34;references&#34;: [],
+ &#34;outputs&#34;: [
+  &#34;figures/.overview&#34;,
+  &#34;figures/s1_2d_CTAB_1,3_0.1shear_8m10a_8m10a_Iqxqy.png&#34;,
+  &#34;figures/s1_2d_CTAB_1,3_0shear-return_8m10a_8m10a_Iqxqy.png&#34;,
+  &#34;figures/s1_2d_CTAB_1,3_0shear_8m10a_8m10a_Iqxqy.png&#34;,
+  &#34;figures/s1_2d_CTAB_1,3_1000shear_8m10a_8m10a_Iqxqy.png&#34;,
+  &#34;figures/s1_2d_CTAB_1,3_100shear_8m10a_8m10a_Iqxqy.png&#34;,
+  &#34;figures/s1_2d_CTAB_1,3_10shear_8m10a_8m10a_Iqxqy.png&#34;,
+  &#34;figures/s1_2d_CTAB_1,3_1shear_8m10a_8m10a_Iqxqy.png&#34;,
+  &#34;figures/s1_2d_CTAB_2,3_0.1shear_8m10a_8m10a_Iqxqy.png&#34;,
+  &#34;figures/s1_2d_CTAB_2,3_0shear-return_8m10a_8m10a_Iqxqy.png&#34;,
+  &#34;figures/s1_2d_CTAB_2,3_0shear_8m10a_8m10a_Iqxqy.png&#34;,
+  &#34;figures/s1_2d_CTAB_2,3_1000shear_8m10a_8m10a_Iqxqy.png&#34;,
+  &#34;figures/s1_2d_CTAB_2,3_10shear_8m10a_8m10a_Iqxqy.png&#34;,
+  &#34;figures/s1_2d_EmptyCupBob_1,3_0shear_8m10a_8m10a_Iqxqy.png&#34;,
+  &#34;figures/s1_2d_EmptyCupBob_2,3_0shear_8m10a_8m10a_Iqxqy.png&#34;,
+  &#34;figures/s1_merged_profiles_overlay.png&#34;,
+  &#34;figures/s1_order_parameter_equation.png&#34;,
+  &#34;figures/s1_order_parameter_vs_shear_rate.png&#34;,
+  &#34;gallery.html&#34;,
+  &#34;gallery.json&#34;,
+  &#34;merged_CTAB_1,3_0.1shear_Iq_trimmed.txt&#34;,
+  &#34;merged_CTAB_1,3_0shear-return_Iq_trimmed.txt&#34;,
+  &#34;merged_CTAB_1,3_0shear_Iq_trimmed.txt&#34;,
+  &#34;merged_CTAB_1,3_1000shear_Iq_trimmed.txt&#34;,
+  &#34;merged_CTAB_1,3_100shear_Iq_trimmed.txt&#34;,
+  &#34;merged_CTAB_1,3_10shear_Iq_trimmed.txt&#34;,
+  &#34;merged_CTAB_1,3_1shear_Iq_trimmed.txt&#34;,
+  &#34;merged_CTAB_2,3_0.1shear_Iq_trimmed.txt&#34;,
+  &#34;merged_CTAB_2,3_0shear-return_Iq_trimmed.txt&#34;,
+  &#34;merged_CTAB_2,3_0shear_Iq_trimmed.txt&#34;,
+  &#34;merged_CTAB_2,3_1000shear_Iq_trimmed.txt&#34;,
+  &#34;merged_CTAB_2,3_10shear_Iq_trimmed.txt&#34;,
+  &#34;merged_EmptyCupBob_1,3_0shear_Iq_trimmed.txt&#34;,
+  &#34;merged_EmptyCupBob_2,3_0shear_Iq_trimmed.txt&#34;,
+  &#34;order_parameter_table.csv&#34;,
+  &#34;overview.png&#34;,
+  &#34;reduction_table.csv&#34;,
+  &#34;summary.csv&#34;
+ ],
+ &#34;stdout&#34;: &#34;reduction_summary_output.txt&#34;,
+ &#34;returncode&#34;: 0,
+ &#34;wall_s&#34;: 7.63,
+ &#34;timed_out&#34;: false,
+ &#34;cancelled&#34;: false,
+ &#34;verdict&#34;: &#34;live&#34;
+}</pre></details>
+</section>
+<section class="tab" id="tab-S1b" data-id="S1b">
+  <div class="pagehead"><span class="badge dead">dead</span><h2>S1b — zero_shear_fit</h2></div>
+  <p class="path"><a href="#R1">R1</a> → S0a → <a href="#S1b">S1b</a></p>
+  <dl class="record">
+    <dt>Question</dt><dd>For the two CTAB samples at 0 shear, do the merged I(q) curves support a SasView worm-like-chain fit, and what are the fitted structural parameters and fit limitations?</dd>
+    <dt>Method</dt><dd>Fit each of the exact CTAB_1,3_0shear and CTAB_2,3_0shear merged curves independently with SasView flexible_cylinder over the full measured q range. Fixed SLDs to the model defaults by convention, floated scale, and inspected fit/residual diagnostics.</dd>
+    <dt>Result</dt><dd>S1b: Independently fit the full available q ranges (0.001997–0.4551 Å⁻¹ for CTAB_1,3_0shear; 0.002064–0.4558 Å⁻¹ for CTAB_2,3_0shear) with SasView flexible_cylinder, the worm-like-chain implementation. CTAB_1,3_0shear: χ²ᵣ = 40.38; scale 0.0180677 ± 0.0000126 (relative, not a volume fraction); background 0.097536 ± 0.000182 a.u.; contour length 10 Å (at lower bound; uncertainty 652.8 Å); Kuhn length 1913.1 ± 278.3 Å; radius 21.0587 ± 0.0094 Å. CTAB_2,3_0shear: χ²ᵣ = 58.21; scale 0.0065882 ± 0.0000064 (relative); background 0.041930 ± 0.000092 a.u.; contour length 10000 Å (at upper bound; uncertainty 1244.7 Å); Kuhn length 458.6 ± 7.1 Å; radius 21.7500 ± 0.0141 Å. Residuals are strongly systematic: CTAB_1,3_0shear shows low-q deviations, oscillatory mid/high-q residuals and a prominent mismatch around q ≈ 0.15–0.25 Å⁻¹; CTAB_2,3_0shear likewise has low-q bias and pronounced structured residuals around q ≈ 0.08–0.25 Å⁻¹. Both fits fail the data despite the high-q baseline being broadly tracked. Merged curves have no dQ, so resolution smearing was not applied; the first curve includes a negative-intensity low-q point, while the log plot cannot display it. S0a is relative intensity (a.u.); SLDs were fixed to SasView defaults solely as a computational convention. These fits do not support reliable structural parameter interpretation; the length estimates are especially unconstrained and at opposite bounds.</dd>
+<dt>Next</dt><dd>Treat S1b as a rejected full-range WLC fit; choose a justified alternative model or q range before structural interpretation.</dd><dt>Decisions</dt><dd>D2</dd>    <dt>From</dt><dd><a href="#S0a">S0a</a></dd>
+    <dt>Folder</dt><dd><code>pages/S1b_zero_shear_fit/</code> · 1 run · created 2026-11-03 · closed 2026-11-03</dd>
+  </dl>
+
+
+  <figure class="overview"><a href="../pages/S1b_zero_shear_fit/overview.png"><img src="../pages/S1b_zero_shear_fit/overview.png" alt="overview of S1b"></a><figcaption>overview.png</figcaption></figure>
+  <div class="gallery">
+    <figure><a href="../pages/S1b_zero_shear_fit/figures/s1b_CTAB_1_3_0shear_fit_diagnostics.png"><img src="../pages/S1b_zero_shear_fit/figures/s1b_CTAB_1_3_0shear_fit_diagnostics.png" alt="s1b_CTAB_1_3_0shear_fit_diagnostics.png" loading="lazy"></a><figcaption>s1b_CTAB_1_3_0shear_fit_diagnostics.png</figcaption></figure>
+    <figure><a href="../pages/S1b_zero_shear_fit/figures/s1b_CTAB_2_3_0shear_fit_diagnostics.png"><img src="../pages/S1b_zero_shear_fit/figures/s1b_CTAB_2_3_0shear_fit_diagnostics.png" alt="s1b_CTAB_2_3_0shear_fit_diagnostics.png" loading="lazy"></a><figcaption>s1b_CTAB_2_3_0shear_fit_diagnostics.png</figcaption></figure>
+  </div>
+
+  <h3>Fit: flexible_cylinder <span class="muted small">(CTAB_1_3_0shear_fit_params.json, sasmodels+bumps/lm)</span></h3>
+  <p>χ²<sub>r</sub> = <b>40.3838</b> · q 0.001997–0.4551 Å⁻¹</p>
+  <table class="num">
+    <thead><tr><th>parameter</th><th>value</th><th>± stderr</th><th>state</th><th>bounds</th></tr></thead>
+    <tbody>
+      <tr class="free"><td>scale</td><td>0.0180677</td><td>1.26151e-05</td><td>free</td><td>[1e-08, 10000]</td></tr>
+      <tr class="free"><td>background</td><td>0.0975356</td><td>0.000182017</td><td>free</td><td>[-10, 10]</td></tr>
+      <tr class="free"><td>length</td><td>10</td><td>652.844</td><td>free</td><td>[10, 10000]</td></tr>
+      <tr class="free"><td>kuhn_length</td><td>1913.11</td><td>278.303</td><td>free</td><td>[1, 3000]</td></tr>
+      <tr class="free"><td>radius</td><td>21.0587</td><td>0.0094263</td><td>free</td><td>[1, 100]</td></tr>
+      <tr class="fixed"><td>sld</td><td>1</td><td></td><td>fixed (requested)</td><td></td></tr>
+      <tr class="fixed"><td>sld_solvent</td><td>6.3</td><td></td><td>fixed (requested)</td><td></td></tr>
+    </tbody>
+  </table>
+<p class="warn">at bound: length at min 10</p><p class="muted small">no resolution smearing (no dQ column)</p>  <h3>Fit: flexible_cylinder <span class="muted small">(CTAB_2_3_0shear_fit_params.json, sasmodels+bumps/lm)</span></h3>
+  <p>χ²<sub>r</sub> = <b>58.2096</b> · q 0.002064–0.4558 Å⁻¹</p>
+  <table class="num">
+    <thead><tr><th>parameter</th><th>value</th><th>± stderr</th><th>state</th><th>bounds</th></tr></thead>
+    <tbody>
+      <tr class="free"><td>scale</td><td>0.0065882</td><td>6.42778e-06</td><td>free</td><td>[1e-08, 10000]</td></tr>
+      <tr class="free"><td>background</td><td>0.0419298</td><td>9.24103e-05</td><td>free</td><td>[-10, 10]</td></tr>
+      <tr class="free"><td>length</td><td>10000</td><td>1244.67</td><td>free</td><td>[10, 10000]</td></tr>
+      <tr class="free"><td>kuhn_length</td><td>458.583</td><td>7.08023</td><td>free</td><td>[1, 3000]</td></tr>
+      <tr class="free"><td>radius</td><td>21.75</td><td>0.0140774</td><td>free</td><td>[1, 100]</td></tr>
+      <tr class="fixed"><td>sld</td><td>1</td><td></td><td>fixed (requested)</td><td></td></tr>
+      <tr class="fixed"><td>sld_solvent</td><td>6.3</td><td></td><td>fixed (requested)</td><td></td></tr>
+    </tbody>
+  </table>
+<p class="warn">at bound: length at max 10000</p><p class="muted small">no resolution smearing (no dQ column)</p>  <h3>Fit: flexible_cylinder <span class="muted small">(fit_params.json, sasmodels+bumps/lm)</span></h3>
+  <p>χ²<sub>r</sub> = <b>58.2096</b> · q 0.002064–0.4558 Å⁻¹</p>
+  <table class="num">
+    <thead><tr><th>parameter</th><th>value</th><th>± stderr</th><th>state</th><th>bounds</th></tr></thead>
+    <tbody>
+      <tr class="free"><td>scale</td><td>0.0065882</td><td>6.42778e-06</td><td>free</td><td>[1e-08, 10000]</td></tr>
+      <tr class="free"><td>background</td><td>0.0419298</td><td>9.24103e-05</td><td>free</td><td>[-10, 10]</td></tr>
+      <tr class="free"><td>length</td><td>10000</td><td>1244.67</td><td>free</td><td>[10, 10000]</td></tr>
+      <tr class="free"><td>kuhn_length</td><td>458.583</td><td>7.08023</td><td>free</td><td>[1, 3000]</td></tr>
+      <tr class="free"><td>radius</td><td>21.75</td><td>0.0140774</td><td>free</td><td>[1, 100]</td></tr>
+      <tr class="fixed"><td>sld</td><td>1</td><td></td><td>fixed (requested)</td><td></td></tr>
+      <tr class="fixed"><td>sld_solvent</td><td>6.3</td><td></td><td>fixed (requested)</td><td></td></tr>
+    </tbody>
+  </table>
+<p class="warn">at bound: length at max 10000</p><p class="muted small">no resolution smearing (no dQ column)</p>
+  <h3><a href="../pages/S1b_zero_shear_fit/fit_summary.csv">fit_summary.csv</a> <span class="muted small">2 rows</span></h3>
+  <div class="tablewrap"><table class="num">
+    <thead><tr><th>sample</th><th>chi2r</th><th>at_bounds</th><th>scale</th><th>scale_stderr</th><th>background</th><th>background_stderr</th><th>length</th><th>length_stderr</th><th>kuhn_length</th><th>kuhn_length_stderr</th><th>radius</th><th>radius_stderr</th></tr></thead>
+    <tbody><tr><td>CTAB_1,3_0shear</td><td>40.3838</td><td>[&#39;length at min 10&#39;]</td><td>0.0180677</td><td>1.26151e-05</td><td>0.0975356</td><td>0.000182017</td><td>10</td><td>652.844</td><td>1913.11</td><td>278.303</td><td>21.0587</td><td>0.0094263</td></tr><tr><td>CTAB_2,3_0shear</td><td>58.2096</td><td>[&#39;length at max 10000&#39;]</td><td>0.0065882</td><td>6.42778e-06</td><td>0.0419298</td><td>9.24103e-05</td><td>10000</td><td>1244.67</td><td>458.583</td><td>7.08023</td><td>21.75</td><td>0.0140774</td></tr></tbody>
+  </table></div>
+
+  <details><summary>Script output (last lines of the last good run)</summary><pre>flexible_cylinder (sasmodels+bumps/lm): chi2r = 40.38, 124 points, 5 free, q 0.001997–0.4551 1/A
+  scale                  0.0180677 ± 1.262e-05  (free)  [1e-08, 10000.0]
+  background             0.0975356 ± 0.000182  (free)  [-10.0, 10.0]
+  length                 10 ± 652.8  (free)  [10.0, 10000.0]
+  kuhn_length            1913.11 ± 278.3  (free)  [1.0, 3000.0]
+  radius                 21.0587 ± 0.009426  (free)  [1.0, 100.0]
+  sld                    1  (fixed)
+  sld_solvent            6.3  (fixed)
+  WARNING: length at min 10
+  note: no resolution smearing (no dQ column)
+flexible_cylinder (sasmodels+bumps/lm): chi2r = 58.21, 124 points, 5 free, q 0.002064–0.4558 1/A
+  scale                  0.0065882 ± 6.428e-06  (free)  [1e-08, 10000.0]
+  background             0.0419298 ± 9.241e-05  (free)  [-10.0, 10.0]
+  length                 10000 ± 1245  (free)  [10.0, 10000.0]
+  kuhn_length            458.583 ± 7.08  (free)  [1.0, 3000.0]
+  radius                 21.75 ± 0.01408  (free)  [1.0, 100.0]
+  sld                    1  (fixed)
+  sld_solvent            6.3  (fixed)
+  WARNING: length at max 10000
+  note: no resolution smearing (no dQ column)</pre></details>
+  <details><summary>Script: zero_shear_wlc.py</summary><pre><code>import json
+import shutil
+import numpy as np
+import matplotlib.pyplot as plt
+from sansbook.lib import io, plot, fit_sas, out, stamp
+from sansbook.lib.paths import source_file
+
+source = &#34;S0a&#34;
+files = [
+    source_file(source, &#34;merged_CTAB_1,3_0shear_Iq.txt&#34;),
+    source_file(source, &#34;merged_CTAB_2,3_0shear_Iq.txt&#34;),
+]
+curves = [io.load(f) for f in files]
+names = [&#34;CTAB_1,3_0shear&#34;, &#34;CTAB_2,3_0shear&#34;]
+stamp.param(&#34;source&#34;, source)
+stamp.param(&#34;samples&#34;, names)
+stamp.param(&#34;model&#34;, &#34;SasView flexible_cylinder (worm-like chain)&#34;)
+stamp.param(&#34;fit_q_ranges_A^-1&#34;, [[float(np.min(c.q)), float(np.max(c.q))] for c in curves])
+stamp.param(&#34;fixed_SLD_convention_1e-6_A^-2&#34;, {&#34;sld&#34;: 1.0, &#34;sld_solvent&#34;: 6.3})
+
+# Parameters are all fitted within these bounds; SLDs are fixed to model defaults.
+bounds = {
+    &#34;scale&#34;: (1e-8, 1e4),
+    &#34;background&#34;: (-10.0, 10.0),
+    &#34;length&#34;: (10.0, 10000.0),
+    &#34;kuhn_length&#34;: (1.0, 3000.0),
+    &#34;radius&#34;: (1.0, 100.0),
+}
+pars = {&#34;scale&#34;: 1.0, &#34;background&#34;: 0.0, &#34;length&#34;: 1000.0,
+        &#34;kuhn_length&#34;: 100.0, &#34;radius&#34;: 20.0,
+        &#34;sld&#34;: 1.0, &#34;sld_solvent&#34;: 6.3}
+fit_results = []
+summary_rows = []
+
+for curve, label in zip(curves, names):
+    r = fit_sas.fit(curve, &#34;flexible_cylinder&#34;, pars=pars, bounds=bounds,
+                    fixed={&#34;sld&#34;: 1.0, &#34;sld_solvent&#34;: 6.3},
+                    q_range=(float(np.min(curve.q)), float(np.max(curve.q))))
+    r.save()
+    # Preserve each fit&#39;s standard save products before the next fit replaces them.
+    safe = label.replace(&#34;,&#34;, &#34;_&#34;)
+    shutil.copyfile(&#34;fit_params.json&#34;, f&#34;{safe}_fit_params.json&#34;)
+    shutil.copyfile(&#34;fit_params_curve.txt&#34;, f&#34;{safe}_fit_curve.txt&#34;)
+    fig = r.plot()
+    plot.save(fig, f&#34;{safe}_fit_diagnostics&#34;)
+    fit_results.append((label, r))
+    row = {&#34;sample&#34;: label, &#34;chi2r&#34;: float(r.chi2r), &#34;at_bounds&#34;: str(r.at_bounds())}
+    for p in (&#34;scale&#34;, &#34;background&#34;, &#34;length&#34;, &#34;kuhn_length&#34;, &#34;radius&#34;):
+        row[p] = float(r.value(p))
+        row[p + &#34;_stderr&#34;] = r.params[p][&#34;stderr&#34;]
+    summary_rows.append(row)
+
+# Overview: both measured curves in the same axes; per-sample fit/residual diagnostics are separate.
+ax = plot.iq(curves, scale=&#34;loglog&#34;, labels=names)
+ax.set_title(&#34;0-shear merged I(q) — relative intensity&#34;)
+plot.save(ax.figure, &#34;zero_shear_data_overview&#34;, overview=True)
+out.summary(summary_rows, &#34;fit_summary.csv&#34;)
+out.save_json({&#34;model&#34;: &#34;flexible_cylinder&#34;, &#34;fit_q_ranges_A^-1&#34;: stamp.get(&#34;fit_q_ranges_A^-1&#34;) if hasattr(stamp, &#34;get&#34;) else [[float(np.min(c.q)), float(np.max(c.q))] for c in curves], &#34;results&#34;: summary_rows}, &#34;fit_summary.json&#34;)
+</code></pre></details>
+  <details><summary>Provenance: commit 7f7d24a971, python 3.11.17, 3 input file(s)</summary><pre>{
+ &#34;id&#34;: &#34;S1b&#34;,
+ &#34;parents&#34;: [
+  &#34;S0a&#34;
+ ],
+ &#34;name&#34;: &#34;zero_shear_fit&#34;,
+ &#34;created_utc&#34;: &#34;2026-11-03T22:25:33Z&#34;,
+ &#34;run_utc&#34;: &#34;2026-11-03T22:26:17Z&#34;,
+ &#34;run_number&#34;: 1,
+ &#34;script&#34;: &#34;zero_shear_wlc.py&#34;,
+ &#34;code&#34;: {
+  &#34;book_commit&#34;: &#34;7f7d24a971a3bfe27a4005b5a28792729c37e191&#34;,
+  &#34;dirty_files&#34;: [],
+  &#34;sansbook&#34;: &#34;0.3.10&#34;,
+  &#34;edited_outside_sansbook&#34;: false
+ },
+ &#34;env&#34;: {
+  &#34;python&#34;: &#34;3.11.17&#34;,
+  &#34;executable&#34;: &#34;/gpfs/neutronsfs/instruments/EQSANS/shared/script/sansbook/versions/v0.3.10/bin/python&#34;,
+  &#34;key_packages&#34;: {
+   &#34;numpy&#34;: &#34;2.4.6&#34;,
+   &#34;scipy&#34;: &#34;1.17.1&#34;,
+   &#34;matplotlib&#34;: &#34;3.11.2&#34;,
+   &#34;sasmodels&#34;: &#34;1.1.0&#34;,
+   &#34;bumps&#34;: &#34;1.0.5&#34;,
+   &#34;h5py&#34;: &#34;3.16.0&#34;
+  }
+ },
+ &#34;model&#34;: {
+  &#34;llm&#34;: &#34;openai/gpt-6-luna&#34;,
+  &#34;session&#34;: &#34;2026-11-03T171532&#34;
+ },
+ &#34;sources&#34;: [
+  &#34;S0a&#34;
+ ],
+ &#34;inputs&#34;: [
+  {
+   &#34;source_id&#34;: &#34;S0a&#34;,
+   &#34;path&#34;: &#34;data/merged_CTAB_1,3_0shear_Iq.txt&#34;,
+   &#34;sha256&#34;: &#34;34cbe79b7a2ea49df64191a48333ce3797f2dc1c6c21f95e6a98715872788174&#34;
+  },
+  {
+   &#34;source_id&#34;: &#34;S0a&#34;,
+   &#34;path&#34;: &#34;data/merged_CTAB_2,3_0shear_Iq.txt&#34;,
+   &#34;sha256&#34;: &#34;8175a84a3cd8d1603507cbd0005e25b49d7a9072fc178a43397c820918dbc76e&#34;
+  },
+  {
+   &#34;book_path&#34;: &#34;sources/S0a_r1_merged_iq_files/reduction/record.json&#34;,
+   &#34;sha256&#34;: &#34;f7b5de319b10cc33f45eab6d53e8ed0d961bb7dd1848344cbd6d5eb926b96dae&#34;
+  }
+ ],
+ &#34;params&#34;: {
+  &#34;source&#34;: &#34;S0a&#34;,
+  &#34;samples&#34;: [
+   &#34;CTAB_1,3_0shear&#34;,
+   &#34;CTAB_2,3_0shear&#34;
+  ],
+  &#34;model&#34;: &#34;SasView flexible_cylinder (worm-like chain)&#34;,
+  &#34;fit_q_ranges_A^-1&#34;: [
+   [
+    0.001997139,
+    0.4551466
+   ],
+   [
+    0.002064036,
+    0.4557945
+   ]
+  ],
+  &#34;fixed_SLD_convention_1e-6_A^-2&#34;: {
+   &#34;sld&#34;: 1.0,
+   &#34;sld_solvent&#34;: 6.3
+  },
+  &#34;constraints&#34;: {
+   &#34;fixed&#34;: {
+    &#34;sld&#34;: 1.0,
+    &#34;sld_solvent&#34;: 6.3
+   },
+   &#34;model&#34;: &#34;flexible_cylinder&#34;
+  }
+ },
+ &#34;decisions&#34;: [],
+ &#34;references&#34;: [],
+ &#34;outputs&#34;: [
+  &#34;CTAB_1_3_0shear_fit_curve.txt&#34;,
+  &#34;CTAB_1_3_0shear_fit_params.json&#34;,
+  &#34;CTAB_2_3_0shear_fit_curve.txt&#34;,
+  &#34;CTAB_2_3_0shear_fit_params.json&#34;,
+  &#34;figures/.overview&#34;,
+  &#34;figures/s1b_CTAB_1_3_0shear_fit_diagnostics.png&#34;,
+  &#34;figures/s1b_CTAB_2_3_0shear_fit_diagnostics.png&#34;,
+  &#34;figures/s1b_zero_shear_data_overview.png&#34;,
+  &#34;fit_params.json&#34;,
+  &#34;fit_params_curve.txt&#34;,
+  &#34;fit_summary.csv&#34;,
+  &#34;fit_summary.json&#34;,
+  &#34;overview.png&#34;
+ ],
+ &#34;stdout&#34;: &#34;zero_shear_wlc_output.txt&#34;,
+ &#34;returncode&#34;: 0,
+ &#34;wall_s&#34;: 5.41,
+ &#34;timed_out&#34;: false,
+ &#34;cancelled&#34;: false,
+ &#34;verdict&#34;: &#34;open&#34;
+}</pre></details>
+</section>
+</main>
+</div>
+<footer class="foot">Made by sansbook 0.3.10. Figures are linked from the book's pages/ folder: keep the report inside its book.</footer>
+<script src="report.js"></script>
+</body>
+</html>

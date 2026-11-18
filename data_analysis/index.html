@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From I(Q) to Structure — Changwoo Do</title>
+<!--
+  From I(Q) to Structure: 1D data analysis for Rheo-SANS — RheoSANS workshop, SNS, 19 November 2026
+  (Session 3B, Rheo-SANS Analysis). The deck after "From Runs to I(Q)" (../data_reduction/).
+
+  Open with "Start Rheo-SANS analysis.cmd" one folder up (it also works by double-clicking this file,
+  except that the reports in the sansbook demos then cannot be scrolled by the deck).
+
+  Files:  index.html (slides)   analysis.css (this deck)   demos.js (the three demos, step by step)
+          assets/ (written by prepare_assets.py)   ref/ (SasView screenshots from the cluster, tools)
+  Shared: ../eqsans_intro/deck.css (ORNL theme)   ../data_reduction/demo.css, demo.js, deck.js
+          (demo player, terminal / browser / sansbook screens, navigation)   ../shared/nav.* (slide picker)
+  Slides: 1 cover → 2 what we do → 3 the model → 4 demo: SasView → 5 demo: fit with sansbook
+          → 6 the two fits side by side → 7 demo: order parameter → 8 order parameter vs shear rate → 9 thank you
+  Keys:   → / PgDn / Space   next (on a demo: next step)     ← / PgUp   previous
+          R replay the demo step    F fullscreen    B black    4 Enter   go to slide 4    O all slides
+          Address "#4.6" opens slide 4 at step 6.
+-->
+<link rel="stylesheet" href="../eqsans_intro/deck.css?v=2">
+<link rel="stylesheet" href="../data_reduction/demo.css?v=6">
+<link rel="stylesheet" href="analysis.css?v=1">
+<link rel="stylesheet" href="../shared/nav.css?v=3">
+<style>.s-cover { background: #0b1416; }</style>
+</head>
+<body data-deck="From I(Q) to Structure">
+<div class="deck-viewport">
+<main class="deck-stage" id="stage">
+
+<!-- === 1 · COVER === -->
+<section class="slide s-cover no-chrome" id="s-cover" data-title="From I(Q) to Structure">
+  <div class="cover-bg"><img class="bgimg" src="../eqsans_intro/assets/cover.jpg" alt="The Spallation Neutron Source from the air"></div>
+  <div class="cover-card">
+    <div class="cover-panel"></div>
+    <img class="cover-logo cover-fade" src="../eqsans_intro/assets/logo_color.png" alt="Oak Ridge National Laboratory — Spallation Neutron Source">
+    <div class="cover-kicker cover-fade" style="animation-delay:.4s">RheoSANS Workshop · Day 2 · Data analysis</div>
+    <h1 class="cover-title cover-fade" style="animation-delay:.55s; font-size:84px">From I(Q)<br>to Structure</h1>
+    <div class="cover-bar"></div>
+    <div class="cover-by cover-fade" style="animation-delay:1.1s">HANDS-ON MODEL FITTING AND ORDER PARAMETER</div>
+    <div class="cover-name cover-fade" style="animation-delay:1.25s">Changwoo Do</div>
+    <div class="cover-role cover-fade" style="animation-delay:1.4s">EQ-SANS Point of Contact<br>Neutron Scattering Division, Spallation Neutron Source</div>
+    <img class="cover-doe cover-fade" style="animation-delay:1.6s" src="../eqsans_intro/assets/logo_doe.png" alt="U.S. Department of Energy">
+    <div class="cover-managed cover-fade" style="animation-delay:1.7s">ORNL is managed by UT-Battelle LLC for the US Department of Energy</div>
+  </div>
+</section>
+
+<!-- === 2 · WHAT WE DO === -->
+<section class="slide s-white" id="s-ways" data-title="What we do">
+  <div class="kicker">Today, with the reduced data</div>
+  <h2 class="title">One fit, done twice, and one number from the 2D maps</h2>
+  <div class="way rise" style="--i:1; left:52px">
+    <div class="num">1 · BY HAND</div><h3>Fit in SasView</h3><div class="tool">sasview</div>
+    <p>You load the curve, pick the model, tick the parameters and press Fit.</p>
+    <div class="you"><span>You get</span>A fit you watched happen</div>
+  </div>
+  <div class="way rise" style="--i:2; left:680px">
+    <div class="num">2 · BY ASKING</div><h3>The same fit, asked for</h3><div class="tool">sansbook</div>
+    <p>You say which data and which model. It fits, looks at the residuals and writes a page.</p>
+    <div class="you"><span>You get</span>The numbers, a verdict and a report page</div>
+  </div>
+  <div class="way rise" style="--i:3; left:1308px">
+    <div class="num">3 · BEYOND I(Q)</div><h3>Order parameter</h3><div class="tool">sansbook</div>
+    <p>From the 2D maps: one number per shear rate for how aligned the scattering is.</p>
+    <div class="you"><span>You get</span>A table, a plot and the definition in words</div>
+  </div>
+  <div class="dataset rise" style="--i:4"><b>The data:</b> IPTS-37681, CTAB in the cup-and-bob cell · the merged I(Q) at rest for the fit · the 8m10a 2D maps at shear 0 to 1000 for the order parameter</div>
+</section>
+
+<!-- === 3 · THE MODEL === -->
+<section class="slide s-white" id="s-model" data-title="The model">
+  <div class="kicker">Before the fit</div>
+  <h2 class="title">The model: a flexible cylinder</h2>
+  <div class="worm rise" style="--i:1">
+    <svg viewBox="0 0 800 640" role="img" aria-label="A worm-like chain with its contour length, Kuhn length and radius">
+      <path d="M70,455 C170,255 270,585 390,405 S 590,175 730,300" fill="none" stroke="#00662C" stroke-width="50" stroke-linecap="round"/>
+      <path d="M70,455 C170,255 270,585 390,405 S 590,175 730,300" fill="none" stroke="#CFE8D6" stroke-width="43" stroke-linecap="round"/>
+      <path d="M70,455 C170,255 270,585 390,405 S 590,175 730,300" fill="none" stroke="#00662C" stroke-width="2.5" stroke-dasharray="3 9"/>
+      <!-- contour length -->
+      <text class="v" x="44" y="72">length</text><text x="150" y="72">the contour length L, along the chain</text>
+      <path d="M96,86 L96,128 Q98,300 86,412" fill="none" stroke="#5B6770" stroke-width="2"/>
+      <!-- Kuhn length: a straight stretch -->
+      <path d="M420,318 L560,202" stroke="#FF9E1B" stroke-width="6" stroke-linecap="round"/>
+      <path d="M420,318 l-9,-11 M560,202 l9,11 M420,318 l9,11 M560,202 l-9,-11" stroke="#FF9E1B" stroke-width="5" stroke-linecap="round"/>
+      <text class="v" x="286" y="150">kuhn_length</text><text x="286" y="184">b: how far it stays straight</text>
+      <path d="M440,196 L478,262" fill="none" stroke="#5B6770" stroke-width="2"/>
+      <!-- radius -->
+      <path d="M254,443 L254,468" stroke="#1c1c1c" stroke-width="5"/>
+      <path d="M245,443 h18 M245,468 h18" stroke="#1c1c1c" stroke-width="4"/>
+      <text class="v" x="178" y="592">radius</text><text x="276" y="592">R of the cross-section</text>
+      <path d="M254,476 L254,562" fill="none" stroke="#5B6770" stroke-width="2"/>
+    </svg>
+  </div>
+  <table class="ptab rise" style="--i:2">
+    <thead><tr><th>Parameter</th><th>What it is</th><th>Default</th><th>Today</th></tr></thead>
+    <tbody>
+      <tr><td class="v">scale</td><td>Height of the curve. A volume fraction only when the data are in absolute units.</td><td class="d">1</td><td><span class="fit">fit</span></td></tr>
+      <tr><td class="v">background</td><td>Flat level at high Q.</td><td class="d">0.001</td><td><span class="fit">fit</span></td></tr>
+      <tr><td class="v">length</td><td>Contour length L.</td><td class="d">1000 Å</td><td><span class="fit">fit</span></td></tr>
+      <tr><td class="v">kuhn_length</td><td>Kuhn length b, twice the persistence length.</td><td class="d">100 Å</td><td><span class="fit">fit</span></td></tr>
+      <tr><td class="v">radius</td><td>Radius R of the cross-section.</td><td class="d">20 Å</td><td><span class="fit">fit</span></td></tr>
+      <tr><td class="v">sld<br>sld_solvent</td><td>Scattering length densities of the chain and of the solvent, in 10⁻⁶ Å⁻².</td><td class="d">1.0<br>6.3</td><td><span class="fix">fixed</span></td></tr>
+    </tbody>
+  </table>
+  <div class="dataset rise" style="--i:3">SasView calls the worm-like chain <b>flexible_cylinder</b>, in the category Cylinder. Our intensities are relative (a.u.), so only the shape of the curve carries information.</div>
+</section>
+
+<!-- === 4 · DEMO: SASVIEW === -->
+<section class="slide s-demo no-chrome" id="s-sasview" data-demo="sasview" data-title="Fit by hand: SasView"></section>
+
+<!-- === 5 · DEMO: THE SAME FIT WITH SANSBOOK === -->
+<section class="slide s-demo no-chrome" id="s-fit" data-demo="fit" data-title="Fit by asking: sansbook"></section>
+
+<!-- === 6 · THE TWO FITS SIDE BY SIDE === -->
+<section class="slide s-white" id="s-compare" data-title="Two fits, one answer">
+  <div class="kicker">CTAB at rest, 1,3 plane · flexible_cylinder · the full Q range</div>
+  <h2 class="title">Same data, same model, same numbers</h2>
+  <div class="cmp-fig two rise" style="--i:1; left:52px; width:462px"><div class="cap">SasView <span>by hand</span></div><img src="assets/fig/fit_sasview_iq.png" alt="SasView graph of the data and the fitted flexible_cylinder"><img src="assets/fig/fit_sasview_res.png" alt="SasView graph of the residuals"></div>
+  <div class="cmp-fig rise" style="--i:2; left:530px; width:462px"><div class="cap">sansbook <span>by asking</span></div><img src="assets/fig/fit_sansbook.png" alt="sansbook figure of the data, the fit and the residuals"></div>
+  <table class="cmp rise" style="--i:3">
+    <thead><tr><th></th><th>SasView</th><th>sansbook</th></tr></thead>
+    <tbody>
+      <tr><td>χ²</td><td>40.381</td><td>40.38</td></tr>
+      <tr class="ok"><td>radius <small>Å</small></td><td>21.059 ± 0.009</td><td>21.059 ± 0.009</td></tr>
+      <tr class="ok"><td>scale</td><td>0.018068 ± 0.000013</td><td>0.018068 ± 0.000013</td></tr>
+      <tr class="ok"><td>background</td><td>0.09754 ± 0.00018</td><td>0.09754 ± 0.00018</td></tr>
+      <tr class="bad"><td>kuhn_length <small>Å</small></td><td>1916 ± 117</td><td>1913 ± 278</td></tr>
+      <tr class="bad"><td>length <small>Å</small></td><td>2.4 ± 6.8</td><td>10 ± 653 <small>at its limit</small></td></tr>
+    </tbody>
+  </table>
+  <div class="verdict rise" style="--i:4">Both use the same engine, sasmodels with a Levenberg–Marquardt fit, so they agree. <b>Radius, scale and background are solid.</b> <span class="w">Length and Kuhn length are not:</span> the residuals swing by ±15 σ, and the length ran to wherever it was allowed to go. sansbook said so itself and closed the page as dead; its next step: “choose a justified alternative model or q range”.</div>
+</section>
+
+<!-- === 7 · DEMO: ORDER PARAMETER === -->
+<section class="slide s-demo no-chrome" id="s-order" data-demo="order" data-title="Order parameter by asking"></section>
+
+<!-- === 8 · ORDER PARAMETER VS SHEAR RATE === -->
+<section class="slide s-white" id="s-op" data-title="Order parameter vs shear rate">
+  <div class="kicker">8m10a 2D maps · all 6,389 pixels of each map</div>
+  <h2 class="title">One number for the anisotropy</h2>
+  <div class="op-eq rise" style="--i:1">
+    <div class="f"><span><i>S</i><sub>2</sub> =</span><span class="frac"><span>Σ<sub>i</sub> <i>I</i><sub>i</sub> cos[2(φ<sub>i</sub> − φ<sub>0</sub>)]</span><span>Σ<sub>i</sub> <i>I</i><sub>i</sub></span></span></div>
+    <p>φ<sub>i</sub> = <code>atan2(q<sub>y</sub>, q<sub>x</sub>)</code> of pixel i · φ<sub>0</sub> = 0° along +q<sub>x</sub> · 0 means no preferred direction, negative means intensity along q<sub>y</sub></p>
+  </div>
+  <div class="op-maps rise" style="--i:2">
+    <div class="m"><img src="assets/fig/map_13_0.png" alt="2D map, 1,3 plane at rest">1,3 · at rest<b>0.015</b></div>
+    <div class="m"><img src="assets/fig/map_13_1000.png" alt="2D map, 1,3 plane at shear rate 1000">1,3 · 1000<b>−0.528</b></div>
+    <div class="m"><img src="assets/fig/map_23_0.png" alt="2D map, 2,3 plane at rest">2,3 · at rest<b>0.368</b></div>
+    <div class="m"><img src="assets/fig/map_23_1000.png" alt="2D map, 2,3 plane at shear rate 1000">2,3 · 1000<b>0.193</b></div>
+  </div>
+  <div class="op-read rise" style="--i:3">In <b>1,3</b> the alignment grows with the shear rate and is gone again when the shear stops (0.008). The <b>2,3</b> maps are anisotropic already at rest, so read their change, not their value.</div>
+  <div class="op-plot rise" style="--i:2"><img src="assets/fig/order_parameter.png" alt="S2 against shear rate for the 1,3 and 2,3 planes, made by sansbook"></div>
+</section>
+
+<!-- === 9 · THANK YOU === -->
+<section class="slide s-closing no-chrome" id="s-thanks" data-title="Thank you">
+  <img class="bgimg" src="../eqsans_intro/assets/closing.jpg" alt="Oak Ridge National Laboratory from the air">
+  <div class="cl-title">Thank you</div>
+  <div class="cl-bar"></div>
+  <div class="cl-sub">Changwoo Do · EQ-SANS</div>
+  <div class="cl-name">Spallation Neutron Source, Oak Ridge National Laboratory</div>
+  <div class="recap"><div><b>SasView</b> load · model · tick · Fit</div><div><b>sansbook</b> ask for the fit, read its verdict</div><div><b>S₂</b> one number per 2D map</div></div>
+</section>
+
+</main>
+</div>
+<div id="progress"></div>
+<div id="blackout"></div>
+<script src="assets/demo_data.js?v=1"></script>
+<script src="../data_reduction/demo.js?v=4"></script>
+<script src="demos.js?v=2"></script>
+<script src="../data_reduction/deck.js?v=4"></script>
+<script src="../shared/nav.js?v=3"></script>
+</body>
+</html>
