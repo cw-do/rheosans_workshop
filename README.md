@@ -5,13 +5,16 @@ Slides for the RheoSANS Workshop at the Spallation Neutron Source, Oak Ridge Nat
 
 **Open: https://cw-do.github.io/rheosans_workshop/**
 
-The front page has three cards:
+The front page has four cards:
 
 1. **Introduction to EQ-SANS** — the instrument as a live 3D model, its Q range, the sample environments,
    and the rheometer in the beam (1–3 and 2–3 planes).
 2. **From Runs to I(Q)** — data reduction three ways: a drtsans script, asking sansbook, browsing with sansdir.
 3. **From I(Q) to Structure** — a flexible-cylinder fit in SasView, the same fit by asking sansbook,
    and the order parameter from the 2D maps.
+4. **Micelles in the Gap** — one interactive page: CTAB wormlike micelles aligning in the Couette gap, with the
+   gap, the molecules and the detector pattern beside the cell. Schematic, not a simulation of the data.
+   Its corner link opens the page as it was first made (`micelle/original.html`).
 
 Keys: `→` `←` (or Space / PgDn / PgUp) move; on a demo slide they move step by step. `O` shows all slides,
 `F` toggles full screen, `R` replays a demo step. The pill at the top right has the same as buttons:
