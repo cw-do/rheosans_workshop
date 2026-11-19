@@ -139,20 +139,21 @@
 
 <!-- === 8 · ORDER PARAMETER VS SHEAR RATE === -->
 <section class="slide s-white" id="s-op" data-title="Order parameter vs shear rate">
-  <div class="kicker">8m10a 2D maps · all 6,389 pixels of each map</div>
+  <div class="kicker">8m10a 2D maps · I(φ) from 0.005 ≤ q ≤ 0.02 Å⁻¹ · as in anisotropicfactor_template.xlsx</div>
   <h2 class="title">One number for the anisotropy</h2>
-  <div class="op-eq rise" style="--i:1">
-    <div class="f"><span><i>S</i><sub>2</sub> =</span><span class="frac"><span>Σ<sub>i</sub> <i>I</i><sub>i</sub> cos[2(φ<sub>i</sub> − φ<sub>0</sub>)]</span><span>Σ<sub>i</sub> <i>I</i><sub>i</sub></span></span></div>
-    <p>φ<sub>i</sub> = <code>atan2(q<sub>y</sub>, q<sub>x</sub>)</code> of pixel i · φ<sub>0</sub> = 0° along +q<sub>x</sub> · 0 means no preferred direction, negative means intensity along q<sub>y</sub></p>
+  <div class="op-eq two rise" style="--i:1">
+    <div class="f"><span><i>A</i><sub>f</sub> =</span><span class="frac"><span>Σ<sub>φ</sub> <i>I</i>(φ) cos[2(φ − φ<sub>0</sub>)]</span><span>Σ<sub>φ</sub> <i>I</i>(φ)</span></span></div>
+    <div class="f"><span><i>A</i><sub>f,L</sub> =</span><span class="frac"><span>Σ<sub>φ</sub> <i>I</i>(φ) P<sub>2</sub>(cos(φ − φ<sub>0</sub>)) |sin(φ − φ<sub>0</sub>)|</span><span>Σ<sub>φ</sub> <i>I</i>(φ) |sin(φ − φ<sub>0</sub>)|</span></span></div>
+    <p><i>I</i>(φ): 100 bins of 3.6°, mean of the pixels between the dashed circles · φ<sub>0</sub> = 90°, along +q<sub>y</sub> · positive = intensity along q<sub>y</sub>, 0 = none preferred, negative = along q<sub>x</sub></p>
   </div>
   <div class="op-maps rise" style="--i:2">
-    <div class="m"><img src="assets/fig/map_13_0.png" alt="2D map, 1,3 plane at rest">1,3 · at rest<b>0.015</b></div>
-    <div class="m"><img src="assets/fig/map_13_1000.png" alt="2D map, 1,3 plane at shear rate 1000">1,3 · 1000<b>−0.528</b></div>
-    <div class="m"><img src="assets/fig/map_23_0.png" alt="2D map, 2,3 plane at rest">2,3 · at rest<b>0.368</b></div>
-    <div class="m"><img src="assets/fig/map_23_1000.png" alt="2D map, 2,3 plane at shear rate 1000">2,3 · 1000<b>0.193</b></div>
+    <div class="m"><img src="assets/fig/ann_13_0.png" alt="2D map, 1,3 plane at rest, with the q annulus">1,3 · at rest<b>−0.004</b></div>
+    <div class="m"><img src="assets/fig/ann_13_1000.png" alt="2D map, 1,3 plane at shear rate 1000, with the q annulus">1,3 · 1000<b>0.607</b></div>
+    <div class="m"><img src="assets/fig/ann_23_0.png" alt="2D map, 2,3 plane at rest, with the q annulus">2,3 · at rest<b>−0.209</b></div>
+    <div class="m"><img src="assets/fig/ann_23_1000.png" alt="2D map, 2,3 plane at shear rate 1000, with the q annulus">2,3 · 1000<b>−0.034</b></div>
   </div>
-  <div class="op-read rise" style="--i:3">In <b>1,3</b> the alignment grows with the shear rate and is gone again when the shear stops (0.008). The <b>2,3</b> maps are anisotropic already at rest, so read their change, not their value.</div>
-  <div class="op-plot rise" style="--i:2"><img src="assets/fig/order_parameter.png" alt="S2 against shear rate for the 1,3 and 2,3 planes, made by sansbook"></div>
+  <div class="op-read rise" style="--i:3"><i>A</i><sub>f</sub> under each map. In <b>1,3</b> the alignment grows with the shear rate and is gone again when the shear stops (−0.001). The <b>2,3</b> maps are anisotropic already at rest, so read their change, not their value.</div>
+  <div class="op-plot rise" style="--i:2"><img src="assets/fig/order_template.png" alt="A_f and A_f,L against shear rate for the 1,3 and 2,3 planes"></div>
 </section>
 
 <!-- === 9 · THANK YOU === -->

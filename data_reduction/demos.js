@@ -107,10 +107,43 @@
       return w;
     },
     steps: [
+      // first ONCat on its own, in the middle of the screen: where the data can be seen at all
+      { head: 'Your data is in ONCat', keys: ['oncat.ornl.gov'], keysLabel: 'In a browser',
+        say: 'ONCat is the catalog of every run at SNS and HFIR. Any browser, no software to install. <b>Login</b> takes you to the ORNL sign-in page; use your UCAMS or XCAMS account.',
+        async run(c, w) {
+          w.br.move(371, 44, 678, 1014); w.br.show();
+          await w.br.go(c, 'oncat.ornl.gov', 'ONCat', shot('landing_signed_out'), true);
+          await c.sleep(900); await w.br.clickAt(c, 0.83, 0.026);
+          await w.br.go(c, 'https://extidp.ornl.gov/as/authorization.oauth2?client_id=367334fd-29fc-4951…', 'ORNL Collaboration Login', shot('login'));
+          await c.sleep(1300); await w.br.clickAt(c, 0.775, 0.318);
+          await w.br.go(c, 'https://oncat.ornl.gov/', 'ONCat', shot('landing'));
+          await c.sleep(500);
+        } },
+      { head: 'Find your experiment', keysLabel: 'Click', keys: [{ press: 'Browse → EQ-SANS → IPTS-37681 → Runs' }],
+        say: 'Scroll down to <b>Browse</b>, pick <b>EQ-SANS</b> in the SNS column, then your experiment, then <b>Runs</b>. You only see the experiments you are a member of.',
+        async run(c, w) {
+          await c.sleep(600); await w.br.go(c, 'https://oncat.ornl.gov/', 'ONCat', shot('landing_browse'));
+          await c.sleep(900); await w.br.clickAt(c, 0.224, 0.63);
+          await w.br.go(c, 'https://oncat.ornl.gov/instruments', 'ONCat', shot('instruments'));
+          await c.sleep(1000); await w.br.clickAt(c, 0.62, 0.79);
+          await w.br.go(c, 'https://oncat.ornl.gov/instruments/SNS/EQSANS', 'ONCat', oncatInstrumentPage());
+          await c.sleep(1000); await w.br.click(c, '#ipts');
+          await w.br.go(c, 'https://oncat.ornl.gov/experiments/SNS/EQSANS/IPTS-37681', 'ONCat', shot('experiment'));
+          await c.sleep(1100); await w.br.clickAt(c, 0.722, 0.432);
+          await w.br.go(c, 'https://oncat.ornl.gov/runs/SNS/EQSANS/IPTS-37681', 'ONCat', oncatRunsPage());
+          w.ocY = 0; await c.sleep(400);
+        } },
+      { head: 'Every run, as it was measured', keysLabel: 'In the table', keys: [{ press: 'Scroll right' }],
+        say: 'One row per run: when it started, how long it ran, its <b>title</b>, the counts and the proton charge. This is where you see what was measured, during the beamtime and long after it. <b>Download as CSV</b> gives you the whole table.',
+        async run(c, w) {
+          await c.sleep(700); w.scrollX(300); await c.sleep(1000);
+          for (const run of [188950, 188929, 188918]) { w.toRun(run); w.mark(run, ['now']); await c.sleep(800); w.mark(run, ['now'], false); }
+          await c.sleep(300);
+        } },
       { head: 'Open a terminal on the analysis cluster',
-        say: 'Sign in at <b>analysis.sns.gov</b> and open a terminal. Everything today happens in the experiment’s shared folder.',
+        say: 'To reduce the data, sign in at <b>analysis.sns.gov</b> and open a terminal. Everything today happens in the experiment’s shared folder.',
         note: `<code>${USER}</code> stands for <b>your own user ID</b> in everything that follows.`,
-        async run(c, w) { w.term.show(); w.term.prompt(); await c.sleep(300); } },
+        async run(c, w) { w.br.show(false); w.br.move(750, 44, 678, 1014); w.term.show(); w.term.prompt(); await c.sleep(300); } },
       { head: 'Go to the shared folder', keys: [`cd ${SHARED}`, 'ls'],
         say: 'Every experiment has one. <code>reduce_template.py</code> is a reduction script for this experiment with its run lists left empty: the one you will fill in.',
         async run(c, w) {
@@ -143,30 +176,12 @@
           const s = line.querySelector('.k-str'); s.textContent = `"${SHARED}/`;
           await c.sleep(400); await c.type(s, `${USER}/output"`, 70); await c.sleep(500);
         } },
-      { head: 'Open ONCat and sign in', keys: ['oncat.ornl.gov'], keysLabel: 'In a browser',
-        say: 'ONCat is the catalog of every run at SNS and HFIR. <b>Login</b> takes you to the ORNL sign-in page; use your UCAMS or XCAMS account.',
+      { head: 'Back to the run list in ONCat', keysLabel: 'In the browser', keys: [{ press: 'IPTS-37681 → Runs' }],
+        say: 'The run numbers come from the catalog you opened at the start. Put ONCat next to the script and fill the lists from it.',
         async run(c, w) {
           w.ed.hl('outdir', false); w.br.show();
-          await w.br.go(c, 'oncat.ornl.gov', 'ONCat', shot('landing_signed_out'), true);
-          await c.sleep(900); await w.br.clickAt(c, 0.83, 0.026);
-          await w.br.go(c, 'https://extidp.ornl.gov/as/authorization.oauth2?client_id=367334fd-29fc-4951…', 'ORNL Collaboration Login', shot('login'));
-          await c.sleep(1300); await w.br.clickAt(c, 0.775, 0.318);
-          await w.br.go(c, 'https://oncat.ornl.gov/', 'ONCat', shot('landing'));
-          await c.sleep(500);
-        } },
-      { head: 'Browse to the runs of the experiment', keysLabel: 'Click', keys: [{ press: 'Browse → EQ-SANS → IPTS-37681 → Runs' }],
-        say: 'Scroll down to <b>Browse</b>, pick <b>EQ-SANS</b> in the SNS column, then your experiment, then <b>Runs</b>. You only see the experiments you are a member of.',
-        async run(c, w) {
-          await c.sleep(600); await w.br.go(c, 'https://oncat.ornl.gov/', 'ONCat', shot('landing_browse'));
-          await c.sleep(900); await w.br.clickAt(c, 0.224, 0.63);
-          await w.br.go(c, 'https://oncat.ornl.gov/instruments', 'ONCat', shot('instruments'));
-          await c.sleep(1000); await w.br.clickAt(c, 0.62, 0.79);
-          await w.br.go(c, 'https://oncat.ornl.gov/instruments/SNS/EQSANS', 'ONCat', oncatInstrumentPage());
-          await c.sleep(1000); await w.br.click(c, '#ipts');
-          await w.br.go(c, 'https://oncat.ornl.gov/experiments/SNS/EQSANS/IPTS-37681', 'ONCat', shot('experiment'));
-          await c.sleep(1100); await w.br.clickAt(c, 0.722, 0.432);
           await w.br.go(c, 'https://oncat.ornl.gov/runs/SNS/EQSANS/IPTS-37681', 'ONCat', oncatRunsPage());
-          w.ocY = 0; await c.sleep(400);
+          w.ocY = 0; await c.sleep(600);
         } },
       { head: 'Read the run titles', keysLabel: 'In the table', keys: [{ press: 'Scroll right to the <b>Title</b> column' }],
         say: 'The title says what a run is. <b>S-</b> is a scattering run, <b>T-</b> a transmission run, <b>T-empty beam</b> the direct beam. Each exists for <b>1,3</b> and <b>2,3</b>, and for both configurations. Newest runs are on top.',

@@ -74,6 +74,10 @@
 .op-eq .frac span:last-child { padding-top: 4px; }
 .op-eq p { margin: 14px 0 0; font-size: 23px; line-height: 1.32; }
 .op-eq code { font-family: var(--mono); font-size: .9em; }
+.op-eq.two { top: 196px; padding: 16px 22px 16px; }
+.op-eq.two .f { font-size: 30px; gap: 12px; }
+.op-eq.two .f + .f { margin-top: 10px; }
+.op-eq.two p { margin-top: 10px; font-size: 20px; line-height: 1.28; }
 .op-maps { position: absolute; left: 52px; top: 500px; width: 800px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .op-maps .m { text-align: center; font-size: 19px; line-height: 1.25; }
 .op-maps img { display: block; width: 100%; border: 1px solid #DBDCDB; border-radius: 4px; }
