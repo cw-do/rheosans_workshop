@@ -205,8 +205,10 @@
   const show = n => { el.textContent = 'Opened ' + Number(n).toLocaleString('en-US') + ' times'; };
   try { const last = localStorage.getItem(KEY); if (last) show(+last + 1); } catch (e) {}
   if (!/github\.io$/.test(location.hostname)) return;
-  fetch(C + '/up')
-    .then(() => fetch(C + '/stats'))
+  // Cloudflare caches these GETs for 4 h: without a unique ?t= a reload is not counted (found 2026-11-20).
+  const t = () => '?t=' + Date.now() + Math.random().toString(36).slice(2, 7);
+  fetch(C + '/up' + t(), { cache: 'no-store' })
+    .then(() => fetch(C + '/stats' + t(), { cache: 'no-store' }))
     .then(r => r.ok ? r.json() : null)
     .then(d => { const n = d && d.data && d.data.up_count; if (n) { show(n); try { localStorage.setItem(KEY, n); } catch (e) {} } })
     .catch(() => {});
