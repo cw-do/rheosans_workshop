@@ -39,6 +39,9 @@ The demo slides are replays, not live sessions.
 
 Intensities in the figures are in relative units.
 
+The front page counts its visits with GoatCounter (no cookies, no IP addresses stored); the number is
+shown at the bottom. The local copy started with `serve.py` does not count.
+
 ## Run it locally
 
 The first deck embeds a 3D model built from ES modules, which browsers do not load from `file://`.

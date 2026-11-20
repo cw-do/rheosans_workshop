@@ -193,5 +193,17 @@
   if (DECKS[key]) show(key, parseInt(n, 10) || 1);
 })();
 </script>
+<style>#visits { position: absolute; left: 0; right: 0; top: 1050px; text-align: center; font-size: 15px; letter-spacing: .04em;
+  color: rgba(255,255,255,.62); text-shadow: 0 1px 4px rgba(0,0,0,.7); pointer-events: none; }</style>
+<script>window.goatcounter = { path: '/' };</script>
+<script data-goatcounter="https://rheosansworkshop.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+(function () {
+  const el = document.createElement('div'); el.id = 'visits';
+  document.getElementById('hub-stage').appendChild(el);
+  setTimeout(() => fetch('https://rheosansworkshop.goatcounter.com/counter/TOTAL.json').then(r => r.ok ? r.json() : null)
+    .then(j => { if (j && j.count) el.textContent = 'Opened ' + j.count + ' times'; }).catch(() => {}), 1500);
+})();
+</script>
 </body>
 </html>
