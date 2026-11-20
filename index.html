@@ -202,7 +202,7 @@
   const el = document.createElement('div'); el.id = 'visits';
   document.getElementById('hub-stage').appendChild(el);
   const KEY = 'rheosans-views', C = 'https://api.counterapi.dev/v2/changwoo-dolabs/rheosans-workshop';
-  const show = n => { el.textContent = 'Opened ' + Number(n).toLocaleString('en-US') + ' times'; };
+  const show = n => { el.textContent = Number(n).toLocaleString('en-US') + (+n === 1 ? ' view' : ' views'); };
   try { const last = localStorage.getItem(KEY); if (last) show(+last + 1); } catch (e) {}
   if (!/github\.io$/.test(location.hostname)) return;
   // Cloudflare caches these GETs for 4 h: without a unique ?t= a reload is not counted (found 2026-11-20).
